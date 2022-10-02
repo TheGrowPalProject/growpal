@@ -20,7 +20,7 @@ class _CheckoutState extends State<Checkout> {
                 "Thank You For \nShopping With Us!",
               style: TextStyle(
                 color: Color(0xFF4C53A5),
-                fontSize: 80,
+                fontSize: 50,
                 fontWeight: FontWeight.bold,
               ),
             ),
