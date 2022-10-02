@@ -7,7 +7,7 @@ class globalVariables{
     "Cute, Good to touch and affordable",
     "Slay every traditional day",
     "Dabba hai dabba, uncle ka TV dabba",
-    "Make your cables as long your phone does",
+    "Make your cables last long",
     "The Bottle to buy. Period.",
     "Give your phone some clothes",
     "Make your room look like heaven",
