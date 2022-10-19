@@ -1,16 +1,24 @@
-# growpal_hackathon
+# Growpal-Flutter
+GrowPal Cross-Platform App Written In Flutter
 
-growpal prototype for the hackathon
 
-## Getting Started
+# What The Project Does?
+This project aims to build a platform for small scale business owners in apartment societies to connect and sell their products. Business owners now just advertise their products on common WhatsApp groups which becomes spam after a while and the group is muted. This voids any kind of advertisement or online representation for these small scale sellers. You might have seen this happening to people in your apartment society who sell Tupperware bottles, cooking services, small accessories, etc.
 
-This project is a starting point for a Flutter application.
+# What The Project Is Built On?
+This project is built on Flutter and the Material UI Library. We aim to integrate it with an SQL Database server later during the development of this application. 
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# How Can You Build The Project Locally And Test It?
+1. Fork this repository
+2. Clone it to your local machine
+3. Open the project using android studio or any editor of your choice
+4. Run `flutter packages get -v` inside the project directory
+5. Run your project on your prefered emulator/device. For android studio, just use the run button at the top right. For other editors, refer documentation or search online. 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+# Maintainer In Charge
+Contact [Anurag Rao](https://github.com/anuragrao04)
+- email: raoanu2004@gmail.com
+- phone: 9663006833
+
