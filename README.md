@@ -15,6 +15,7 @@ This project is built on Flutter and the Material UI Library. We aim to integrat
 3. Open the project using android studio or any editor of your choice
 4. Run `flutter packages get -v` inside the project directory
 5. Run your project on your prefered emulator/device. For android studio, just use the run button at the top right. For other editors, refer documentation or search online. 
+6. Refer [CONTRIBUTE.md](CONTRIBUTE.md) for contribution guidelines
 
 
 # Maintainer In Charge
