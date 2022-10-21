@@ -2,7 +2,6 @@
 Welcome to my spaghetti code :)
  */
 
-
 import 'package:flutter/material.dart';
 import 'package:growpal_hackathon/pages/CartPage.dart';
 import 'package:growpal_hackathon/pages/Chekout.dart';
@@ -22,7 +21,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,15 +29,12 @@ class _MyAppState extends State<MyApp> {
         scaffoldBackgroundColor: Colors.white,
       ),
       routes: {
-        "/" : (context) => HomePage(),
-        "cartPage" : (context) => CartPage(),
-        "prodPage" : (context) => ProdPage(),
-        "checkout" : (context) => Checkout(),
-        "confirmation" : (context) => ConfirmationPage(),
-
+        "/": (context) => HomePage(),
+        "cartPage": (context) => CartPage(),
+        "prodPage": (context) => ProdPage(),
+        "checkout": (context) => Checkout(),
+        "confirmation": (context) => ConfirmationPage(),
       },
-
     );
   }
 }
-
