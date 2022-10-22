@@ -12,7 +12,7 @@ class ConfirmationPage extends StatefulWidget {
 class _ConfirmationPageState extends State<ConfirmationPage> {
   @override
   Widget build(BuildContext context) {
-    image_url=https://www.pexels.com/photo/black-stackable-stone-decor-at-the-body-of-water-312839/
+     var image_url="https://www.pexels.com/photo/black-stackable-stone-decor-at-the-body-of-water-312839/";
     return Scaffold(
       body: Column(
         children: [
@@ -35,11 +35,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           height: 160,
-          decoration: BoxDecoration(
-            image: NetworkImage(image_url),
-            fit: BoxFit.cover,
-          )
-          child: Column( 
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
@@ -60,7 +56,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                     style: TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.blue,
                     ),
                   ),
                 ),
@@ -82,7 +78,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                     style: TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.orange,
                     ),
                   ),
                 ),
