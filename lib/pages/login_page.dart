@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter/src/widgets/container.dart';
 
-
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
-   Future<UserCredential> signInWithGoogle() async {
+  Future<UserCredential> signInWithGoogle() async {
     // Create a new provider
     GoogleAuthProvider googleProvider = GoogleAuthProvider();
 
@@ -24,15 +23,18 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Container(
-      child: ElevatedButton(
-        onPressed: () async {
-          final credential = await signInWithGoogle();
-          print(credential.user?.uid);
-          print(credential.user?.email);
-        },
-        child: Text('Login'),
+    return Center(
+      child: Container(
+        child: ElevatedButton(
+          onPressed: () async {
+            final credential = await signInWithGoogle();
+            print(credential.user?.uid);
+            print(credential.user?.email);
+            Navigator.pushNamed(context, "HomePage");
+          },
+          child: Text('Login'),
+        ),
       ),
-    ),);
+    );
   }
 }
