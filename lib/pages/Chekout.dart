@@ -91,7 +91,7 @@ class _CheckoutState extends State<Checkout> {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, "/");
+                  Navigator.pushNamed(context, "HomePage");
                 },
                 child: Container(
                     alignment: Alignment.center,
