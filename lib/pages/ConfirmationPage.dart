@@ -12,7 +12,7 @@ class ConfirmationPage extends StatefulWidget {
 class _ConfirmationPageState extends State<ConfirmationPage> {
   @override
   Widget build(BuildContext context) {
-     var image_url="https://www.pexels.com/photo/black-stackable-stone-decor-at-the-body-of-water-312839/";
+    var image_url="https://www.pexels.com/photo/black-stackable-stone-decor-at-the-body-of-water-312839/";
     return Scaffold(
       body: Column(
         children: [
