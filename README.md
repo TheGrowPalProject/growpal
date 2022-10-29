@@ -1,6 +1,8 @@
 # Growpal-Flutter
 GrowPal Cross-Platform App Written In Flutter
 
+# Note
+The project in it's current state is broken on android and iOS. The login works on the web only. This will be fixed shortly. 
 
 # What The Project Does?
 This project aims to build a platform for small scale business owners in apartment societies to connect and sell their products. Business owners now just advertise their products on common WhatsApp groups which becomes spam after a while and the group is muted. This voids any kind of advertisement or online representation for these small scale sellers. You might have seen this happening to people in your apartment society who sell Tupperware bottles, cooking services, small accessories, etc.
