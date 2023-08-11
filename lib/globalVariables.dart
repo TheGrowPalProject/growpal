@@ -14,6 +14,6 @@ class globalVariables{
     "Crispy And Spicy, Hotter than your ex",
 
   ];
-  var discounts = ["50", "5", "20", "10", "7", "25", "15", "5"];
+  var discounts = ["26", "27", "28", "29", "30", "31", "85", "5"];
   var checkoutPermit = true;
 }
