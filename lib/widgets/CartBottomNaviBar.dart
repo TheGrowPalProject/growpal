@@ -85,8 +85,10 @@ Future<void> _showAlertDialog(BuildContext  context) async {
           TextButton(
             child: const Text('Yes'),
             onPressed: () {
+              Navigator.of(context).pop();
               Navigator.pushNamed(context, "checkout");
               HapticFeedback.heavyImpact();
+
             },
           ),
         ],
