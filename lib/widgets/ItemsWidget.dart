@@ -21,10 +21,13 @@ class ItemsWidget extends StatelessWidget {
       children: [
         for(int i = 1; i<9; i++)
         Container(
+
           padding: EdgeInsets.only(
             left: 15,
             right: 15,
-            top: 10,
+            top: 5,
+
+
           ),
           margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
           decoration: BoxDecoration(
@@ -67,7 +70,7 @@ class ItemsWidget extends StatelessWidget {
                   margin: EdgeInsets.all(10),
                   child: Image.asset(
                     "images/image$i.png",
-                    height: 120,
+                    height: 100,
                     width: 120,
                   ),
                 ),
@@ -96,25 +99,27 @@ class ItemsWidget extends StatelessWidget {
                 )
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "₹${globalVariables().prices[i-1]}",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF4C53A5),
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "₹${globalVariables().prices[i-1]}",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF4C53A5),
+                        ),
                       ),
-                    ),
-                    Icon(
-                      Icons.shopping_cart_checkout,
-                      color: Color(0xFF4C53A5),
-                    ),
-                  ],
-                )
+                      Icon(
+                        Icons.shopping_cart_checkout,
+                        color: Color(0xFF4C53A5),
+                        size: 14,
+                      ),
+                    ],
+                  )
               ),
+
 
             ],
           )
