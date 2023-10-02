@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+//replacing this with alert dialog
 class ConfirmationPage extends StatefulWidget {
   const ConfirmationPage({Key? key}) : super(key: key);
 
@@ -22,7 +22,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                 "Are You Sure?",
                 style: TextStyle(
                   color: Color(0xFF4C53A5),
-                  fontSize: 80,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold,
                 ),
               ),

@@ -41,8 +41,8 @@ class _CartItemsState extends State<CartItems> {
                     onChanged: (index) {},
                   ),
                   Container(
-                    height: 70,
-                    width: 70,
+                    height: 50,
+                    width: 50,
                     margin: EdgeInsets.only(right: 15),
                     child: Image.asset("images/image$i.png"),
                   ),
@@ -57,7 +57,7 @@ class _CartItemsState extends State<CartItems> {
                           "${titles[i - 1]}",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                            fontSize: 16,
                             color: Color(0xFF4C53A5),
                           ),
                         ),

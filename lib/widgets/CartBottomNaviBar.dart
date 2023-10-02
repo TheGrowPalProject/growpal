@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:growpal_hackathon/globalVariables.dart';
 
@@ -27,33 +29,35 @@ class CartBottomNaviBarState extends State<CartBottomNaviBar> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
 
+             SizedBox(
+              width: 280.0,
+              height: 50.0,
+              child: ElevatedButton(
+                     onPressed:(){
+                       if(globalVariables().checkoutPermit)
+                         {_showAlertDialog(context);}
+                       },
 
-
-            InkWell(
-              onTap: () {
-                if(globalVariables().checkoutPermit){
-                  Navigator.pushNamed(context, "confirmation");
-                }
-              },
-              child: Container(
-                alignment: Alignment.center,
-                height: 50,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Color(0xFF4C53A5),
-                  borderRadius: BorderRadius.circular(20),
-
+                style: ButtonStyle(
+                  backgroundColor:   MaterialStateProperty.all<Color>(Color(0xFF4C53A5)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                        )
+                    )
                 ),
-                child: Text(
-                  "Check Out",
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                )
+                child: const Text(
+                         "Check Out",
+                         style: TextStyle(
+                           fontSize: 26,
+                           fontWeight: FontWeight.bold,
+                           color: Colors.white,
+                         ),
+                       )
+                   ),
               ),
-            ),
+
+
           ],
         ),
       ),
@@ -62,4 +66,33 @@ class CartBottomNaviBarState extends State<CartBottomNaviBar> {
   }
 
 
+}
+
+Future<void> _showAlertDialog(BuildContext  context) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text("Are You Sure?"),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('No'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          TextButton(
+            child: const Text('Yes'),
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.pushNamed(context, "checkout");
+              HapticFeedback.heavyImpact();
+
+            },
+          ),
+        ],
+      );
+    },
+  );
 }

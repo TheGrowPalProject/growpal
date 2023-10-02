@@ -46,7 +46,7 @@ class _Home_PageState extends State<Home_Page> {
                       Container(
                         margin: EdgeInsets.only(left: 5),
                         height: 50,
-                        width: 300,
+                        width: 200,
                         child: TextFormField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
