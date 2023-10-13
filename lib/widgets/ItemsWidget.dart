@@ -31,7 +31,7 @@ class ItemsWidget extends StatelessWidget {
           ),
           margin: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.black,
             borderRadius: BorderRadius.circular(20),
 
           ),

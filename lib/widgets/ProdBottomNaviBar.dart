@@ -19,7 +19,7 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
         height: 70,
         padding: EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.black,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(

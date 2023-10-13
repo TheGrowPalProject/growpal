@@ -29,7 +29,7 @@ class _CartItemsState extends State<CartItems> {
               margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.black,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
@@ -110,7 +110,7 @@ class _CartItemsState extends State<CartItems> {
                                 child: Container(
                                   padding: EdgeInsets.all(4),
                                   decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       borderRadius: BorderRadius.circular(20),
                                       boxShadow: [BoxShadow(
                                         color: Colors.grey.withOpacity(0.5),
@@ -161,7 +161,7 @@ class _CartItemsState extends State<CartItems> {
                                 child: Container(
                                   padding: EdgeInsets.all(4),
                                   decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       borderRadius: BorderRadius.circular(20),
                                       boxShadow: [BoxShadow(
                                         color: Colors.grey.withOpacity(0.5),
