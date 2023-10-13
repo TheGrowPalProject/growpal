@@ -7,6 +7,7 @@ import 'package:growpal_hackathon/widgets/CategoriesWidget.dart';
 import 'package:growpal_hackathon/widgets/ItemsWidget.dart';
 
 import 'AboutPage.dart';
+
 class Home_Page extends StatefulWidget {
   const Home_Page({Key? key}) : super(key: key);
 
@@ -15,7 +16,6 @@ class Home_Page extends StatefulWidget {
 }
 
 class _Home_PageState extends State<Home_Page> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +79,6 @@ class _Home_PageState extends State<Home_Page> {
                   ),
                 ),
 
-
                 // Categories
                 CategoriesWidget(),
 
@@ -97,9 +96,6 @@ class _Home_PageState extends State<Home_Page> {
                   ),
                 ),
 
-
-
-
                 // ItemsWidget
                 ItemsWidget(),
               ],
@@ -107,9 +103,6 @@ class _Home_PageState extends State<Home_Page> {
           ),
         ],
       ),
-
-
-
     );
   }
 }

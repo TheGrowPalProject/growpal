@@ -1,9 +1,61 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:growpal_hackathon/globalVariables.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
+class CartItem {
+  final String name;
+  final int price;
+  final int quantity;
+  final String discount;
+
+  CartItem({
+    required this.name,
+    required this.price,
+    required this.quantity,
+    required this.discount,
+  });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'price': price,
+      'quantity': quantity,
+      'discount': discount,
+    };
+  }
+
+  static fromMap(Map<String, Object> item) {
+    return CartItem(
+      name: item['name'] as String,
+      price: item['price'] as int,
+      quantity: item['quantity'] as int,
+      discount: item['discount'] as String,
+    );
+  }
+}
+
+Future<void> sendCartItemsToFirestore(List<CartItem> cartItems) async {
+  try {
+    // Get a reference to the Firestore collection where you want to store the cart items
+    final cartItemsCollection =
+        FirebaseFirestore.instance.collection('cartItems');
+
+    // Convert the CartItem objects to Map<String, dynamic> objects
+    final cartItemsData = cartItems.map((item) => item.toMap()).toList();
+
+    // Add the cart items to Firestore
+    await cartItemsCollection.add({
+      'items': cartItemsData,
+      'timestamp': FieldValue.serverTimestamp(),
+    });
+
+    print('Cart items sent to Firestore successfully');
+  } catch (e) {
+    print('Error sending cart items to Firestore: $e');
+  }
+}
 
 class CartBottomNaviBar extends StatefulWidget {
   const CartBottomNaviBar({Key? key}) : super(key: key);
@@ -19,8 +71,8 @@ class CartBottomNaviBarState extends State<CartBottomNaviBar> {
     super.initState();
     price = globalVariables().price;
   }
-  Widget build(BuildContext context) {
 
+  Widget build(BuildContext context) {
     return BottomAppBar(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -28,47 +80,39 @@ class CartBottomNaviBarState extends State<CartBottomNaviBar> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
-             SizedBox(
+            SizedBox(
               width: 280.0,
               height: 50.0,
               child: ElevatedButton(
-                     onPressed:(){
-                       if(globalVariables().checkoutPermit)
-                         {_showAlertDialog(context);}
-                       },
-
-                style: ButtonStyle(
-                  backgroundColor:   MaterialStateProperty.all<Color>(Color(0xFF4C53A5)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                        )
-                    )
-                ),
-                child: const Text(
-                         "Check Out",
-                         style: TextStyle(
-                           fontSize: 26,
-                           fontWeight: FontWeight.bold,
-                           color: Colors.white,
-                         ),
-                       )
-                   ),
-              ),
-
-
+                  onPressed: () {
+                    if (globalVariables().checkoutPermit) {
+                      _showAlertDialog(context);
+                    }
+                  },
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Color(0xFF4C53A5)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ))),
+                  child: const Text(
+                    "Check Out",
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  )),
+            ),
           ],
         ),
       ),
     );
-
   }
-
-
 }
 
-Future<void> _showAlertDialog(BuildContext  context) async {
+Future<void> _showAlertDialog(BuildContext context) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: false,
@@ -89,6 +133,14 @@ Future<void> _showAlertDialog(BuildContext  context) async {
               Navigator.pushNamed(context, "checkout");
               HapticFeedback.heavyImpact();
 
+              // get all current cart items from globalVariables().cartItems
+              var cartItems = globalVariables()
+                  .cartItems
+                  .map((item) => CartItem.fromMap(item))
+                  .toList() as List<CartItem>;
+              // send cartItems to backend
+              // use firestore to store cartItems
+              sendCartItemsToFirestore(cartItems);
             },
           ),
         ],

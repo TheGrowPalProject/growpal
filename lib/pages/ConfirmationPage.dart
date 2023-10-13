@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 //replacing this with alert dialog
 class ConfirmationPage extends StatefulWidget {
   const ConfirmationPage({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: const Column(
         children: [
           SafeArea(
             child: Padding(
@@ -32,7 +33,7 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
       ),
       bottomNavigationBar: BottomAppBar(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           height: 160,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,10 +48,10 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                   height: 50,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Color(0xFF4C53A5),
+                    color: const Color(0xFF4C53A5),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Text(
+                  child: const Text(
                     "YES",
                     style: TextStyle(
                       fontSize: 26,
@@ -69,10 +70,10 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                   height: 50,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Color(0xFF4C53A5),
+                    color: const Color(0xFF4C53A5),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Text(
+                  child: const Text(
                     "NO",
                     style: TextStyle(
                       fontSize: 26,

@@ -10,10 +10,8 @@ import 'package:growpal_hackathon/pages/HomePage.dart';
 import 'package:growpal_hackathon/pages/ProdPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-
-
-void main() async{
-WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -34,8 +32,8 @@ class _MyAppState extends State<MyApp> {
       ),
       routes: {
         ""
-        "/": (context) => HomePage(),
-        "HomePage":(context) => HomePage(),
+            "/": (context) => HomePage(),
+        "HomePage": (context) => HomePage(),
         "cartPage": (context) => CartPage(),
         "prodPage": (context) => ProdPage(),
         "checkout": (context) => Checkout(),

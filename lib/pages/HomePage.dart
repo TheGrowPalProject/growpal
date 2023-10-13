@@ -3,10 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:growpal_hackathon/pages/CartPage.dart';
 
-
 import 'AboutPage.dart';
 import 'Home_Page.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,8 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: screens[indexx],
-
+      body: screens[indexx],
       bottomNavigationBar: CurvedNavigationBar(
         animationDuration: Duration(milliseconds: 200),
         backgroundColor: Colors.transparent,
@@ -39,7 +36,7 @@ class _HomePageState extends State<HomePage> {
         color: Color(0xFF4C53A5),
         items: [
           Icon(
-              Icons.home,
+            Icons.home,
             size: 30,
             color: Colors.white,
           ),

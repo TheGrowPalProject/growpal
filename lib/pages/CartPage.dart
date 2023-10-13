@@ -15,7 +15,7 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   var price = 0;
 
-  void handlePrice(price_given){
+  void handlePrice(priceGiven) {
     setState(() {
       price = globalVariables().price;
     });
@@ -26,56 +26,49 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       body: ListView(
         children: [
-          CartAppBar(),
-
+          const CartAppBar(),
           Container(
-            padding: EdgeInsets.only(top: 15),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.only(top: 15),
+            decoration: const BoxDecoration(
               color: Color(0xFFEDECF2),
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(35),
-                  topRight: Radius.circular(35),
+                topLeft: Radius.circular(35),
+                topRight: Radius.circular(35),
               ),
-
             ),
-            child: Column(
-              children: [
-                CartItems(),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-                  padding: EdgeInsets.all(10),
+            child: Column(children: [
+              const CartItems(),
+              Container(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+                  padding: const EdgeInsets.all(10),
                   child: Row(
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: Color(0xFF4C53A5),
+                          color: const Color(0xFF4C53A5),
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.add,
                           color: Colors.white,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Text(
-                          "Add Coupon Code",
-                          style: TextStyle(
-                            color: Color(0xFF4C53A5),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          )
-                        )
-                      ),
+                      const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text("Add Coupon Code",
+                              style: TextStyle(
+                                color: Color(0xFF4C53A5),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ))),
                     ],
-                  )
-                ),
-            ]
-            ),
+                  )),
+            ]),
           ),
         ],
       ),
-      bottomNavigationBar: CartBottomNaviBar(),
+      bottomNavigationBar: const CartBottomNaviBar(),
     );
   }
 }

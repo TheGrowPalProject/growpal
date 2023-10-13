@@ -43,6 +43,7 @@ dependencies:
   shared_preferences: ^2.0.15
   flutter_tts: ^3.5.3
   firebase_auth: ^4.0.2
+  cloud_firestore: ^4.9.3
   
 
 
