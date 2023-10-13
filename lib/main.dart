@@ -9,9 +9,13 @@ import 'package:growpal_hackathon/pages/ConfirmationPage.dart';
 import 'package:growpal_hackathon/pages/HomePage.dart';
 import 'package:growpal_hackathon/pages/ProdPage.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

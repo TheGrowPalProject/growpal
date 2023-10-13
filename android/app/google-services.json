@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "203208566419",
+    "project_id": "growpal-test",
+    "storage_bucket": "growpal-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203208566419:android:003d254663d4d45ed6cf66",
+        "android_client_info": {
+          "package_name": "com.example.growpal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWofUAXNZTjqc50H1zSM_p-xuJzhTD1fg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
