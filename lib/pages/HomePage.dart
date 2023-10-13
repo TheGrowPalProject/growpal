@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
 
       bottomNavigationBar: CurvedNavigationBar(
         animationDuration: Duration(milliseconds: 200),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.black,
         onTap: (index) {
           setState(() {
             indexx = index;
@@ -41,17 +41,17 @@ class _HomePageState extends State<HomePage> {
           Icon(
               Icons.home,
             size: 30,
-            color: Colors.white,
+            color: Colors.black,
           ),
           Icon(
             CupertinoIcons.cart_fill,
             size: 30,
-            color: Colors.white,
+            color: Colors.black,
           ),
           Icon(
             Icons.list,
             size: 30,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ],
       ),

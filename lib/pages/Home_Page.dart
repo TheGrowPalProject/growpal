@@ -38,12 +38,13 @@ class _Home_PageState extends State<Home_Page> {
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.black,
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Row(
                     children: [
                       Container(
+                        color:Colors.black,
                         margin: EdgeInsets.only(left: 5),
                         height: 50,
                         width: 200,
@@ -64,6 +65,7 @@ class _Home_PageState extends State<Home_Page> {
                   ),
                 ),
                 Container(
+                  color:Colors.black,
                   alignment: Alignment.centerLeft,
                   margin: EdgeInsets.symmetric(
                     vertical: 20,
@@ -85,6 +87,7 @@ class _Home_PageState extends State<Home_Page> {
 
                 //Items
                 Container(
+                  color:Colors.black,
                   alignment: Alignment.centerLeft,
                   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   child: Text(
