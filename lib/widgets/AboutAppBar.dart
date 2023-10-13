@@ -7,7 +7,7 @@ class AboutAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Colors.black,
       padding: EdgeInsets.all(25),
       child: Row(
         children: [

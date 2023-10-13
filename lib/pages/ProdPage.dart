@@ -43,7 +43,7 @@ class _ProdPageState extends State<ProdPage> {
             height: 30,
             child: Container(
               width: double.infinity,
-              color: Colors.white,
+              color: Colors.black,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(

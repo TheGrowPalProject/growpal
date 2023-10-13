@@ -23,6 +23,7 @@ class CartBottomNaviBarState extends State<CartBottomNaviBar> {
 
     return BottomAppBar(
       child: Container(
+        color:Colors.black,
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         height: 80,
         child: Column(

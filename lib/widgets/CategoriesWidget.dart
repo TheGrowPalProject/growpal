@@ -14,12 +14,13 @@ class CategoriesWidget extends StatelessWidget {
         children: [
           for(int i = 1; i< 9; i++)
           Container(
+            color: Colors.black,
             margin: EdgeInsets.symmetric(horizontal: 10),
             padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(20),
-            ),
+            // decoration: BoxDecoration(
+            //   color: Colors.black,
+            //   borderRadius: BorderRadius.circular(20),
+            // ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

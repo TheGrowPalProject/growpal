@@ -21,7 +21,6 @@ class ItemsWidget extends StatelessWidget {
       children: [
         for(int i = 1; i<9; i++)
         Container(
-
           padding: EdgeInsets.only(
             left: 15,
             right: 15,

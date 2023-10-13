@@ -24,6 +24,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: ListView(
         children: [
           CartAppBar(),
