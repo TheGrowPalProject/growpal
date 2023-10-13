@@ -39,11 +39,11 @@ class _Home_PageState extends State<Home_Page> {
                   height: 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
+                    color: Color(0xFFFFFFFF),
                   ),
                   child: Row(
                     children: [
                       Container(
-
                         margin: EdgeInsets.only(left: 5),
                         height: 50,
                         width: 200,
