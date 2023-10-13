@@ -25,7 +25,7 @@ class _Home_PageState extends State<Home_Page> {
           Container(
             padding: EdgeInsets.only(top: 15),
             decoration: BoxDecoration(
-              color: Color(0xFFEDECF2),
+              color: Color(0xFF212121),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(35),
                 topRight: Radius.circular(35),
@@ -38,20 +38,19 @@ class _Home_PageState extends State<Home_Page> {
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Colors.black,
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Row(
                     children: [
                       Container(
-                        color:Colors.black,
+
                         margin: EdgeInsets.only(left: 5),
                         height: 50,
                         width: 200,
                         child: TextFormField(
                           decoration: InputDecoration(
-                            border: InputBorder.none,
                             hintText: "Search here",
+                            hintStyle: TextStyle(color: Colors.white),
                           ),
                         ),
                       ),
@@ -59,13 +58,12 @@ class _Home_PageState extends State<Home_Page> {
                       Icon(
                         Icons.camera_alt,
                         size: 27,
-                        color: Color(0xFF4C53A5),
+                        color: Color(0xFF000000),
                       ),
                     ],
                   ),
                 ),
                 Container(
-                  color:Colors.black,
                   alignment: Alignment.centerLeft,
                   margin: EdgeInsets.symmetric(
                     vertical: 20,
@@ -76,7 +74,7 @@ class _Home_PageState extends State<Home_Page> {
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF4C53A5),
+                      color: Color(0xFFFFFFFF),
                     ),
                   ),
                 ),
@@ -87,7 +85,6 @@ class _Home_PageState extends State<Home_Page> {
 
                 //Items
                 Container(
-                  color:Colors.black,
                   alignment: Alignment.centerLeft,
                   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   child: Text(
@@ -95,7 +92,7 @@ class _Home_PageState extends State<Home_Page> {
                     style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF4C53A5),
+                      color: Color(0xFFFFFFFF),
                     ),
                   ),
                 ),

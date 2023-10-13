@@ -37,22 +37,22 @@ class _HomePageState extends State<HomePage> {
           });
         },
         height: 70,
-        color: Color(0xFF4C53A5),
+        color: Color(0xFF000000),
         items: [
           Icon(
               Icons.home,
             size: 30,
-            color: Colors.black,
+            color: Colors.white,
           ),
           Icon(
             CupertinoIcons.cart_fill,
             size: 30,
-            color: Colors.black,
+            color: Colors.white,
           ),
           Icon(
             Icons.list,
             size: 30,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ],
       ),
