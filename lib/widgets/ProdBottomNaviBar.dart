@@ -2,6 +2,8 @@ import 'package:clippy_flutter/arc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../globalVariables.dart';
+
 class ProdBottomNaviBar extends StatefulWidget {
   const ProdBottomNaviBar({Key? key}) : super(key: key);
 
@@ -48,6 +50,7 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
             ElevatedButton.icon(
                 onPressed: () {
                   setState(() {
+                    cartItems = 1;
                     buttonIcon = Icon(Icons.done);
                     buttonText = "Added";
                   });

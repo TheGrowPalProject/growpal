@@ -22,8 +22,7 @@ class _CartItemsState extends State<CartItems> {
 
     return Column(
       children: [
-        for(int i = 1; i < 8; i++)
-          if (!skipIndexes.contains(i-1))
+        if (cartItems != -1)
           Container(
               height: 110,
               margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -44,7 +43,7 @@ class _CartItemsState extends State<CartItems> {
                     height: 50,
                     width: 50,
                     margin: EdgeInsets.only(right: 15),
-                    child: Image.asset("images/image$i.png"),
+                    child: Image.asset("images/image$cartItems.png"),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 10),
@@ -54,7 +53,7 @@ class _CartItemsState extends State<CartItems> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "${titles[i - 1]}",
+                          "${titles[cartItems - 1]}",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
@@ -62,7 +61,7 @@ class _CartItemsState extends State<CartItems> {
                           ),
                         ),
                         Text(
-                          "₹${prices[i - 1] * quantities[i - 1]}",
+                          "₹${prices[cartItems - 1] * quantities[cartItems - 1]}",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -87,9 +86,9 @@ class _CartItemsState extends State<CartItems> {
                             ),
                             onTap: () {
                               setState(() {
-                                skipIndexes.add(i-1);
-                                quantities[i-1] = 0;
-                                prices[i-1] = 0;
+                                skipIndexes.add(cartItems-1);
+                                quantities[cartItems-1] = 0;
+                                prices[cartItems-1] = 0;
                                 price =  quantities[0]*prices[0] +
                                     quantities[1]*prices[1] +
                                     quantities[2]+prices[2] +
@@ -127,8 +126,8 @@ class _CartItemsState extends State<CartItems> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    if (quantities[i - 1] > 1) {
-                                      quantities[i - 1] -= 1;
+                                    if (quantities[cartItems - 1] > 1) {
+                                      quantities[cartItems - 1] -= 1;
                                       price =  quantities[0]*prices[0] +
                                           quantities[1]*prices[1] +
                                           quantities[2]+prices[2] +
@@ -148,7 +147,7 @@ class _CartItemsState extends State<CartItems> {
                               Container(
                                 margin: EdgeInsets.symmetric(horizontal: 10),
                                 child: Text(
-                                  "${quantities[i - 1]}",
+                                  "${quantities[cartItems - 1]}",
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -179,7 +178,7 @@ class _CartItemsState extends State<CartItems> {
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    quantities[i - 1] += 1;
+                                    quantities[cartItems - 1] += 1;
                                     price =  quantities[0]*prices[0] +
                                         quantities[1]*prices[1] +
                                         quantities[2]+prices[2] +

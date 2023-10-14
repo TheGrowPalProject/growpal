@@ -17,3 +17,5 @@ class globalVariables{
   var discounts = ["26", "27", "28", "29", "30", "31", "85", "5"];
   var checkoutPermit = true;
 }
+
+ var cartItems = -1;
