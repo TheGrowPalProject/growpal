@@ -18,8 +18,4 @@ This project is built on Flutter and the Material UI Library. We aim to integrat
 6. Refer [CONTRIBUTE.md](CONTRIBUTE.md) for contribution guidelines
 
 
-# Maintainer In Charge
-Contact [Anurag Rao](https://github.com/anuragrao04)
-- email: raoanu2004@gmail.com
-- phone: 9663006833
 
