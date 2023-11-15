@@ -38,35 +38,5 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Flutter FlatButton Example'),
-          ),
-          body: Center(
-              child: Column(children: <Widget>[
-            Container(
-                margin: EdgeInsets.all(25),
-                child: Column(
-                  children: [
-                    TextButton(
-                      onPressed: login,
-                      child: const Text("login"),
-                    )
-                  ],
-                )),
-          ]))),
-    );
-  }
+  login();
 }
