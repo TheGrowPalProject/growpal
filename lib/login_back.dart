@@ -1,3 +1,4 @@
+import 'dart:js';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -23,6 +24,10 @@ Future<void> login() async {
       idToken: auth_details?.idToken,
     );
     final uc = await FirebaseAuth.instance.signInWithCredential(credential);
+    Navigator.push(
+      context as BuildContext,
+      MaterialPageRoute(builder: (context) => const HomePage()),
+    );
   } on FirebaseAuthException catch (e) {
     debugPrint("\n\nError in Login \n\n");
   }
