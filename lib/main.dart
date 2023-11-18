@@ -9,7 +9,7 @@ import 'package:growpal_hackathon/pages/ConfirmationPage.dart';
 import 'package:growpal_hackathon/pages/HomePage.dart';
 import 'package:growpal_hackathon/pages/ProdPage.dart';
 import 'package:firebase_core/firebase_core.dart';
-
+import 'package:growpal_hackathon/pages/LoginPage.dart';
 
 
 void main() async{
