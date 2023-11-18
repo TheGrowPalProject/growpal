@@ -1,12 +1,8 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:growpal_hackathon/pages/CartPage.dart';
-
-
 import 'AboutPage.dart';
 import 'Home_Page.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,36 +18,42 @@ class _HomePageState extends State<HomePage> {
     AboutPage(),
   ];
   var indexx = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: screens[indexx],
-
-      bottomNavigationBar: CurvedNavigationBar(
-        animationDuration: Duration(milliseconds: 200),
-        backgroundColor: Colors.transparent,
+      body: screens[indexx],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: indexx,
         onTap: (index) {
           setState(() {
             indexx = index;
           });
         },
-        height: 70,
-        color: Color(0xFF4C53A5),
+        backgroundColor: Color(0xFF191414),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
         items: [
-          Icon(
+          BottomNavigationBarItem(
+            icon: Icon(
               Icons.home,
-            size: 30,
-            color: Colors.white,
+              size: 30,
+            ),
+            label: 'Home',
           ),
-          Icon(
-            CupertinoIcons.cart_fill,
-            size: 30,
-            color: Colors.white,
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.cart_fill,
+              size: 30,
+            ),
+            label: 'Cart',
           ),
-          Icon(
-            Icons.list,
-            size: 30,
-            color: Colors.white,
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.list,
+              size: 30,
+            ),
+            label: 'List',
           ),
         ],
       ),

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-
 class ProdAppBar extends StatelessWidget {
   const ProdAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Colors.black,
       padding: EdgeInsets.all(25),
       child: Row(
         children: [
@@ -18,20 +17,19 @@ class ProdAppBar extends StatelessWidget {
             child: Icon(
               Icons.arrow_back,
               size: 30,
-              color: Color(0xFF4C53A5),
+              color: const Color.fromARGB(255, 107, 91, 91),
             ),
-
-            ),
+          ),
           Padding(
-              padding: EdgeInsets.only(left: 20),
-              child: Text(
-                "Product",
-                style: TextStyle(
-                  fontSize: 23,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF4C53A5),
-                ),
+            padding: EdgeInsets.only(left: 20),
+            child: Text(
+              "Product",
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF4C53A5),
               ),
+            ),
           ),
           Spacer(),
           Icon(

@@ -1,5 +1,3 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:growpal_hackathon/pages/CartPage.dart';
 import 'package:growpal_hackathon/widgets/HomeAppBar.dart';
@@ -19,85 +17,95 @@ class _Home_PageState extends State<Home_Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      backgroundColor: Color(0xFF191414),
+      body: Column(
         children: [
-          HomeAppBar(),
-          Container(
-            padding: EdgeInsets.only(top: 15),
-            decoration: BoxDecoration(
-              color: Color(0xFFEDECF2),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(35),
-                topRight: Radius.circular(35),
-              ),
-            ),
-            child: Column(
+          Expanded(
+            child: ListView(
               children: [
+                const HomeAppBar(),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 15),
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(30),
+                  padding: const EdgeInsets.only(top: 15),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF191414),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(35),
+                      topRight: Radius.circular(35),
+                    ),
                   ),
-                  child: Row(
+                  child: Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: 5),
-                        height: 50,
-                        width: 200,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Search here",
+                        alignment: Alignment.centerLeft,
+                        margin: const EdgeInsets.symmetric(
+                          vertical: 20,
+                          horizontal: 10,
+                        ),
+                        child: const Text(
+                          "Categories",
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
                         ),
                       ),
-                      Spacer(),
-                      Icon(
-                        Icons.camera_alt,
-                        size: 27,
-                        color: Color(0xFF4C53A5),
+                      // Categories
+                      const CategoriesWidget(),
+                      //Items
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 20),
+                        child: const Text(
+                          "Best Selling",
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
+                      // ItemsWidget
+                      ItemsWidget(),
                     ],
                   ),
                 ),
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 0),
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            height: 50,
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(69, 89, 164, 0.5),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.search,
+                  size: 27,
+                  color: Color.fromARGB(255, 219, 215, 215),
+                ),
                 Container(
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.symmetric(
-                    vertical: 20,
-                    horizontal: 10,
-                  ),
-                  child: Text(
-                    "Categories",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF4C53A5),
+                  margin: const EdgeInsets.only(left: 5),
+                  height: 50,
+                  width: 200,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "Search here",
                     ),
                   ),
                 ),
-
-                // Categories
-                CategoriesWidget(),
-
-                //Items
-                Container(
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                  child: Text(
-                    "Best Selling",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF4C53A5),
-                    ),
-                  ),
+                const Spacer(),
+                const Icon(
+                  Icons.camera_alt,
+                  size: 27,
+                  color: Color(0xFFB3B3B3),
                 ),
-
-                // ItemsWidget
-                ItemsWidget(),
               ],
             ),
           ),
