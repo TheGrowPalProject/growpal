@@ -15,7 +15,7 @@ class LoginPage extends StatelessWidget {
             children: [
               Text(
                 "GrowPal",
-                style: GoogleFonts.lobster(
+                style: GoogleFonts.roboto(
                   fontWeight: FontWeight.bold,
                   fontSize: 40.0,
                   color: Colors.white
@@ -31,13 +31,13 @@ class LoginPage extends StatelessWidget {
                     height: 50.0,
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: Text("Login",style: GoogleFonts.cormorantGaramond(fontSize: 20.0),),
+                      child: Text("Login",style: GoogleFonts.robotoSerif(fontSize: 20.0),),
                       style: ElevatedButton.styleFrom(
                         elevation: 0.0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        backgroundColor: Color.fromARGB(100, 255, 102, 197)
+                        backgroundColor: Color.fromARGB(255, 26, 26, 26)
                       ),
                     ),
                   ),
@@ -49,13 +49,13 @@ class LoginPage extends StatelessWidget {
                     height: 50.0,
                     child: ElevatedButton(
                       onPressed: () {},
-                      child: Text("Register",style: GoogleFonts.cormorantGaramond(fontSize: 20.0)),
+                      child: Text("Register",style: GoogleFonts.robotoSerif(fontSize: 20.0)),
                       style: ElevatedButton.styleFrom(
                         elevation: 0.0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        backgroundColor: Color.fromARGB(100, 255, 102, 197)
+                        backgroundColor: Color.fromARGB(255, 26, 26, 26)
                       ),
                     ),
                   ),
