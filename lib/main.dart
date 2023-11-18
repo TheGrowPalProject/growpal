@@ -33,7 +33,6 @@ class _MyAppState extends State<MyApp> {
         scaffoldBackgroundColor: Colors.white,
       ),
       routes: {
-        ""
         "/": (context) => LoginPage(),
         "HomePage":(context) => HomePage(),
         "cartPage": (context) => CartPage(),
