@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({Key? key}) : super(key: key);
@@ -44,7 +45,7 @@ class HomeAppBar extends StatelessWidget {
                 Navigator.pushNamed(context, "cartPage");
               },
               child: Icon(
-                Icons.shopping_bag_outlined,
+                CupertinoIcons.cart_fill,
                 size: 30,
                 color: Colors.white,
               ),

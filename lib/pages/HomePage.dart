@@ -30,30 +30,30 @@ class _HomePageState extends State<HomePage> {
             indexx = index;
           });
         },
-        backgroundColor: Color(0xFF191414),
+        backgroundColor: Color.fromARGB(255, 58, 58, 58),
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              size: 30,
+              size: 40,
             ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              CupertinoIcons.cart_fill,
-              size: 30,
+              Icons.account_circle,
+              size: 40,
             ),
-            label: 'Cart',
+            label: 'Account',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.list,
-              size: 30,
+              Icons.currency_exchange,
+              size: 40,
             ),
-            label: 'List',
+            label: 'Sell',
           ),
         ],
       ),
