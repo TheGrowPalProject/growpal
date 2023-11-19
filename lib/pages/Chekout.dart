@@ -1,12 +1,11 @@
 
 //import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_tts/flutter_tts.dart';
 
 class Checkout extends StatefulWidget {
-  Checkout({Key? key}) : super(key: key);
+  const Checkout({Key? key}) : super(key: key);
 
   @override
   State<Checkout> createState() => _CheckoutState();
@@ -33,7 +32,7 @@ class _CheckoutState extends State<Checkout> {
     return Scaffold(
       body: Column(
         children: [
-          SafeArea(
+          const SafeArea(
             child: Padding(
               padding: EdgeInsets.all(20),
               child: Text(
@@ -46,9 +45,9 @@ class _CheckoutState extends State<Checkout> {
               ),
             ),
           ),
-          SizedBox(height: 60,),
+          const SizedBox(height: 60,),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Text(
               "Your Order Has Been Forwarded To The Seller Successfully",
               style: TextStyle(
@@ -58,8 +57,8 @@ class _CheckoutState extends State<Checkout> {
               ),
             ),
           ),
-          SizedBox(height: 40,),
-          Container(
+          const SizedBox(height: 40,),
+          const SizedBox(
             height: 200,
             width: 350,
             child: Card(
@@ -77,7 +76,7 @@ class _CheckoutState extends State<Checkout> {
                   ),
                 ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 10,top: 20),
+                    padding: EdgeInsets.only(left: 10,top: 20),
                     child: Column(
                       children: [
                         Row(
@@ -161,7 +160,7 @@ class _CheckoutState extends State<Checkout> {
       ),
       bottomNavigationBar: BottomAppBar(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           height: 80,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -175,10 +174,10 @@ class _CheckoutState extends State<Checkout> {
                     height: 50,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: Color(0xFF4C53A5),
+                      color: const Color(0xFF4C53A5),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Go Home",
                       style: TextStyle(
                         fontSize: 23,

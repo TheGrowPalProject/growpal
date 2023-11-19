@@ -8,7 +8,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       backgroundColor:Colors.black,
       body: Container(
-        padding: EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(30.0),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -21,7 +21,7 @@ class LoginPage extends StatelessWidget {
                   color: Colors.white
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10.0,
               ),
               Column(
@@ -33,17 +33,17 @@ class LoginPage extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, 'HomePage');
                       },
-                      child: Text("Login",style: GoogleFonts.robotoSerif(fontSize: 20.0),),
                       style: ElevatedButton.styleFrom(
                         elevation: 0.0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        backgroundColor: Color.fromARGB(255, 26, 26, 26)
+                        backgroundColor: const Color.fromARGB(255, 26, 26, 26)
                       ),
+                      child: Text("Login",style: GoogleFonts.robotoSerif(fontSize: 20.0),),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
                   SizedBox(
@@ -53,14 +53,14 @@ class LoginPage extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, 'HomePage');
                       },
-                      child: Text("Register",style: GoogleFonts.robotoSerif(fontSize: 20.0)),
                       style: ElevatedButton.styleFrom(
                         elevation: 0.0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        backgroundColor: Color.fromARGB(255, 26, 26, 26)
+                        backgroundColor: const Color.fromARGB(255, 26, 26, 26)
                       ),
+                      child: Text("Register",style: GoogleFonts.robotoSerif(fontSize: 20.0)),
                     ),
                   ),
                 ],

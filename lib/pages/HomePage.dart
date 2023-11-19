@@ -2,9 +2,9 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:growpal_hackathon/pages/CartPage.dart';
+import 'package:growpal_hackathon/pages/SellerForm.dart';
 
 
-import 'AboutPage.dart';
 import 'Home_Page.dart';
 
 
@@ -17,9 +17,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final screens = [
-    Home_Page(),
-    CartPage(),
-    AboutPage(),
+    const Home_Page(),
+    const CartPage(),
+    const SellerForm(),
   ];
   var indexx = 0;
   @override
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
         body: screens[indexx],
 
       bottomNavigationBar: CurvedNavigationBar(
-        animationDuration: Duration(milliseconds: 200),
+        animationDuration: const Duration(milliseconds: 200),
         backgroundColor: Colors.transparent,
         onTap: (index) {
           setState(() {
@@ -36,8 +36,8 @@ class _HomePageState extends State<HomePage> {
           });
         },
         height: 70,
-        color: Color(0xFF4C53A5),
-        items: [
+        color: const Color(0xFF4C53A5),
+        items: const [
           Icon(
               Icons.home,
             size: 30,
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
             color: Colors.white,
           ),
           Icon(
-            Icons.list,
+            Icons.add,
             size: 30,
             color: Colors.white,
           ),

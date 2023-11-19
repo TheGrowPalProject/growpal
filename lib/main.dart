@@ -8,13 +8,14 @@ import 'package:growpal_hackathon/pages/Chekout.dart';
 import 'package:growpal_hackathon/pages/ConfirmationPage.dart';
 import 'package:growpal_hackathon/pages/HomePage.dart';
 import 'package:growpal_hackathon/pages/ProdPage.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:growpal_hackathon/pages/LoginPage.dart';
 
 
 void main() async{
 WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(
+    const MyApp()
+    );
 }
 
 class MyApp extends StatefulWidget {
@@ -30,15 +31,16 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: Colors.black,
+        brightness: Brightness.dark,
       ),
       routes: {
-        "/": (context) => LoginPage(),
-        "HomePage":(context) => HomePage(),
-        "cartPage": (context) => CartPage(),
-        "prodPage": (context) => ProdPage(),
-        "checkout": (context) => Checkout(),
-        "confirmation": (context) => ConfirmationPage(),
+        "/": (context) => const LoginPage(),
+        "HomePage":(context) => const HomePage(),
+        "cartPage": (context) => const CartPage(),
+        "prodPage": (context) => const ProdPage(),
+        "checkout": (context) => const Checkout(),
+        "confirmation": (context) => const ConfirmationPage(),
       },
     );
   }

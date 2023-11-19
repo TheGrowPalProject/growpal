@@ -29,12 +29,12 @@ class _ProdPageState extends State<ProdPage> {
       Colors.pinkAccent,
     ];
     return Scaffold(
-      backgroundColor: Color(0xFFEDECF2),
+      backgroundColor: const Color(0xFFEDECF2),
       body: ListView(
         children: [
-          ProdAppBar(),
+          const ProdAppBar(),
           Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Image.asset("images/image1.png", height: 300),
           ),
           Arc(
@@ -45,10 +45,10 @@ class _ProdPageState extends State<ProdPage> {
               width: double.infinity,
               color: Colors.white,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(
                           top: 48,
                           bottom: 15),
@@ -68,7 +68,7 @@ class _ProdPageState extends State<ProdPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 5, bottom: 10),
+                      padding: const EdgeInsets.only(top: 5, bottom: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
@@ -79,8 +79,8 @@ class _ProdPageState extends State<ProdPage> {
                             direction: Axis.horizontal,
                             itemCount: 5,
                             itemSize: 20,
-                            itemPadding: EdgeInsets.symmetric(horizontal: 4),
-                            itemBuilder: (context, _) => Icon(
+                            itemPadding: const EdgeInsets.symmetric(horizontal: 4),
+                            itemBuilder: (context, _) => const Icon(
                               Icons.favorite,
                               color: Color(0xFF4C53A5),
                             ),
@@ -91,7 +91,7 @@ class _ProdPageState extends State<ProdPage> {
                             children: [
                               InkWell(
                                 child: Container(
-                                  padding: EdgeInsets.all(5),
+                                  padding: const EdgeInsets.all(5),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(20),
@@ -100,11 +100,11 @@ class _ProdPageState extends State<ProdPage> {
                                         color: Colors.grey.withOpacity(0.5),
                                         spreadRadius: 3,
                                         blurRadius: 20,
-                                        offset: Offset(0, 3),
+                                        offset: const Offset(0, 3),
                                       )
                                     ]
                                   ),
-                                  child: Icon(
+                                  child: const Icon(
                                     CupertinoIcons.minus,
                                     size: 18,
                                     color: Color(0xFF4C53A5),
@@ -119,10 +119,10 @@ class _ProdPageState extends State<ProdPage> {
                                 },
                               ),
                               Container(
-                                margin: EdgeInsets.symmetric(horizontal: 5),
+                                margin: const EdgeInsets.symmetric(horizontal: 5),
                                 child: Text(
                                   "$quantity",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                     color: Color(0xFF4C53A5),
@@ -131,7 +131,7 @@ class _ProdPageState extends State<ProdPage> {
                               ),
                               InkWell(
                                 child: Container(
-                                  padding: EdgeInsets.all(5),
+                                  padding: const EdgeInsets.all(5),
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20),
@@ -140,11 +140,11 @@ class _ProdPageState extends State<ProdPage> {
                                           color: Colors.grey.withOpacity(0.5),
                                           spreadRadius: 3,
                                           blurRadius: 20,
-                                          offset: Offset(0, 3),
+                                          offset: const Offset(0, 3),
                                         )
                                       ]
                                   ),
-                                  child: Icon(
+                                  child: const Icon(
                                     CupertinoIcons.plus,
                                     size: 18,
                                     color: Color(0xFF4C53A5),
@@ -161,7 +161,7 @@ class _ProdPageState extends State<ProdPage> {
                         ],
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: Text(
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
@@ -173,10 +173,10 @@ class _ProdPageState extends State<ProdPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       child: Row(
                         children: [
-                          Text(
+                          const Text(
                             "Size:  ",
                             style: TextStyle(
                               fontSize: 18,
@@ -185,7 +185,7 @@ class _ProdPageState extends State<ProdPage> {
 
                             ),
                           ),
-                          SizedBox(width: 10,),
+                          const SizedBox(width: 10,),
                           Row(
                             children: [
                               for(int i = 5; i < 10; i++)
@@ -193,7 +193,7 @@ class _ProdPageState extends State<ProdPage> {
                                 height: 30,
                                 width: 30,
                                 alignment: Alignment.center,
-                                margin: EdgeInsets.symmetric(horizontal: 5),
+                                margin: const EdgeInsets.symmetric(horizontal: 5),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(30),
@@ -208,7 +208,7 @@ class _ProdPageState extends State<ProdPage> {
                                 ),
                                 child: Text(
                                   "$i",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                     color: Color(0xFF4C53A5),
@@ -224,10 +224,10 @@ class _ProdPageState extends State<ProdPage> {
 
 
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       child: Row(
                         children: [
-                          Text(
+                          const Text(
                             "Color:",
                             style: TextStyle(
                               fontSize: 18,
@@ -236,7 +236,7 @@ class _ProdPageState extends State<ProdPage> {
 
                             ),
                           ),
-                          SizedBox(width: 10,),
+                          const SizedBox(width: 10,),
                           Row(
                             children: [
                               for(int i = 0; i < 5; i++)
@@ -244,7 +244,7 @@ class _ProdPageState extends State<ProdPage> {
                                     height: 30,
                                     width: 30,
                                     alignment: Alignment.center,
-                                    margin: EdgeInsets.symmetric(horizontal: 5),
+                                    margin: const EdgeInsets.symmetric(horizontal: 5),
                                     decoration: BoxDecoration(
                                       color: clrs[i],
                                       borderRadius: BorderRadius.circular(30),
@@ -273,7 +273,7 @@ class _ProdPageState extends State<ProdPage> {
         ],
 
       ),
-      bottomNavigationBar: ProdBottomNaviBar(),
+      bottomNavigationBar: const ProdBottomNaviBar(),
 
     );
   }

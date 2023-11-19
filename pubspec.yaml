@@ -44,6 +44,8 @@ dependencies:
   flutter_tts: ^3.5.3
   firebase_auth: ^4.0.2
   google_fonts: ^6.1.0
+  intl: ^0.18.1
+  flutter_datetime_picker: ^1.5.1
   
 
 

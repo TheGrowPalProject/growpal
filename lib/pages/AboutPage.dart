@@ -10,12 +10,12 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFEDECF2),
+      backgroundColor: const Color(0xFFEDECF2),
       body: ListView(
         children: [
-          AboutAppBar(),
+          const AboutAppBar(),
           Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Image.asset("images/logo.png", height: 300),
           ),
           Arc(
@@ -26,10 +26,10 @@ class AboutPage extends StatelessWidget {
               width: double.infinity,
               color: Colors.white,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(
                           top: 48,
                           bottom: 15),
@@ -44,7 +44,7 @@ class AboutPage extends StatelessWidget {
                           ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20),
+                      padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Text(
                         "We are a start up that aim to help small scale sellers in apartment societies sell their products. If you live in an apartment society, you would have seen small scale sellers who sell cooked food, accessories, baked goods, tupperware goods, etc. The primary source for advertisement for these informal sellers is through WhatsApp groups - whcih gets spammy after a while and isn't effective at all. We aim to fill in this gap and provide a platform to buy and sell locally, and informally without the need for any legal registrations.",
                         style: TextStyle(
@@ -65,6 +65,6 @@ class AboutPage extends StatelessWidget {
       ),
 
 
-    );;
+    );
   }
 }
