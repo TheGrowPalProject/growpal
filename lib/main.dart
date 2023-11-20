@@ -10,7 +10,8 @@ import 'package:growpal_hackathon/pages/HomePage.dart';
 import 'package:growpal_hackathon/pages/ProdPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:growpal_hackathon/pages/LoginPage.dart';
-
+import 'package:growpal_hackathon/pages/BuyerIntro.dart';
+import 'package:growpal_hackathon/pages/SellerIntro.dart';
 
 void main() async{
 WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +34,8 @@ class _MyAppState extends State<MyApp> {
         scaffoldBackgroundColor: Colors.white,
       ),
       routes: {
-        "/": (context) => LoginPage(),
+        "/": (context) => SellerIntroScreen(),
+        "LoginPage": (context) => LoginPage(),
         "HomePage":(context) => HomePage(),
         "cartPage": (context) => CartPage(),
         "prodPage": (context) => ProdPage(),
