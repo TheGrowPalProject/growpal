@@ -26,8 +26,8 @@ class _CartItemsState extends State<CartItems> {
           if (!skipIndexes.contains(i-1))
           Container(
               height: 110,
-              margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              padding: EdgeInsets.all(10),
+              margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
@@ -37,25 +37,25 @@ class _CartItemsState extends State<CartItems> {
                   Radio(
                     value: "",
                     groupValue: "",
-                    activeColor: Color(0xFF4C53A5),
+                    activeColor: const Color(0xFF4C53A5),
                     onChanged: (index) {},
                   ),
                   Container(
                     height: 50,
                     width: 50,
-                    margin: EdgeInsets.only(right: 15),
+                    margin: const EdgeInsets.only(right: 15),
                     child: Image.asset("images/image$i.png"),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.symmetric(vertical: 10),
 
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "${titles[i - 1]}",
-                          style: TextStyle(
+                          titles[i - 1],
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                             color: Color(0xFF4C53A5),
@@ -63,7 +63,7 @@ class _CartItemsState extends State<CartItems> {
                         ),
                         Text(
                           "₹${prices[i - 1] * quantities[i - 1]}",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Color(0xFF4C53A5),
@@ -73,15 +73,15 @@ class _CartItemsState extends State<CartItems> {
                       ],
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Padding(
-                      padding: EdgeInsets.symmetric(vertical: 5),
+                      padding: const EdgeInsets.symmetric(vertical: 5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
-                            child: Icon(
+                            child: const Icon(
                               Icons.delete,
                               color: Colors.red,
                             ),
@@ -108,7 +108,7 @@ class _CartItemsState extends State<CartItems> {
                               InkWell(
 
                                 child: Container(
-                                  padding: EdgeInsets.all(4),
+                                  padding: const EdgeInsets.all(4),
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20),
@@ -119,7 +119,7 @@ class _CartItemsState extends State<CartItems> {
                                       ),
                                       ]
                                   ),
-                                  child: Icon(
+                                  child: const Icon(
                                     CupertinoIcons.minus,
                                     size: 18,
                                   ),
@@ -146,10 +146,10 @@ class _CartItemsState extends State<CartItems> {
                                 },
                               ),
                               Container(
-                                margin: EdgeInsets.symmetric(horizontal: 10),
+                                margin: const EdgeInsets.symmetric(horizontal: 10),
                                 child: Text(
                                   "${quantities[i - 1]}",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                     color: Color(0xFF4C53A5),
@@ -159,7 +159,7 @@ class _CartItemsState extends State<CartItems> {
                               ),
                               InkWell(
                                 child: Container(
-                                  padding: EdgeInsets.all(4),
+                                  padding: const EdgeInsets.all(4),
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20),
@@ -170,7 +170,7 @@ class _CartItemsState extends State<CartItems> {
                                       ),
                                       ]
                                   ),
-                                  child: Icon(
+                                  child: const Icon(
                                     CupertinoIcons.plus,
                                     size: 18,
                                   ),
@@ -207,7 +207,7 @@ class _CartItemsState extends State<CartItems> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 18),
               child: Text(
                 "Total: ",
@@ -219,10 +219,10 @@ class _CartItemsState extends State<CartItems> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 18),
+              padding: const EdgeInsets.only(right: 18),
               child: Text(
-                "₹${price}",
-                style: TextStyle(
+                "₹$price",
+                style: const TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF4C53A5),

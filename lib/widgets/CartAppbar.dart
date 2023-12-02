@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:growpal_hackathon/pages/HomePage.dart';
 
 
 class CartAppBar extends StatelessWidget {
@@ -9,20 +8,20 @@ class CartAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.all(25),
+      padding: const EdgeInsets.all(25),
       child: Row(
         children: [
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, "/");
             },
-            child: Icon(
+            child: const Icon(
               Icons.arrow_back,
               size: 30,
               color: Color(0xFF4C53A5),
             ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 20),
             child: Text(
               "Cart",
@@ -34,8 +33,8 @@ class CartAppBar extends StatelessWidget {
             )
 
           ),
-          Spacer(),
-          Icon(
+          const Spacer(),
+          const Icon(
             Icons.more_vert,
             size: 30,
             color: Color(0xFF4C53A5),

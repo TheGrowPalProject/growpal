@@ -19,11 +19,12 @@ class CartBottomNaviBarState extends State<CartBottomNaviBar> {
     super.initState();
     price = globalVariables().price;
   }
+  @override
   Widget build(BuildContext context) {
 
     return BottomAppBar(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         height: 80,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,7 +40,7 @@ class CartBottomNaviBarState extends State<CartBottomNaviBar> {
                        },
 
                 style: ButtonStyle(
-                  backgroundColor:   MaterialStateProperty.all<Color>(Color(0xFF4C53A5)),
+                  backgroundColor:   MaterialStateProperty.all<Color>(const Color(0xFF4C53A5)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
