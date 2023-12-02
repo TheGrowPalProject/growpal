@@ -9,13 +9,15 @@ import 'package:growpal_hackathon/pages/ConfirmationPage.dart';
 import 'package:growpal_hackathon/pages/HomePage.dart';
 import 'package:growpal_hackathon/pages/ProdPage.dart';
 import 'package:growpal_hackathon/pages/LoginPage.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:growpal_hackathon/firebase_options.dart';
 
-
-void main() async{
-WidgetsFlutterBinding.ensureInitialized();
-  runApp(
-    const MyApp()
-    );
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -36,7 +38,7 @@ class _MyAppState extends State<MyApp> {
       ),
       routes: {
         "/": (context) => const LoginPage(),
-        "HomePage":(context) => const HomePage(),
+        "HomePage": (context) => const HomePage(),
         "cartPage": (context) => const CartPage(),
         "prodPage": (context) => const ProdPage(),
         "checkout": (context) => const Checkout(),
