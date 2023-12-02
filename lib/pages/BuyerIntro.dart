@@ -10,8 +10,8 @@ class BuyerIntroScreen extends StatelessWidget {
         backgroundColor: Colors.black, // Set the background color of Scaffold to black
         body: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
               child: Text(
                 "How it Works",
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white), // Set text color to white
@@ -22,19 +22,17 @@ class BuyerIntroScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 5),
-                    SizedBox(
-                      width: 200,
-                      child: Text(
+                    const SizedBox(height: 5),
+                    Text(
                         "1. You will see products that other people in your society are selling.",
                         maxLines: 10,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.robotoSerif(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16),  // Set text color to white
                       ),
-                    ),
                     Image.asset(
                       "images/buyerintro.png",
-                      height: 250,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
                     ),
                     SizedBox(
                       height: 300,
@@ -46,15 +44,13 @@ class BuyerIntroScreen extends StatelessWidget {
                               child: Center(
                                 child: Padding(
                                   padding:EdgeInsets.all(5.0),
-                                  child:Container(
-                                    width: 210,
-                                    height: 450,
-                                    child: Text(
+                                  child:
+                                    Text(
                                       "2. Some items are only available to order during a certain time.  Some items might have subscriptions. This is mainly for food products and other consumables.\n\n3. When you order, it is up to the seller and you, the buyer to negotiate the mode of delivery. We do not handle deliveries yet.",
                                       maxLines: 30,
                                       overflow: TextOverflow.ellipsis,
                                       style: GoogleFonts.robotoSerif(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16), // Set text color to white
-                                    ),
+                                    
                                   ),
                                 ),
                               ),

@@ -22,9 +22,9 @@ class SellerIntroScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     SizedBox(
-                      width: 200,
+                      height: 30,
                       child: Text(
                         "1.You post products in the selling section.",
                         maxLines: 2,
@@ -34,10 +34,11 @@ class SellerIntroScreen extends StatelessWidget {
                     ),
                     Image.asset(
                       "images/sellerintro.png",
-                      height: 300,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
                     ),
                     SizedBox(
-                      height: 530,
+                      height: 300,
                       child: Stack(
                         children: [
                           Positioned.fill(
@@ -45,16 +46,12 @@ class SellerIntroScreen extends StatelessWidget {
                               alignment: Alignment.bottomCenter,
                               child: Center(
                                 child: Padding(
-                                  padding:EdgeInsets.all(3.0),
-                                  child:Container(
-                                    width: 210,
-                                    height: 450,
-                                    child: Text(
+                                  padding: const EdgeInsets.all(3.0),
+                                   child: Text(
                                       "2. Whenever someone orders your product, you get a notification. You can define at what times you are taking in orders and what times you are not available.\n\n3.You can use our order tracking page to keep a track of incoming and delivered orders.",
                                       maxLines: 15,
                                       overflow: TextOverflow.ellipsis,
                                       style: GoogleFonts.robotoSerif(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16), // Set text color to white
-                                    ),
                                   ),
                                 ),
                               ),

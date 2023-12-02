@@ -11,6 +11,7 @@ import 'package:growpal_hackathon/pages/ProdPage.dart';
 import 'package:growpal_hackathon/pages/LoginPage.dart';
 import 'package:growpal_hackathon/pages/BuyerIntro.dart';
 import 'package:growpal_hackathon/pages/SellerIntro.dart';
+import 'package:growpal_hackathon/pages/SelectIntro.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:growpal_hackathon/firebase_options.dart';
 
@@ -39,21 +40,16 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.dark,
       ),
       routes: {
-        "/": (context) => SellerIntroScreen(),
-        "LoginPage": (context) => LoginPage(),
-        "HomePage":(context) => HomePage(),
-        "cartPage": (context) => CartPage(),
-        "prodPage": (context) => ProdPage(),
-        "checkout": (context) => Checkout(),
-        "confirmation": (context) => ConfirmationPage(),
         "/": (context) => const LoginPage(),
-        "SellerIntroScreen" => const SellerIntroScreen(),
+        "LoginPage": (context) => const LoginPage(),
+        "SelectIntroScreen": (context) => const SelectIntroScreen(),
+        "SellerIntroScreen": (context) => const SellerIntroScreen(),
+        "BuyerIntroScreen": (context) => const BuyerIntroScreen(),
         "HomePage": (context) => const HomePage(),
         "cartPage": (context) => const CartPage(),
         "prodPage": (context) => const ProdPage(),
         "checkout": (context) => const Checkout(),
         "confirmation": (context) => const ConfirmationPage(),
-
       },
     );
   }
