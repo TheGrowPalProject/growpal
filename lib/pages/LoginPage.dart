@@ -117,7 +117,7 @@ class LoginPage extends StatelessWidget {
                               const Color.fromARGB(255, 26, 26, 26)),
                       child: Text(
                         "Login",
-                        style: GoogleFonts.robotoSerif(fontSize: 20.0),
+                        style: GoogleFonts.robotoSerif(fontSize: 20.0, color: Colors.white),
                       ),
                     ),
                   ),
@@ -139,7 +139,7 @@ class LoginPage extends StatelessWidget {
                           backgroundColor:
                               const Color.fromARGB(255, 26, 26, 26)),
                       child: Text("Register",
-                          style: GoogleFonts.robotoSerif(fontSize: 20.0)),
+                          style: GoogleFonts.robotoSerif(fontSize: 20.0, color: Colors.white)),
                     ),
                   ),
                 ],
