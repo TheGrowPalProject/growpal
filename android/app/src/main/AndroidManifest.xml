@@ -2,6 +2,7 @@
     package="com.example.growpal_hackathon">
    <application
         android:label="growpal_hackathon"
+        android:usesCleartextTraffic="true"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
