@@ -4,6 +4,7 @@ import 'package:growpal_hackathon/widgets/HomeAppBar.dart';
 import 'package:growpal_hackathon/widgets/CategoriesWidget.dart';
 import 'package:growpal_hackathon/widgets/ItemsWidget.dart';
 import 'AboutPage.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Home_Page extends StatefulWidget {
   const Home_Page({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _Home_PageState extends State<Home_Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF191414),
+      backgroundColor: Colors.black,
       body: Stack(
         children: [
           ListView(
@@ -25,7 +26,7 @@ class _Home_PageState extends State<Home_Page> {
               Container(
                 padding: const EdgeInsets.only(top: 15),
                 decoration: const BoxDecoration(
-                  color: Color(0xFF191414),
+                  color: Colors.black,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(35),
                     topRight: Radius.circular(35),
@@ -76,10 +77,10 @@ class _Home_PageState extends State<Home_Page> {
             left: 20,
             right: 20,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: EdgeInsets.symmetric(horizontal: 12),
               height: 55,
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 89, 89, 94),
+                color: Color(0xFFF605E5E),
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Row(
@@ -87,16 +88,19 @@ class _Home_PageState extends State<Home_Page> {
                   const Icon(
                     Icons.search,
                     size: 27,
-                    color: Color.fromARGB(255, 219, 215, 215),
+                    color: Colors.white,
                   ),
                   Container(
-                    margin: const EdgeInsets.only(left: 5),
+                    margin: const EdgeInsets.only(left: 3),
                     height: 50,
                     width: 200,
                     child: TextFormField(
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: "Search here",
+                        hintStyle: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),

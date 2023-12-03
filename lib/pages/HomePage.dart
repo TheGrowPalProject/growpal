@@ -22,41 +22,45 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[indexx],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: indexx,
-        onTap: (index) {
-          setState(() {
-            indexx = index;
-          });
-        },
-        backgroundColor: Color.fromARGB(255, 58, 58, 58),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              size: 40,
-            ),
-            label: 'Home',
+        body: screens[indexx],
+        bottomNavigationBar: Container(
+          color: Colors.white,
+          height: 67,
+          padding: EdgeInsets.only(top: 1),
+          child: BottomNavigationBar(
+            currentIndex: indexx,
+            onTap: (index) {
+              setState(() {
+                indexx = index;
+              });
+            },
+            backgroundColor: Color(0xFFF1D1D1D),
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  size: 35,
+                ),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.account_circle,
+                  size: 35,
+                ),
+                label: 'Account',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.currency_exchange,
+                  size: 35,
+                ),
+                label: 'Sell',
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_circle,
-              size: 40,
-            ),
-            label: 'Account',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.currency_exchange,
-              size: 40,
-            ),
-            label: 'Sell',
-          ),
-        ],
-      ),
-    );
+        ));
   }
 }

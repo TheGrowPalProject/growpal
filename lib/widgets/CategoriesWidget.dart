@@ -6,9 +6,9 @@ class CategoriesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var arr = [
-      "Hand Bags",
-      "Earrings",
-      "Tupperware Box",
+      "Cakes",
+      "CupCakes",
+      "Handmade items",
       "Cable Protectors",
       "Tupperware Bottles",
       "Phone Cases",
@@ -25,23 +25,27 @@ class CategoriesWidget extends StatelessWidget {
               margin: EdgeInsets.symmetric(horizontal: 10),
               padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               decoration: BoxDecoration(
-                color: Color(0xFF343541),
+                color: Color(0xFFF201F26),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    "images/image$i.png",
-                    width: 40,
-                    height: 40,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      "images/image$i.png",
+                      width: 40,
+                      height: 40,
+                    ),
                   ),
+                  SizedBox(width: 10),
                   Text(
                     "${arr[i - 1]}",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 17,
-                      color: Colors.white, /**/
+                      color: Colors.white,
                     ),
                   )
                 ],

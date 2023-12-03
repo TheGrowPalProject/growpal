@@ -8,7 +8,7 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFF191414),
+      color: Colors.black,
       padding: EdgeInsets.all(25),
       child: Row(
         children: [
@@ -22,7 +22,7 @@ class HomeAppBar extends StatelessWidget {
             child: Text(
               "GrowPal",
               style: TextStyle(
-                fontSize: 23,
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),

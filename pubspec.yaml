@@ -31,6 +31,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  google_fonts: ^6.1.0
   
 
 
@@ -87,6 +88,7 @@ flutter:
   assets:
    - images/
   #   - images/a_dot_ham.jpeg
+   - images/avatar.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

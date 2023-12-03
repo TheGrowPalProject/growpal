@@ -27,15 +27,9 @@ class ProdAppBar extends StatelessWidget {
               style: TextStyle(
                 fontSize: 23,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF4C53A5),
+                color: Colors.white,
               ),
             ),
-          ),
-          Spacer(),
-          Icon(
-            Icons.favorite,
-            size: 30,
-            color: Colors.red,
           ),
         ],
       ),
