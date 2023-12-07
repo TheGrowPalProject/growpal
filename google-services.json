@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "648350481554",
+    "project_id": "growpaltech",
+    "storage_bucket": "growpaltech.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648350481554:android:6d1745c07e57679c05fa4b",
+        "android_client_info": {
+          "package_name": "com.example.growpal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648350481554-no8lc3ihan5869ek9odej43reuhhasv9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.growpal",
+            "certificate_hash": "1dde9f15d6906ef3f10cb3c190782e2eaca8e0e4"
+          }
+        },
+        {
+          "client_id": "648350481554-tce9hfabad0p9mrvh5i170m9qo6bpak3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.growpal",
+            "certificate_hash": "a0bcc026be098d37aedc9529b405a56acc91efe8"
+          }
+        },
+        {
+          "client_id": "648350481554-br52cpdkq3c855oirsjmb5dgh7sv6rjh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo-Z0pY-88w4FnN2GoZhuKz8OqbJRe0Tg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648350481554-br52cpdkq3c855oirsjmb5dgh7sv6rjh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "648350481554-cpp36r43c6sa3mio9cnobjrtof5k7ctg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.growpalHackathon"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
