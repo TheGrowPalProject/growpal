@@ -13,20 +13,20 @@ class ItemsWidget extends StatelessWidget {
     // var titles = ["Hand Bag", "Earring", "Tupperware Box", "Cable Protectors", "Bottle", "Phone Case", "Stickers"];
     // var discounts = ["50", "5", "20", "10", "7", "25", "15"];
     // var prices = ["999", "199", "499", "99", "599", "299", "49"];
-    List<Map<String, dynamic>> docs = [];
     var db = FirebaseFirestore.instance;
+    var p = db.collection("products");
+    Future<void> getData() async {
+      // Get docs from collection reference
+      QuerySnapshot querySnapshot = await p.get();
 
-    var items = List<dynamic>.empty();
-    db.collection('products').get().then(
-      (qs) {
-        for (var d in qs.docs) {
-          docs.add({d.id: d.data});
-        }
-      },
-      onError: (e) => print("Error completing: $e"),
-    );
-    print(docs);
-    print(items);
+      // Get data from docs and convert map to List
+      final docs = querySnapshot.docs.map((doc) => doc.data()).toList();
+
+      print(docs);
+    }
+
+    getData();
+
     return GridView.count(
       physics: const NeverScrollableScrollPhysics(),
       childAspectRatio: 0.68,
