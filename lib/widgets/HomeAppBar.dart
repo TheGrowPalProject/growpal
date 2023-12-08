@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({Key? key}) : super(key: key);
@@ -7,24 +8,23 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.all(25),
+      color: Colors.black,
+      padding: EdgeInsets.all(25),
       child: Row(
         children: [
           const Icon(
             Icons.sort,
             size: 30,
-            color: Color(0xFF4C53A5),
+            color: Colors.white,
           ),
-          const Padding(padding: EdgeInsets.only(
-            left: 20
-          ),
+          Padding(
+            padding: EdgeInsets.only(left: 20),
             child: Text(
               "GrowPal",
               style: TextStyle(
-                fontSize: 23,
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
-                  color: Color(0xFF4C53A5),
+                color: Colors.white,
               ),
             ),
           ),
@@ -44,13 +44,12 @@ class HomeAppBar extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, "cartPage");
               },
-              child: const Icon(
-                  Icons.shopping_bag_outlined,
-                  size: 30,
-                  color: Color(0xFF4C53A5),
+              child: Icon(
+                CupertinoIcons.cart_fill,
+                size: 30,
+                color: Colors.white,
               ),
             ),
-
           ),
         ],
       ),

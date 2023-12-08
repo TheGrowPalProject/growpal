@@ -4,6 +4,9 @@ class globalVariables {
     "Hand Bag",
     "Earring",
     "Tupperware Box",
+    "Black Forest Cake",
+    "Strawberry Cupcake",
+    "Stone",
     "Cable Protectors",
     "Bottle",
     "Phone Case",
@@ -13,9 +16,9 @@ class globalVariables {
   var prices = [999, 199, 499, 99, 599, 299, 49, 49];
   var price = 2792;
   var desc = [
-    "Cute, Good to touch and affordable",
-    "Slay every traditional day",
-    "Dabba hai dabba, uncle ka TV dabba",
+    "Eggless-100% Veg",
+    "Eggless-100% Veg",
+    "Handmade",
     "Make your cables last long",
     "The Bottle to buy. Period.",
     "Give your phone some clothes",

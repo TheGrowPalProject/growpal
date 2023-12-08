@@ -9,72 +9,72 @@ class ProdBottomNaviBar extends StatefulWidget {
 }
 
 class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
-  var buttonText = "Add To Cart";
-  var buttonIcon = const Icon(CupertinoIcons.cart_badge_plus);
+  var addToCartText = "Add To Cart";
+  var buyNowText = "Buy Now";
+  var buttonIcon = Icon(CupertinoIcons.cart_badge_plus);
+  var newIcon = Icon(CupertinoIcons.money_dollar);
+
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
       child: Container(
         height: 70,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 3,
-              blurRadius: 10,
-              offset: const Offset(0, 3),
-
-            ),
-          ],
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        decoration: BoxDecoration(color: Colors.black),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-            "₹999",
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF4C53A5),
-
-        ),
-
-        ),
-
             ElevatedButton.icon(
-                onPressed: () {
-                  setState(() {
-                    buttonIcon = const Icon(Icons.done);
-                    buttonText = "Added";
-                  });
-                },
-                icon: buttonIcon,
-                label: Text(
-                  buttonText,
-                style: const TextStyle(
+              onPressed: () {
+                setState(() {
+                  buttonIcon = Icon(Icons.done);
+                  addToCartText = "Added";
+                });
+              },
+              icon: buttonIcon,
+              label: Text(
+                addToCartText,
+                style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-
-                ),
-                ),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(const Color(0xFF4C53A5)),
-                padding: MaterialStateProperty.all(
-                  const EdgeInsets.symmetric(vertical: 13, horizontal: 15),
-                ),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
                 ),
               ),
-
+              style: ElevatedButton.styleFrom(
+                side:
+                    BorderSide(color: Colors.white, width: 2), // Add this line
+                primary: Color(0xFFF10100F),
+                padding: EdgeInsets.symmetric(vertical: 13, horizontal: 15),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
                 ),
+              ),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                setState(() {
+                  buyNowText = "Bought";
+                });
+              },
+              icon: newIcon,
+              label: Text(
+                buyNowText,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                side:
+                    BorderSide(color: Colors.white, width: 2), // Add this line
+                primary: Color(0xFFF10100F),
+                padding: EdgeInsets.symmetric(vertical: 13, horizontal: 15),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+            ),
           ],
-        )
+        ),
       ),
     );
   }
