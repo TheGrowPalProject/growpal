@@ -3,7 +3,6 @@ import 'package:growpal_hackathon/widgets/HomeAppBar.dart';
 import 'package:growpal_hackathon/widgets/CategoriesWidget.dart';
 import 'package:growpal_hackathon/widgets/ItemsWidget.dart';
 
-
 class Home_Page extends StatefulWidget {
   const Home_Page({Key? key}) : super(key: key);
 
@@ -12,7 +11,6 @@ class Home_Page extends StatefulWidget {
 }
 
 class _Home_PageState extends State<Home_Page> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +43,9 @@ class _Home_PageState extends State<Home_Page> {
                         height: 50,
                         width: 200,
                         child: TextFormField(
+                          style: const TextStyle(
+                            color: Colors.black,
+                          ),
                           decoration: const InputDecoration(
                             border: InputBorder.none,
                             hintText: "Search here",
@@ -76,14 +77,14 @@ class _Home_PageState extends State<Home_Page> {
                   ),
                 ),
 
-
                 // Categories
                 const CategoriesWidget(),
 
                 //Items
                 Container(
                   alignment: Alignment.centerLeft,
-                  margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   child: const Text(
                     "Best Selling",
                     style: TextStyle(
@@ -94,9 +95,6 @@ class _Home_PageState extends State<Home_Page> {
                   ),
                 ),
 
-
-
-
                 // ItemsWidget
                 const ItemsWidget(),
               ],
@@ -104,9 +102,6 @@ class _Home_PageState extends State<Home_Page> {
           ),
         ],
       ),
-
-
-
     );
   }
 }

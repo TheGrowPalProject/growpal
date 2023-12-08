@@ -2,14 +2,11 @@ import 'package:clippy_flutter/clippy_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
+import 'package:growpal_hackathon/pages/HomePage.dart';
 import '../widgets/ProdAppBar.dart';
 import '../widgets/ProdBottomNaviBar.dart';
 
-
 class ProdPage extends StatefulWidget {
-
-
   const ProdPage({Key? key}) : super(key: key);
 
   @override
@@ -20,7 +17,6 @@ class _ProdPageState extends State<ProdPage> {
   var quantity = 1;
   @override
   Widget build(BuildContext context) {
-
     List<Color> clrs = [
       Colors.red,
       Colors.green,
@@ -49,10 +45,7 @@ class _ProdPageState extends State<ProdPage> {
                 child: Column(
                   children: [
                     const Padding(
-                      padding: EdgeInsets.only(
-                          top: 48,
-                          bottom: 15),
-
+                      padding: EdgeInsets.only(top: 48, bottom: 15),
                       child: Row(
                         children: [
                           Text(
@@ -63,7 +56,6 @@ class _ProdPageState extends State<ProdPage> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-
                         ],
                       ),
                     ),
@@ -71,7 +63,6 @@ class _ProdPageState extends State<ProdPage> {
                       padding: const EdgeInsets.only(top: 5, bottom: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                         children: [
                           RatingBar.builder(
                             initialRating: 4,
@@ -79,13 +70,13 @@ class _ProdPageState extends State<ProdPage> {
                             direction: Axis.horizontal,
                             itemCount: 5,
                             itemSize: 20,
-                            itemPadding: const EdgeInsets.symmetric(horizontal: 4),
+                            itemPadding:
+                                const EdgeInsets.symmetric(horizontal: 4),
                             itemBuilder: (context, _) => const Icon(
                               Icons.favorite,
                               color: Color(0xFF4C53A5),
                             ),
                             onRatingUpdate: (index) {},
-
                           ),
                           Row(
                             children: [
@@ -93,33 +84,33 @@ class _ProdPageState extends State<ProdPage> {
                                 child: Container(
                                   padding: const EdgeInsets.all(5),
                                   decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 3,
-                                        blurRadius: 20,
-                                        offset: const Offset(0, 3),
-                                      )
-                                    ]
-                                  ),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 3,
+                                          blurRadius: 20,
+                                          offset: const Offset(0, 3),
+                                        )
+                                      ]),
                                   child: const Icon(
                                     CupertinoIcons.minus,
                                     size: 18,
                                     color: Color(0xFF4C53A5),
                                   ),
                                 ),
-                                onTap: (){
+                                onTap: () {
                                   setState(() {
-                                    if(quantity>1) {
+                                    if (quantity > 1) {
                                       quantity -= 1;
                                     }
                                   });
                                 },
                               ),
                               Container(
-                                margin: const EdgeInsets.symmetric(horizontal: 5),
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 5),
                                 child: Text(
                                   "$quantity",
                                   style: const TextStyle(
@@ -142,8 +133,7 @@ class _ProdPageState extends State<ProdPage> {
                                           blurRadius: 20,
                                           offset: const Offset(0, 3),
                                         )
-                                      ]
-                                  ),
+                                      ]),
                                   child: const Icon(
                                     CupertinoIcons.plus,
                                     size: 18,
@@ -182,47 +172,44 @@ class _ProdPageState extends State<ProdPage> {
                               fontSize: 18,
                               color: Color(0xFF4C53A5),
                               fontWeight: FontWeight.bold,
-
                             ),
                           ),
-                          const SizedBox(width: 10,),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Row(
                             children: [
-                              for(int i = 5; i < 10; i++)
-                              Container(
-                                height: 30,
-                                width: 30,
-                                alignment: Alignment.center,
-                                margin: const EdgeInsets.symmetric(horizontal: 5),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(30),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 2,
-                                      blurRadius: 8,
+                              for (int i = 5; i < 10; i++)
+                                Container(
+                                    height: 30,
+                                    width: 30,
+                                    alignment: Alignment.center,
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 5),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(30),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 2,
+                                          blurRadius: 8,
+                                        ),
+                                      ],
                                     ),
-                                  ],
-
-                                ),
-                                child: Text(
-                                  "$i",
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xFF4C53A5),
-                                  ),
-                                )
-                              ),
+                                    child: Text(
+                                      "$i",
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFF4C53A5),
+                                      ),
+                                    )),
                             ],
                           ),
                         ],
                       ),
                     ),
-
-
-
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: Row(
@@ -233,30 +220,31 @@ class _ProdPageState extends State<ProdPage> {
                               fontSize: 18,
                               color: Color(0xFF4C53A5),
                               fontWeight: FontWeight.bold,
-
                             ),
                           ),
-                          const SizedBox(width: 10,),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Row(
                             children: [
-                              for(int i = 0; i < 5; i++)
+                              for (int i = 0; i < 5; i++)
                                 Container(
-                                    height: 30,
-                                    width: 30,
-                                    alignment: Alignment.center,
-                                    margin: const EdgeInsets.symmetric(horizontal: 5),
-                                    decoration: BoxDecoration(
-                                      color: clrs[i],
-                                      borderRadius: BorderRadius.circular(30),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.5),
-                                          spreadRadius: 2,
-                                          blurRadius: 8,
-                                        ),
-                                      ],
-
-                                    ),
+                                  height: 30,
+                                  width: 30,
+                                  alignment: Alignment.center,
+                                  margin:
+                                      const EdgeInsets.symmetric(horizontal: 5),
+                                  decoration: BoxDecoration(
+                                    color: clrs[i],
+                                    borderRadius: BorderRadius.circular(30),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 2,
+                                        blurRadius: 8,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                             ],
                           ),
@@ -268,13 +256,9 @@ class _ProdPageState extends State<ProdPage> {
               ),
             ),
           ),
-
-
         ],
-
       ),
       bottomNavigationBar: const ProdBottomNaviBar(),
-
     );
   }
 }
