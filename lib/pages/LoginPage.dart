@@ -5,7 +5,6 @@ import 'package:growpal_hackathon/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:google_fonts/google_fonts.dart';
-//function to be implemented on the login page, currently a test page is created
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,6 +67,7 @@ class LoginPage extends StatelessWidget {
             "Success!",
             style: TextStyle(
               color: Colors.white,
+              fontSize: 14.0,
             ),
             textAlign: TextAlign.center,
           ),
@@ -117,7 +117,7 @@ class LoginPage extends StatelessWidget {
                               const Color.fromARGB(255, 26, 26, 26)),
                       child: Text(
                         "Login",
-                        style: GoogleFonts.robotoSerif(fontSize: 20.0, color: Colors.white),
+                        style: GoogleFonts.robotoSerif(fontSize: 20.0),
                       ),
                     ),
                   ),
@@ -128,9 +128,7 @@ class LoginPage extends StatelessWidget {
                     width: 150.0,
                     height: 50.0,
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, 'SelectIntroScreen');
-                      },
+                      onPressed: () {},
                       style: ElevatedButton.styleFrom(
                           elevation: 0.0,
                           shape: RoundedRectangleBorder(
@@ -139,7 +137,7 @@ class LoginPage extends StatelessWidget {
                           backgroundColor:
                               const Color.fromARGB(255, 26, 26, 26)),
                       child: Text("Register",
-                          style: GoogleFonts.robotoSerif(fontSize: 20.0, color: Colors.white)),
+                          style: GoogleFonts.robotoSerif(fontSize: 20.0)),
                     ),
                   ),
                 ],

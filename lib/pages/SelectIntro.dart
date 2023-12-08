@@ -1,16 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
-//function to be implemented on the login page, currently a test page is created
-
 
 class SelectIntroScreen extends StatelessWidget {
   const SelectIntroScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
