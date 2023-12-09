@@ -17,7 +17,8 @@ class _ProdPageState extends State<ProdPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+        child: Scaffold(
       backgroundColor: Colors.black,
       body: ListView(
         children: [
@@ -25,7 +26,7 @@ class _ProdPageState extends State<ProdPage> {
           Container(
             margin: EdgeInsets.all(15),
             width: double.infinity,
-            height: 700,
+            height: 650,
             decoration: const BoxDecoration(
               color: Color(0xFF10100F),
               borderRadius: BorderRadius.only(
@@ -66,15 +67,19 @@ class _ProdPageState extends State<ProdPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "Black Forest",
-                            style: TextStyle(
-                              fontSize: 28,
+                          RatingBar.builder(
+                            initialRating: 4,
+                            minRating: 1,
+                            direction: Axis.horizontal,
+                            itemCount: 5,
+                            itemSize: 20,
+                            itemPadding: EdgeInsets.symmetric(horizontal: 4),
+                            itemBuilder: (context, _) => Icon(
+                              Icons.star, // Replaced with star icon
                               color: Colors.white,
-                              fontWeight: FontWeight.bold,
                             ),
+                            onRatingUpdate: (index) {},
                           ),
-                          SizedBox(width: 15),
                           Text(
                             " \$99.99",
                             style: TextStyle(
@@ -91,24 +96,6 @@ class _ProdPageState extends State<ProdPage> {
                         top: 5,
                         bottom: 10,
                         right: 5,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          RatingBar.builder(
-                            initialRating: 4,
-                            minRating: 1,
-                            direction: Axis.horizontal,
-                            itemCount: 5,
-                            itemSize: 20,
-                            itemPadding: EdgeInsets.symmetric(horizontal: 4),
-                            itemBuilder: (context, _) => Icon(
-                              Icons.star, // Replaced with star icon
-                              color: Colors.white,
-                            ),
-                            onRatingUpdate: (index) {},
-                          ),
-                        ],
                       ),
                     ),
                     Padding(
@@ -167,6 +154,6 @@ class _ProdPageState extends State<ProdPage> {
         ],
       ),
       bottomNavigationBar: ProdBottomNaviBar(),
-    );
+    ));
   }
 }

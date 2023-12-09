@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:growpal_hackathon/pages/CartPage.dart';
 import 'AboutPage.dart';
 import 'Home_Page.dart';
+import 'AccountPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final screens = [
     Home_Page(),
-    CartPage(),
+    AccountPage(),
     AboutPage(),
   ];
   var indexx = 0;
