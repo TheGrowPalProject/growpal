@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:growpal_hackathon/pages/CartPage.dart';
 import 'package:growpal_hackathon/widgets/HomeAppBar.dart';
 import 'package:growpal_hackathon/widgets/CategoriesWidget.dart';
 import 'package:growpal_hackathon/widgets/ItemsWidget.dart';
-import 'AboutPage.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Home_Page extends StatefulWidget {
   const Home_Page({Key? key}) : super(key: key);

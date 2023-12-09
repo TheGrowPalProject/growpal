@@ -1,6 +1,9 @@
 class globalVariables {
   var quantities = [1, 1, 1, 1, 1, 1, 1];
   var titles = [
+    "Hand Bag",
+    "Earring",
+    "Tupperware Box",
     "Black Forest Cake",
     "Strawberry Cupcake",
     "Stone",

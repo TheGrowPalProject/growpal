@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
+import 'package:growpal_hackathon/pages/HomePage.dart';
 import '../widgets/ProdAppBar.dart';
 import '../widgets/ProdBottomNaviBar.dart';
 
@@ -98,7 +98,7 @@ class _ProdPageState extends State<ProdPage> {
                         right: 5,
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,

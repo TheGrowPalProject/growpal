@@ -1,11 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../globalVariables.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class ItemsWidget extends StatelessWidget {
   const ItemsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // var titles = ["Hand Bag", "Earring", "Tupperware Box", "Cable Protectors", "Bottle", "Phone Case", "Stickers"];
+    // var discounts = ["50", "5", "20", "10", "7", "25", "15"];
+    // var prices = ["999", "199", "499", "99", "599", "299", "49"];
+    var db = FirebaseFirestore.instance;
+    var p = db.collection("products");
+    Future<void> getData() async {
+      // Get docs from collection reference
+      QuerySnapshot querySnapshot = await p.get();
+
+      // Get data from docs and convert map to List
+      final docs = querySnapshot.docs.map((doc) => doc.data()).toList();
+
+      print(docs);
+    }
+
+    getData();
+
     return Container(
       margin: EdgeInsets.symmetric(vertical: 1, horizontal: 10),
       padding: EdgeInsets.all(10),

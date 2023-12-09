@@ -14,7 +14,7 @@ class ProdAppBar extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(
+            child: const Icon(
               Icons.arrow_back,
               size: 30,
               color: const Color.fromARGB(255, 107, 91, 91),

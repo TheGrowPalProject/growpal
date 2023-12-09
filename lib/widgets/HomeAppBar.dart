@@ -12,7 +12,7 @@ class HomeAppBar extends StatelessWidget {
       padding: EdgeInsets.all(25),
       child: Row(
         children: [
-          Icon(
+          const Icon(
             Icons.sort,
             size: 30,
             color: Colors.white,
@@ -28,13 +28,13 @@ class HomeAppBar extends StatelessWidget {
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           badges.Badge(
-            badgeStyle: badges.BadgeStyle(
+            badgeStyle: const badges.BadgeStyle(
               badgeColor: Colors.red,
               padding: EdgeInsets.all(7),
             ),
-            badgeContent: Text(
+            badgeContent: const Text(
               "7",
               style: TextStyle(
                 color: Colors.white,
