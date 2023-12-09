@@ -116,7 +116,7 @@ class _ItemsState extends State<Items> {
             Icon(
               icon,
               color: Colors.white,
-              size: 18, // Adjust the size according to your preference
+              size: 18,
             ),
             SizedBox(width: 5),
             Text(
