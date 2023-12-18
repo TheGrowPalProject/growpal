@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../globalVariables.dart';
 import '../widgets/CartAppbar.dart';
 import '../widgets/CartBottomNaviBar.dart';

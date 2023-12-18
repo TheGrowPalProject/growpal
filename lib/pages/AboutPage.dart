@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../widgets/AboutAppBar.dart';
 
-
 class AboutPage extends StatelessWidget {
   const AboutPage({Key? key}) : super(key: key);
 
@@ -30,18 +29,15 @@ class AboutPage extends StatelessWidget {
                 child: Column(
                   children: [
                     const Padding(
-                      padding: EdgeInsets.only(
-                          top: 48,
-                          bottom: 15),
-
+                      padding: EdgeInsets.only(top: 48, bottom: 15),
                       child: Text(
-                            "What Are We",
-                            style: TextStyle(
-                              fontSize: 28,
-                              color: Color(0xFF4C53A5),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                        "What Are We",
+                        style: TextStyle(
+                          fontSize: 28,
+                          color: Color(0xFF4C53A5),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
@@ -55,16 +51,13 @@ class AboutPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     ),
-
-                        ],
-                      ),
-                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
       ),
-
-
     );
   }
 }
