@@ -5,6 +5,9 @@ import 'package:growpal_hackathon/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:growpal_hackathon/globalVariables.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,6 +18,7 @@ void main() async {
 }
 
 var flag = 0;
+ObjectService o = ObjectService();
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -77,7 +81,13 @@ class LoginPage extends StatelessWidget {
 
         ScaffoldMessenger.of(context).showSnackBar(success);
         await Future.delayed(const Duration(seconds: 2));
-        Navigator.pushNamed(context, 'HomePage');
+        o.getimages();
+        var a = o.getimages();
+        o.getdata().then(
+          (value) {
+            Navigator.pushNamed(context, 'HomePage');
+          },
+        );
       }
     }
 

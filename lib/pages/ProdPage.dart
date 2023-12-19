@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:growpal_hackathon/pages/HomePage.dart';
 import '../widgets/ProdAppBar.dart';
+import 'package:growpal_hackathon/globalVariables.dart';
+import 'package:growpal_hackathon/widgets/ItemsWidget.dart' as Items;
 import '../widgets/ProdBottomNaviBar.dart';
+
+var index = Items.Items;
 
 class ProdPage extends StatefulWidget {
   const ProdPage({Key? key}) : super(key: key);
