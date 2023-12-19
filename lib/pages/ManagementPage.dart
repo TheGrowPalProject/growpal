@@ -119,81 +119,89 @@ class _ManagementState extends State<Management> {
                 ),
               ),
             ),
-            Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: items1.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    height: 150,
-                    decoration: BoxDecoration(
-                      color: Color.fromRGBO(32, 31, 38, 1.0),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: EdgeInsets.all(7),
-                    margin: EdgeInsets.symmetric(vertical: 10),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 80,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              alignment: Alignment.bottomCenter,
-                              image: AssetImage(items1[index].image),
+            Builder(
+              builder: (context) {
+                return MediaQuery.removePadding(
+                  removeBottom: true,
+                  context: context,
+                  child: ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: items1.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Color.fromRGBO(32, 31, 38, 1.0),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        padding: EdgeInsets.all(7),
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 80,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  alignment: Alignment.bottomCenter,
+                                  image: AssetImage(items1[index].image),
+                                ),
+                              ),
                             ),
-                          ),
+                            SizedBox(width: 35),
+                            Container(
+                              height: 100,
+                              child: Column(
+                                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    items1[index].name,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 27,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  ElevatedButton.icon(
+                                    onPressed: () {
+                                      // Edit action
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        minimumSize: Size(10, 10),
+                                        backgroundColor:
+                                            Color.fromRGBO(32, 31, 38, 1.0),
+                                        elevation: 0.0),
+                                    icon: Icon(
+                                      Icons.edit,
+                                      size: 15,
+                                    ),
+                                    label: Text('Edit'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(width: 35),
-                        Container(
-                          height: 100,
-                          child: Column(
-                            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                items1[index].name,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 27,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              ElevatedButton.icon(
-                                onPressed: () {
-                                  // Edit action
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    minimumSize: Size(10, 10),
-                                    backgroundColor:
-                                        Color.fromRGBO(32, 31, 38, 1.0),
-                                    elevation: 0.0),
-                                icon: Icon(
-                                  Icons.edit,
-                                  size: 15,
-                                ),
-                                label: Text('Edit'),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
+                      );
+                    },
+                  ),
+                );
+              }
             ),
+            SizedBox(height: 10,),
             Center(
                 child: Text("Active orders",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold))),
             Expanded(
               child: ListView.builder(
