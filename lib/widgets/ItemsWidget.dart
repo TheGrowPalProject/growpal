@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -5,27 +6,36 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../globalVariables.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
-class ItemsWidget extends StatelessWidget {
+class ItemsWidget extends StatefulWidget {
   const ItemsWidget({Key? key}) : super(key: key);
 
   @override
+  State<ItemsWidget> createState() => _ItemsWidgetState();
+}
+
+class _ItemsWidgetState extends State<ItemsWidget> {
+  List<Map<String, dynamic>>? docs;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchItems();
+  }
+
+  Future<void> _fetchItems() async {
+    final db = FirebaseFirestore.instance;
+    final p = db.collection("products");
+    final querySnapshot = await p.get();
+    setState(() {
+      docs = querySnapshot.docs.map((doc) => doc.data()).toList();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // var titles = ["Hand Bag", "Earring", "Tupperware Box", "Cable Protectors", "Bottle", "Phone Case", "Stickers"];
-    // var discounts = ["50", "5", "20", "10", "7", "25", "15"];
-    // var prices = ["999", "199", "499", "99", "599", "299", "49"];
-    var db = FirebaseFirestore.instance;
-    var p = db.collection("products");
-    Future<void> getData() async {
-      // Get docs from collection reference
-      QuerySnapshot querySnapshot = await p.get();
-
-      // Get data from docs and convert map to List
-      final docs = querySnapshot.docs.map((doc) => doc.data()).toList();
-
-      print(docs);
+    if (docs == null) {
+      return Center(child: CircularProgressIndicator());
     }
-
-    getData();
 
     return Container(
       margin: EdgeInsets.symmetric(vertical: 1, horizontal: 10),
@@ -40,7 +50,7 @@ class ItemsWidget extends StatelessWidget {
         crossAxisCount: 1,
         shrinkWrap: true,
         children: [
-          for (int i = 1; i < 9; i++)
+          for (int i = 0; i < (docs?.length ?? 0); i++)
             Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.symmetric(vertical: 8, horizontal: 2),
@@ -69,7 +79,7 @@ class ItemsWidget extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "${globalVariables().titles[i - 1]}",
+                                      docs?[i]["Product_name"] ?? "",
                                       style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
@@ -78,7 +88,7 @@ class ItemsWidget extends StatelessWidget {
                                     ),
                                     SizedBox(height: 20),
                                     Text(
-                                      "${globalVariables().desc[i - 1]}",
+                                      docs?[i]["Description"] ?? "",
                                       style: TextStyle(
                                         fontSize: 15,
                                         color: Colors.white,
@@ -93,8 +103,8 @@ class ItemsWidget extends StatelessWidget {
                                 height: 130,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
-                                  child: Image.asset(
-                                    "images/image$i.png",
+                                  child: Image.network(
+                                    docs?[i]["Image"] ?? "",
                                     height: 140,
                                     width: 120,
                                     fit: BoxFit.cover,
@@ -108,8 +118,8 @@ class ItemsWidget extends StatelessWidget {
                                 height: 130,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
-                                  child: Image.asset(
-                                    "images/image$i.png",
+                                  child: Image.network(
+                                    docs?[i]["Image"] ?? "",
                                     height: 140,
                                     width: 120,
                                     fit: BoxFit.cover,
@@ -121,7 +131,7 @@ class ItemsWidget extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "${globalVariables().titles[i - 1]}",
+                                      docs?[i]["Product_name"] ?? "",
                                       style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
@@ -130,7 +140,7 @@ class ItemsWidget extends StatelessWidget {
                                     ),
                                     SizedBox(height: 20),
                                     Text(
-                                      "${globalVariables().desc[i - 1]}",
+                                      docs?[i]["Description"] ?? "",
                                       style: TextStyle(
                                         fontSize: 15,
                                         color: Colors.white,
@@ -157,6 +167,12 @@ class ItemsWidget extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
 
 void _navigateToCategoryPage(BuildContext context, int categoryIndex) {
   switch (categoryIndex) {

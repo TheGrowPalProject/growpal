@@ -77,6 +77,7 @@ class _SellerFormState extends State<SellerForm> {
 
         try {
           await imgup.putFile(File(file!.path));
+          imgurl = await imgup.getDownloadURL();
         } catch (e) {
           debugPrint('Error: $e');
         }
@@ -87,7 +88,7 @@ class _SellerFormState extends State<SellerForm> {
           'Price': _price,
           'Subscription': _isSubscription,
           'Userid': _userid,
-          'Image': '${ts}.jpg',
+          'Image': imgurl,
           'Date': _date
         };
 
