@@ -14,7 +14,9 @@ import 'package:growpal_hackathon/pages/SellerIntro.dart';
 import 'package:growpal_hackathon/pages/SelectIntro.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:growpal_hackathon/firebase_options.dart';
-
+import 'package:growpal_hackathon/pages/YourItemsPage.dart';
+import 'package:growpal_hackathon/pages/ManagementPage.dart';
+import 'package:growpal_hackathon/pages/SelectSocietyPage.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
