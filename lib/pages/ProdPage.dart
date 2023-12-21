@@ -6,7 +6,8 @@ import '../widgets/ProdAppBar.dart';
 import '../widgets/ProdBottomNaviBar.dart';
 
 class ProdPage extends StatefulWidget {
-  const ProdPage({Key? key}) : super(key: key);
+  final Map<String, dynamic> itemData;
+  const ProdPage({Key? key, this.itemData = const {}}) : super(key: key);
 
   @override
   State<ProdPage> createState() => _ProdPageState();
@@ -17,6 +18,8 @@ class _ProdPageState extends State<ProdPage> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.itemData);
+    
     return Scaffold(
       backgroundColor: Colors.black,
       body: ListView(
@@ -53,11 +56,12 @@ class _ProdPageState extends State<ProdPage> {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        "images/image1.png",
-                        height: 250,
+                      child: Image.network(
+                        widget.itemData["Image"],
+                        height: 300,
+                        width: double.infinity,
                         fit: BoxFit.cover,
-                      ),
+                      )
                     ),
                     SizedBox(height: 20),
                     Padding(
@@ -67,7 +71,7 @@ class _ProdPageState extends State<ProdPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Black Forest",
+                            widget.itemData["Product_name"],
                             style: TextStyle(
                               fontSize: 28,
                               color: Colors.white,
@@ -76,7 +80,7 @@ class _ProdPageState extends State<ProdPage> {
                           ),
                           SizedBox(width: 15),
                           Text(
-                            " \$99.99",
+                            "₹ ${widget.itemData["Price"]}",
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.white,
@@ -111,13 +115,13 @@ class _ProdPageState extends State<ProdPage> {
                         ],
                       ),
                     ),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.symmetric(vertical: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+                            widget.itemData["Description"],
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               fontSize: 17,

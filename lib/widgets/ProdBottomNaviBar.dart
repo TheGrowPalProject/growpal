@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProdBottomNaviBar extends StatefulWidget {
   const ProdBottomNaviBar({Key? key}) : super(key: key);
@@ -50,7 +52,16 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
               ),
             ),
             ElevatedButton.icon(
-              onPressed: () {
+              onPressed: () async {
+                var uri = "upi://pay?pa=raoanu2004@okicici&pn=Anurag&am=1&tn=Test payment&cu=INR";
+                var _url = Uri.parse(uri);
+                var result = await launchUrl(_url);
+                 print(result);
+                 if (result ==true) {
+                   print("done, UPI app opened");
+                 } else if (result ==false){
+                   print("fail to open UPI app");
+                 }
                 setState(() {
                   buyNowText = "Bought";
                 });
