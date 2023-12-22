@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class SelectSociety extends StatefulWidget {
   const SelectSociety({super.key});
 
@@ -22,8 +21,6 @@ class _SelectSocietyState extends State<SelectSociety> {
     'Society B',
     'Society C'
   ]; // Replace with society data
-
-
 
   @override
   Widget build(BuildContext context) {

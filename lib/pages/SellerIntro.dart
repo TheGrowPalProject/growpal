@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 class SellerIntroScreen extends StatelessWidget {
   const SellerIntroScreen({Key? key}) : super(key: key);
 
@@ -7,14 +8,18 @@ class SellerIntroScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.black, // Set the background color of Scaffold to black
+        backgroundColor:
+            Colors.black, // Set the background color of Scaffold to black
         body: Column(
           children: [
             const Padding(
               padding: EdgeInsets.all(10.0),
               child: Text(
                 "How it Works",
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white), // Set text color to white
+                style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white), // Set text color to white
               ),
             ),
             Expanded(
@@ -29,7 +34,10 @@ class SellerIntroScreen extends StatelessWidget {
                         "1.You post products in the selling section.",
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.robotoSerif(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16), // Set text color to white
+                        style: GoogleFonts.robotoSerif(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16), // Set text color to white
                       ),
                     ),
                     Image.asset(
@@ -47,11 +55,15 @@ class SellerIntroScreen extends StatelessWidget {
                               child: Center(
                                 child: Padding(
                                   padding: const EdgeInsets.all(3.0),
-                                   child: Text(
-                                      "2. Whenever someone orders your product, you get a notification. You can define at what times you are taking in orders and what times you are not available.\n\n3.You can use our order tracking page to keep a track of incoming and delivered orders.",
-                                      maxLines: 15,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: GoogleFonts.robotoSerif(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 16), // Set text color to white
+                                  child: Text(
+                                    "2. Whenever someone orders your product, you get a notification. You can define at what times you are taking in orders and what times you are not available.\n\n3.You can use our order tracking page to keep a track of incoming and delivered orders.",
+                                    maxLines: 15,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: GoogleFonts.robotoSerif(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize:
+                                            16), // Set text color to white
                                   ),
                                 ),
                               ),
@@ -71,11 +83,12 @@ class SellerIntroScreen extends StatelessWidget {
                   Navigator.pushNamed(context, "SelectSocietyPage");
                 },
                 style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(190, 40),
-                  backgroundColor: const Color.fromARGB(255,60,60,60), // Change button background color to white
-                  foregroundColor: Colors.white,
-                  textStyle: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold)
-                ),
+                    minimumSize: const Size(190, 40),
+                    backgroundColor: const Color.fromARGB(255, 60, 60,
+                        60), // Change button background color to white
+                    foregroundColor: Colors.white,
+                    textStyle: const TextStyle(
+                        fontSize: 25, fontWeight: FontWeight.bold)),
                 child: const Text("SELL!"),
               ),
             ),

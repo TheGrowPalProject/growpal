@@ -27,7 +27,6 @@ class Item {
 }
 
 class Management extends StatefulWidget {
-  
   final Map<String, dynamic> itemData;
   const Management({super.key, this.itemData = const {}});
 
@@ -123,84 +122,84 @@ class _ManagementState extends State<Management> {
                 ),
               ),
             ),
-            Builder(
-              builder: (context) {
-                return MediaQuery.removePadding(
-                  removeBottom: true,
-                  context: context,
-                  child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: items1.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        height: 150,
-                        decoration: BoxDecoration(
-                          color: const Color.fromRGBO(32, 31, 38, 1.0),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        padding: const EdgeInsets.all(7),
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  alignment: Alignment.bottomCenter,
-                                  image: AssetImage(items1[index].image),
+            Builder(builder: (context) {
+              return MediaQuery.removePadding(
+                removeBottom: true,
+                context: context,
+                child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: items1.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      height: 150,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(32, 31, 38, 1.0),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.all(7),
+                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 80,
+                            height: 80,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                alignment: Alignment.bottomCenter,
+                                image: AssetImage(items1[index].image),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 35),
+                          SizedBox(
+                            height: 100,
+                            child: Column(
+                              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  items1[index].name,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 27,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                ElevatedButton.icon(
+                                  onPressed: () {
+                                    // Edit action
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      minimumSize: const Size(10, 10),
+                                      backgroundColor:
+                                          const Color.fromRGBO(32, 31, 38, 1.0),
+                                      elevation: 0.0),
+                                  icon: const Icon(
+                                    Icons.edit,
+                                    size: 15,
+                                  ),
+                                  label: const Text('Edit'),
+                                ),
+                              ],
                             ),
-                            const SizedBox(width: 35),
-                            SizedBox(
-                              height: 100,
-                              child: Column(
-                                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    items1[index].name,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 27,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  ElevatedButton.icon(
-                                    onPressed: () {
-                                      // Edit action
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        minimumSize: const Size(10, 10),
-                                        backgroundColor:
-                                            const Color.fromRGBO(32, 31, 38, 1.0),
-                                        elevation: 0.0),
-                                    icon: const Icon(
-                                      Icons.edit,
-                                      size: 15,
-                                    ),
-                                    label: const Text('Edit'),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                );
-              }
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              );
+            }),
+            const SizedBox(
+              height: 10,
             ),
-            const SizedBox(height: 10,),
             const Center(
                 child: Text("Active orders",
                     style: TextStyle(
@@ -355,7 +354,7 @@ class _ManagementState extends State<Management> {
         }));
         break;
       case 1:
-      // Handle navigation or actions for account page
+        // Handle navigation or actions for account page
         break;
       case 2:
         // Handle navigation or actions for Sell Page

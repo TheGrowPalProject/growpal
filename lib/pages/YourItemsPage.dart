@@ -77,7 +77,8 @@ class _YourItemsPageState extends State<YourItemsPage> {
                   // Button action
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey, fixedSize: const Size(300, 30)),
+                    backgroundColor: Colors.grey,
+                    fixedSize: const Size(300, 30)),
                 child: const Text(
                   'Your Items',
                   style: TextStyle(

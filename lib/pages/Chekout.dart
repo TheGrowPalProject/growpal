@@ -1,4 +1,3 @@
-
 //import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
@@ -13,18 +12,12 @@ class Checkout extends StatefulWidget {
 
 class _CheckoutState extends State<Checkout> {
   FlutterTts flutterTts = FlutterTts();
-  
-  
-  
-   
 
- void _play()
- {
-     flutterTts.setLanguage("en-US");
+  void _play() {
+    flutterTts.setLanguage("en-US");
     flutterTts.setPitch(1);
     flutterTts.speak("Thank you for shopping with us");
-}
-  
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +38,9 @@ class _CheckoutState extends State<Checkout> {
               ),
             ),
           ),
-          const SizedBox(height: 60,),
+          const SizedBox(
+            height: 60,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: Text(
@@ -57,53 +52,41 @@ class _CheckoutState extends State<Checkout> {
               ),
             ),
           ),
-          const SizedBox(height: 40,),
+          const SizedBox(
+            height: 40,
+          ),
           const SizedBox(
             height: 200,
             width: 350,
             child: Card(
               elevation: 10,
               child: Column(
-                children: [ Padding(
-                  padding: EdgeInsets.only(top: 5, right: 1, left: 5),
-                  child: Text(
-                    "Seller Details:                                           ",
-                    style: TextStyle(
-                      color: Color(0xFF4C53A5),
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 5, right: 1, left: 5),
+                    child: Text(
+                      "Seller Details:                                           ",
+                      style: TextStyle(
+                        color: Color(0xFF4C53A5),
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
                   Padding(
-                    padding: EdgeInsets.only(left: 10,top: 20),
+                    padding: EdgeInsets.only(left: 10, top: 20),
                     child: Column(
                       children: [
                         Row(
-                        children: [
-                          Icon(
-                            Icons.person,
-                            size: 18,
-                          ),
-                          SizedBox(width: 5,),Text(
-                              "Name: John Doe ",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                              ))
-                        ],
-                      ),
-                        SizedBox(height: 5,),
-                        Row(
                           children: [
                             Icon(
-                              Icons.email,
+                              Icons.person,
                               size: 18,
                             ),
-                            SizedBox(width: 5,),Text(
-                                "Email: john.doe@growpal.com",
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text("Name: John Doe ",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Colors.grey,
@@ -112,16 +95,40 @@ class _CheckoutState extends State<Checkout> {
                                 ))
                           ],
                         ),
-                        SizedBox(height: 5,),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.email,
+                              size: 18,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text("Email: john.doe@growpal.com",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ))
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
                         Row(
                           children: [
                             Icon(
                               Icons.phone,
                               size: 18,
                             ),
-                            SizedBox(width: 5,),
-                            Text(
-                                "Phone: 1234567890 ",
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text("Phone: 1234567890 ",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Colors.grey,
@@ -129,15 +136,20 @@ class _CheckoutState extends State<Checkout> {
                                   fontWeight: FontWeight.bold,
                                 ))
                           ],
-                        ),SizedBox(height: 5,),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
                         Row(
                           children: [
                             Icon(
                               Icons.home,
                               size: 18,
-                            ),SizedBox(width: 5,),
-                            Text(
-                                "House Number: B003",
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text("House Number: B003",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   color: Colors.grey,
@@ -145,17 +157,14 @@ class _CheckoutState extends State<Checkout> {
                                   fontWeight: FontWeight.bold,
                                 ))
                           ],
-                        ),],
+                        ),
+                      ],
                     ),
                   )
-
-
-
                 ],
               ),
             ),
           ),
-
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -193,7 +202,3 @@ class _CheckoutState extends State<Checkout> {
     );
   }
 }
-
-
-
- 
