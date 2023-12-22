@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:growpal_hackathon/firebase_options.dart';
+import 'package:growpal/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,6 +22,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Future<void> login() async {
       try {
+        await GoogleSignIn().signOut();
         final GoogleSignInAccount? gAcc = await GoogleSignIn().signIn();
         final GoogleSignInAuthentication? authDetails =
             await gAcc?.authentication;
@@ -30,7 +31,6 @@ class LoginPage extends StatelessWidget {
           idToken: authDetails?.idToken,
         );
         await FirebaseAuth.instance.signInWithCredential(credential);
-        await Future.delayed(const Duration(seconds: 1));
         flag = 1;
       } on FirebaseAuthException catch (e){
         print('Failed with error code: ${e.code}');
@@ -78,8 +78,9 @@ class LoginPage extends StatelessWidget {
 
         SharedPreferences prefs = await SharedPreferences.getInstance();
         var society = prefs.getString('society');
-        if (society == null) {
-          print("trying to go to select intro screen");
+        var houseNumber = prefs.getString('houseNumber');
+        var city = prefs.getString('city');
+        if (society == null || houseNumber == null || city == null) {
           Navigator.pushNamed(context, 'SelectIntroScreen');
         } else {
           Navigator.pushNamed(context, 'HomePage');

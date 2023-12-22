@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:growpal_hackathon/globalVariables.dart';
+import 'package:growpal/globalVariables.dart';
 
 
 class CartBottomNaviBar extends StatefulWidget {

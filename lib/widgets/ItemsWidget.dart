@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../globalVariables.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:growpal_hackathon/pages/ProdPage.dart';
+import 'package:growpal/pages/ProdPage.dart';
 
 class ItemsWidget extends StatefulWidget {
   const ItemsWidget({Key? key}) : super(key: key);

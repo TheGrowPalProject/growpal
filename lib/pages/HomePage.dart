@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:growpal_hackathon/pages/CartPage.dart';
-import 'package:growpal_hackathon/pages/SellerForm.dart';
-import 'package:growpal_hackathon/pages/AccountPage.dart';
+import 'package:growpal/pages/SellerForm.dart';
+import 'package:growpal/pages/AccountPage.dart';
 import 'Home_Page.dart';
 
 class HomePage extends StatefulWidget {

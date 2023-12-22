@@ -1,33 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:growpal_hackathon/pages/HomePage.dart';
-
-class Item1 {
-  final String name;
-  final String image;
-
-  Item1({required this.name, required this.image});
-}
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 class Item {
   final String name;
   final String image;
-  String address;
-  int quantity;
-  String note;
+  String houseNumber;
+  String userId;
+  String timeStamp;
   bool preparing;
 
   Item({
     required this.name,
     required this.image,
-    required this.address,
-    required this.quantity,
-    required this.note,
+    required this.houseNumber,
+    required this.userId,
+    required this.timeStamp,
     this.preparing = false,
   });
 }
 
 class Management extends StatefulWidget {
-  
   final Map<String, dynamic> itemData;
   const Management({super.key, this.itemData = const {}});
 
@@ -36,60 +27,47 @@ class Management extends StatefulWidget {
 }
 
 class _ManagementState extends State<Management> {
-  int _currentIndex = 1;
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-  final List<Item1> items1 = [
-    Item1(name: 'Item 1', image: 'images/image1.png'),
-    // Add more items as needed from database
-  ];
-  final List<Item> items = [
-    Item(
-      name: 'Name 1',
-      image: 'images/image_9.png',
-      address: '1234 Street Name',
-      quantity: 2,
-      note: 'Some note about Item 1',
-    ),
-    Item(
-      name: 'Name 2',
-      image: 'images/image_11.png',
-      address: '9999 Road',
-      quantity: 3,
-      note: 'Additional note for Item 2',
-    ),
-    // Add more items as needed from the database
-  ];
+  List<Item> items = [];
+  @override
+  void initState() {
+    super.initState();
+    _fetchItems();
+  }
+
+
+  Future<void> _fetchItems() async {
+    final UserId = widget.itemData['Userid'];
+    final ProductName = widget.itemData['Product_name'];
+    final db = FirebaseFirestore.instance;
+    final p = db.collection("orders");
+    final querySnapshot = await p.where('SellerUserId', isEqualTo: UserId).where("ProductName", isEqualTo: ProductName).get();
+    setState(() {
+      
+      items = querySnapshot.docs.map((e) {
+        return Item(
+          name: e['BuyerName'],
+          image: e['BuyerPhotoUrl'],
+          houseNumber: e['BuyerHouseNumber'],
+          userId: e['BuyerUserId'],
+          timeStamp: e['Timestamp'],
+        );
+      }).toList();
+    });
+  }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
+    if(items == []){
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
     return Scaffold(
       backgroundColor: Colors.black,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (int index) {
-          setState(() {
-            _currentIndex = index;
-          });
-          _handleNavigation(index);
-        },
-        backgroundColor: const Color.fromRGBO(32, 31, 38, 1.0),
-        selectedItemColor: Colors.white.withOpacity(0.6),
-        unselectedItemColor: Colors.white.withOpacity(0.6),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Account',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.currency_exchange),
-            label: 'Sell',
-          ),
-        ],
-      ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -106,101 +84,100 @@ class _ManagementState extends State<Management> {
             ),
             const SizedBox(height: 20),
             Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // Button action
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey,
-                  fixedSize: const Size(300, 30),
+              child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 28.0),
+              child: Container(
+                height: 61,
+                width: 293,
+                decoration: BoxDecoration(
+                  color: Color(0xFFF1D1D1D),
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: const Text(
-                  'Manage',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+                child: Center(
+                  child: Text(
+                    'Manage',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
             ),
-            Builder(
-              builder: (context) {
-                return MediaQuery.removePadding(
-                  removeBottom: true,
-                  context: context,
-                  child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: items1.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        height: 150,
+            ),
+            Builder(builder: (context) {
+              return MediaQuery.removePadding(
+                removeBottom: true,
+                context: context,
+                child: Container(
+                  height: 150,
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(32, 31, 38, 1.0),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: const EdgeInsets.all(7),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 80,
+                        height: 80,
                         decoration: BoxDecoration(
-                          color: const Color.fromRGBO(32, 31, 38, 1.0),
                           borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            alignment: Alignment.bottomCenter,
+                            image: NetworkImage(widget.itemData['Image']),
+                          ),
                         ),
-                        padding: const EdgeInsets.all(7),
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      ),
+                      const SizedBox(width: 35),
+                      SizedBox(
+                        height: 100,
+                        child: Column(
+                          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  alignment: Alignment.bottomCenter,
-                                  image: AssetImage(items1[index].image),
-                                ),
+                            Text(
+                              widget.itemData["Product_name"],
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 27,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                            const SizedBox(width: 35),
-                            SizedBox(
-                              height: 100,
-                              child: Column(
-                                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    items1[index].name,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 27,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  ElevatedButton.icon(
-                                    onPressed: () {
-                                      // Edit action
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        minimumSize: const Size(10, 10),
-                                        backgroundColor:
-                                            const Color.fromRGBO(32, 31, 38, 1.0),
-                                        elevation: 0.0),
-                                    icon: const Icon(
-                                      Icons.edit,
-                                      size: 15,
-                                    ),
-                                    label: const Text('Edit'),
-                                  ),
-                                ],
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            ElevatedButton.icon(
+                              onPressed: () {
+                                // Edit action
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  minimumSize: const Size(10, 10),
+                                  backgroundColor:
+                                      const Color.fromRGBO(32, 31, 38, 1.0),
+                                  elevation: 0.0),
+                              icon: const Icon(
+                                Icons.edit,
+                                size: 15,
                               ),
+                              label: const Text('Edit'),
                             ),
                           ],
                         ),
-                      );
-                    },
+                      ),
+                    ],
                   ),
-                );
-              }
+                ),
+              );
+            }),
+            const SizedBox(
+              height: 10,
             ),
-            const SizedBox(height: 10,),
             const Center(
                 child: Text("Active orders",
                     style: TextStyle(
@@ -208,10 +185,10 @@ class _ManagementState extends State<Management> {
                         fontSize: 25,
                         fontWeight: FontWeight.bold))),
             Expanded(
-              child: ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
+              child: ListView(
+                  children: [ 
+                  for(int index = 0; index < items.length; index++) ...[
+                  Container(
                     height: 200,
                     decoration: BoxDecoration(
                       color: const Color.fromRGBO(32, 31, 38, 1.0),
@@ -230,7 +207,7 @@ class _ManagementState extends State<Management> {
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               alignment: Alignment.bottomCenter,
-                              image: AssetImage(items[index].image),
+                              image: NetworkImage(items[index].image),
                             ),
                           ),
                         ),
@@ -250,21 +227,7 @@ class _ManagementState extends State<Management> {
                                 ),
                               ),
                               Text(
-                                'Address: ${items[index].address}',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ),
-                              ),
-                              Text(
-                                'Quantity: ${items[index].quantity}',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ),
-                              ),
-                              Text(
-                                'Note: ${items[index].note}',
+                                'Deliver To: ${items[index].houseNumber}',
                                 style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
@@ -272,9 +235,24 @@ class _ManagementState extends State<Management> {
                               ),
                               ElevatedButton.icon(
                                 onPressed: () {
+
                                   setState(() {
                                     items[index].preparing = true;
                                   });
+
+                                  final db = FirebaseFirestore.instance;
+                                  final p = db.collection("orders");
+                                  p.where('BuyerUserId', isEqualTo: items[index].userId)
+                                  .where("ProductName", isEqualTo: widget.itemData["Product_name"])
+                                  .where("Timestamp", isEqualTo: items[index].timeStamp)
+                                  .get().then((value) {
+                                    value.docs.forEach((element) {
+                                      print("hello");
+                                      print(element);
+                                      element.reference.set({"Status": "Preparing"}, SetOptions(merge: true));
+                                    });
+                                  });
+
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.transparent,
@@ -306,7 +284,22 @@ class _ManagementState extends State<Management> {
                               ),
                               ElevatedButton.icon(
                                 onPressed: () {
-                                  // Mark as Done action
+                                  final db = FirebaseFirestore.instance;
+                                  final p = db.collection("orders");
+                                  p.where('BuyerUserId', isEqualTo: items[index].userId)
+                                  .where("ProductName", isEqualTo: widget.itemData["Product_name"])
+                                  .where("Timestamp", isEqualTo: items[index].timeStamp)
+                                  .get().then((value) {
+                                    value.docs.forEach((element) {
+                                      element.reference.delete();
+                                    });
+                                  });
+
+
+                                  setState(() {
+                                    print(index);
+                                    items.removeAt(index);
+                                  });
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.transparent,
@@ -337,31 +330,14 @@ class _ManagementState extends State<Management> {
                         ),
                       ],
                     ),
-                  );
-                },
+                  ),
+                  ]
+                ]
               ),
             ),
           ],
         ),
       ),
     );
-  }
-
-  void _handleNavigation(int index) {
-    switch (index) {
-      case 0:
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return const HomePage();
-        }));
-        break;
-      case 1:
-      // Handle navigation or actions for account page
-        break;
-      case 2:
-        // Handle navigation or actions for Sell Page
-        break;
-      default:
-        break;
-    }
   }
 }

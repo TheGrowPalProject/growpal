@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/link.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProdBottomNaviBar extends StatefulWidget {
   final itemData;
@@ -69,6 +71,28 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
                 setState(() {
                   buyNowText = "Bought";
                 });
+
+
+                var db = FirebaseFirestore.instance;
+                
+                final User? user = FirebaseAuth.instance.currentUser;
+                final loggedInUserId = user?.uid;
+                final loggedInUserName = user?.displayName;
+                final loggedInUserPhotoUrl = user?.photoURL;
+                SharedPreferences pref = await SharedPreferences.getInstance(); 
+                final buyerHouseNumber = pref.getString("houseNumber");
+                final orderDeets = {
+                  "Timestamp": DateTime.now().millisecondsSinceEpoch.toString(),
+                  "SellerUserId": widget.itemData["Userid"],
+                  "ProductName": widget.itemData["Product_name"],
+                  "BuyerUserId": loggedInUserId,
+                  "BuyerName": loggedInUserName,
+                  "BuyerPhotoUrl": loggedInUserPhotoUrl,
+                  "BuyerHouseNumber": buyerHouseNumber,
+                  "Status": "Placed",
+                };
+                db.collection("orders").doc().set(orderDeets);
+
               },
               icon: newIcon,
               label: Text(

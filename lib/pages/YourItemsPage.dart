@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:growpal_hackathon/pages/HomePage.dart';
+import 'package:growpal/pages/HomePage.dart';
 
 class Item {
   final String name;

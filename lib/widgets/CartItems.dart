@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:growpal_hackathon/globalVariables.dart';
+import 'package:growpal/globalVariables.dart';
 
 class CartItems extends StatefulWidget {
   const CartItems({Key? key}) : super(key: key);

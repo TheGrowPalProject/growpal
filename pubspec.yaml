@@ -1,5 +1,5 @@
-name: growpal_hackathon
-description: growpal prototype for the hackathon
+name: growpal
+description: growpal prototype
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -75,7 +75,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "images/icon.png"
+  image_path: "images/logo.png"
 # The following section is specific to Flutter packages.
 flutter:
   # The following line ensures that the Material Icons font is
