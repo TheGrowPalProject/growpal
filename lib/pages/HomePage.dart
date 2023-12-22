@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
         body: screens[indexx],
         bottomNavigationBar: Container(
           color: Colors.white,
-          height: 63,
+          height: 65,
           padding: const EdgeInsets.only(top: 1),
           child: BottomNavigationBar(
             currentIndex: indexx,
