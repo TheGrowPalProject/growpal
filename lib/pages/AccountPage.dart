@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:growpal_hackathon/pages/Items.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../globalVariables.dart';
 import '../widgets/CartAppbar.dart';
 import '../widgets/CartBottomNaviBar.dart';
@@ -31,7 +31,10 @@ class _AccountPageState extends State<AccountPage> {
               Spacer(flex: 2),
               Text(
                 'GrowPal',
-                style: TextStyle(fontSize: 29),
+                style: GoogleFonts.roboto(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30.0,
+                    color: Colors.white),
               ),
               Spacer(flex: 10),
             ],
