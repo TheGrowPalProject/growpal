@@ -1,4 +1,4 @@
-package com.example.growpal_hackathon
+package com.example.growpal
 
 import io.flutter.embedding.android.FlutterActivity
 
