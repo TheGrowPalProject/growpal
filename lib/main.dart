@@ -17,7 +17,7 @@ import 'package:growpal_hackathon/firebase_options.dart';
 import 'package:growpal_hackathon/pages/SelectSocietyPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:growpal_hackathon/pages/AccountPage.dart';
+import 'package:growpal_hackathon/pages/YourOrdersPage.dart';
 
 
 void main() async {
