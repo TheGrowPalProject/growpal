@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
         body: screens[indexx],
         bottomNavigationBar: Container(
           color: Colors.white,
-          height: 67,
+          height: 63,
           padding: const EdgeInsets.only(top: 1),
           child: BottomNavigationBar(
             currentIndex: indexx,
@@ -41,21 +41,21 @@ class _HomePageState extends State<HomePage> {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home,
-                  size: 35,
+                  size: 30,
                 ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.account_circle,
-                  size: 35,
+                  size: 30,
                 ),
                 label: 'Account',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.currency_exchange,
-                  size: 35,
+                  size: 30,
                 ),
                 label: 'Sell',
               ),

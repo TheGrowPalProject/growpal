@@ -65,12 +65,12 @@ class LoginPage extends StatelessWidget {
           content: Text(
             "Success!",
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.green,
               fontSize: 14.0,
             ),
             textAlign: TextAlign.center,
           ),
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.white,
           duration: Duration(seconds: 1, milliseconds: 500),
         );
 
