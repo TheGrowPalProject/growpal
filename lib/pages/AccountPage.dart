@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:growpal_hackathon/pages/Items.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../globalVariables.dart';
 import '../widgets/CartAppbar.dart';
@@ -186,6 +187,7 @@ class _AccountPageState extends State<AccountPage> {
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => LoginPage()));
+                FirebaseAuth.instance.signOut();
               },
               child: Container(
                 height: 61,
