@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: Container(
           color: Colors.white,
           height: 67,
-          padding: EdgeInsets.only(top: 1),
+          padding: const EdgeInsets.only(top: 1),
           child: BottomNavigationBar(
             currentIndex: indexx,
             onTap: (index) {
@@ -34,10 +34,10 @@ class _HomePageState extends State<HomePage> {
                 indexx = index;
               });
             },
-            backgroundColor: Color(0xFFF1D1D1D),
+            backgroundColor: const Color(0xfff1d1d1d),
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.white,
-            items: [
+            items: const [
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home,

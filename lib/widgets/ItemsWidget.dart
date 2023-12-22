@@ -35,28 +35,28 @@ class _ItemsWidgetState extends State<ItemsWidget> {
   @override
   Widget build(BuildContext context) {
     if (docs == null) {
-      return Center(child: CircularProgressIndicator());
+      return const Center(child: CircularProgressIndicator());
     }
 
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 1, horizontal: 10),
-      padding: EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(vertical: 1, horizontal: 10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Color(0xFF10100F),
+        color: const Color(0xFF10100F),
         borderRadius: BorderRadius.circular(20),
       ),
       child: GridView.count(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         childAspectRatio: 1.6,
         crossAxisCount: 1,
         shrinkWrap: true,
         children: [
           for (int i = 0; i < (docs?.length ?? 0); i++)
             Container(
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.symmetric(vertical: 8, horizontal: 2),
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
               decoration: BoxDecoration(
-                color: Color(0xFFF201F26),
+                color: const Color(0xfff201f26),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
@@ -67,7 +67,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                         ? MainAxisAlignment.spaceBetween
                         : MainAxisAlignment.start,
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   InkWell(
                     onTap: () {
                       // _navigateToCategoryPage(context, i);
@@ -82,26 +82,26 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                                   children: [
                                     Text(
                                       docs?[i]["Product_name"] ?? "",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                       ),
                                     ),
-                                    SizedBox(height: 20),
+                                    const SizedBox(height: 20),
                                     Text(
                                       docs?[i]["Description"] ?? "",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 15,
                                         color: Colors.white,
                                       ),
                                     ),
-                                    SizedBox(height: 8),
+                                    const SizedBox(height: 8),
                                   ],
                                 ),
                               )
                             : Container(
-                                margin: EdgeInsets.all(0),
+                                margin: const EdgeInsets.all(0),
                                 height: 130,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
@@ -113,10 +113,10 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                                   ),
                                 ),
                               ),
-                        SizedBox(width: 15),
+                        const SizedBox(width: 15),
                         i.isEven
                             ? Container(
-                                margin: EdgeInsets.all(10),
+                                margin: const EdgeInsets.all(10),
                                 height: 130,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
@@ -134,28 +134,28 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                                   children: [
                                     Text(
                                       docs?[i]["Product_name"] ?? "",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                       ),
                                     ),
-                                    SizedBox(height: 20),
+                                    const SizedBox(height: 20),
                                     Text(
                                       docs?[i]["Description"] ?? "",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 15,
                                         color: Colors.white,
                                       ),
                                     ),
-                                    SizedBox(height: 8),
+                                    const SizedBox(height: 8),
                                   ],
                                 ),
                               ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Row(
                     mainAxisAlignment: i.isEven
                         ? MainAxisAlignment.spaceBetween

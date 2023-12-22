@@ -3,9 +3,7 @@ import 'dart:core';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:growpal_hackathon/pages/LoginPage.dart';
-import 'package:firebase_core/firebase_core.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -21,20 +19,30 @@ class _SellerFormState extends State<SellerForm> {
   final pname = TextEditingController();
   final desc = TextEditingController();
   final price = TextEditingController();
+  final upi = TextEditingController();
+
+  
 
   String _productName = '';
   var imgup = 0;
   XFile? file;
   String _description = '';
   String _price = '';
+  String _upiId = '';
   String _userid = '';
+  String _displayName = '';
+  String _photoURL = '';
   String ts = '';
   String imgurl = '';
   String date = '';
   DateTime _chosenDate = DateTime.now(); // Initialize chosen date
   bool? _isSubscription = false;
+  String society = '';
+
 
   void _onSubmit() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    society = prefs.getString('society')!;
     if (_formKey.currentState!.validate()) {
       // Save the form data
       _productName = pname.text;
@@ -42,7 +50,7 @@ class _SellerFormState extends State<SellerForm> {
       _price = price.text;
       debugPrint(
           'I - \n\n $_productName, $_price, $_description, $_isSubscription, $imgup\n\n');
-      var _date = _chosenDate.toString();
+      var date = _chosenDate.toString();
       if (_productName == '' ||
           _description == '' ||
           _price == '' ||
@@ -68,12 +76,16 @@ class _SellerFormState extends State<SellerForm> {
       } else {
         var uid = FirebaseAuth.instance.currentUser!.uid;
         _userid = uid;
+
+        _displayName = FirebaseAuth.instance.currentUser!.displayName!;
+        _photoURL = FirebaseAuth.instance.currentUser!.photoURL!;
+        
         var db = FirebaseFirestore.instance;
 
         Reference refroot = FirebaseStorage.instance.ref();
         debugPrint('Form File Path: ${File(file!.path).toString()} \n');
         Reference pimg = refroot.child('products');
-        Reference imgup = pimg.child('${ts}.jpg');
+        Reference imgup = pimg.child('$ts.jpg');
 
         try {
           await imgup.putFile(File(file!.path));
@@ -86,10 +98,14 @@ class _SellerFormState extends State<SellerForm> {
           'Product_name': _productName,
           'Description': _description,
           'Price': _price,
+          'UpiId': _upiId,
           'Subscription': _isSubscription,
           'Userid': _userid,
+          'DisplayName': _displayName,
+          'UserPhotoURL': _photoURL,
+          'Society': society,
           'Image': imgurl,
-          'Date': _date
+          'Date': date
         };
 
         try {
@@ -99,7 +115,7 @@ class _SellerFormState extends State<SellerForm> {
               .set(product);
           debugPrint('Added ID: $_userid\n');
           print(product);
-          const suc_up = SnackBar(
+          const sucUp = SnackBar(
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -115,7 +131,7 @@ class _SellerFormState extends State<SellerForm> {
             backgroundColor: Colors.green,
             duration: Duration(seconds: 1, milliseconds: 500),
           );
-          ScaffoldMessenger.of(context).showSnackBar(suc_up);
+          ScaffoldMessenger.of(context).showSnackBar(sucUp);
         } catch (e) {
           debugPrint("Error: $e");
         }
@@ -307,6 +323,44 @@ class _SellerFormState extends State<SellerForm> {
 
                   const SizedBox(height: 16.0),
 
+
+                  const Text(
+                    'UPI ID',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextFormField(
+                    controller: upi,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: const Color.fromARGB(255, 26, 26, 26),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide: const BorderSide(
+                          color: Color.fromARGB(255, 42, 42, 42),
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide: const BorderSide(
+                            color: Color.fromARGB(255, 42, 42, 42)),
+                      ),
+                      hintText: 'Enter UPI ID',
+                      hintStyle: const TextStyle(
+                          color: Color.fromARGB(255, 100, 100, 100)),
+                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        _upiId = value;
+                      });
+                    },
+                  ),
+
+                  const SizedBox(height: 16.0),
+
                   const Text(
                     'Choose a Date',
                     style: TextStyle(
@@ -357,7 +411,7 @@ class _SellerFormState extends State<SellerForm> {
                     ),
                     fillColor: MaterialStateProperty.resolveWith((states) {
                       if (!states.contains(MaterialState.selected)) {
-                        return Color.fromARGB(255, 45, 45, 45);
+                        return const Color.fromARGB(255, 45, 45, 45);
                       }
                       return null;
                     }),

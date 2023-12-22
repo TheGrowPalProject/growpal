@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class SelectSociety extends StatefulWidget {
+  const SelectSociety({super.key});
+
   @override
   _SelectSocietyState createState() => _SelectSocietyState();
 }
@@ -19,6 +23,8 @@ class _SelectSocietyState extends State<SelectSociety> {
     'Society C'
   ]; // Replace with society data
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +34,8 @@ class _SelectSocietyState extends State<SelectSociety> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Select Society',
               style: TextStyle(
                 color: Colors.white,
@@ -38,7 +44,7 @@ class _SelectSocietyState extends State<SelectSociety> {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 200),
+            const SizedBox(height: 200),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -47,25 +53,25 @@ class _SelectSocietyState extends State<SelectSociety> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text(
+                      const Text(
                         'Select City',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Container(
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(32, 31, 38, 1.0),
+                          color: const Color.fromRGBO(32, 31, 38, 1.0),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: DropdownButtonFormField<String>(
                           value: selectedCity,
-                          dropdownColor: Color.fromRGBO(32, 31, 38, 1.0),
-                          hint: Text('Select City',
+                          dropdownColor: const Color.fromRGBO(32, 31, 38, 1.0),
+                          hint: const Text('Select City',
                               style: TextStyle(color: Colors.white)),
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             prefixIcon: Icon(
                               Icons.search,
                               color: Colors.white,
@@ -75,7 +81,7 @@ class _SelectSocietyState extends State<SelectSociety> {
                             return DropdownMenuItem<String>(
                               value: city,
                               child: Text(city,
-                                  style: TextStyle(color: Colors.white)),
+                                  style: const TextStyle(color: Colors.white)),
                             );
                           }).toList(),
                           onChanged: (String? value) {
@@ -86,31 +92,31 @@ class _SelectSocietyState extends State<SelectSociety> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text(
+                      const Text(
                         'Select Society',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Container(
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(32, 31, 38, 1.0),
+                          color: const Color.fromRGBO(32, 31, 38, 1.0),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: DropdownButtonFormField<String>(
                           value: selectedSociety,
-                          dropdownColor: Color.fromRGBO(32, 31, 38, 1.0),
-                          hint: Text(
+                          dropdownColor: const Color.fromRGBO(32, 31, 38, 1.0),
+                          hint: const Text(
                             'Select Society',
                             style: TextStyle(color: Colors.white),
                           ),
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             prefixIcon: Icon(
                               Icons.search,
                               color: Colors.white,
@@ -121,7 +127,7 @@ class _SelectSocietyState extends State<SelectSociety> {
                               value: society,
                               child: Text(
                                 society,
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                               ),
                             );
                           }).toList(),
@@ -133,18 +139,21 @@ class _SelectSocietyState extends State<SelectSociety> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                 ],
               ),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromRGBO(32, 31, 38, 1.0),
+                backgroundColor: const Color.fromRGBO(32, 31, 38, 1.0),
               ),
-              onPressed: () {
-                // Handle button action
+              onPressed: () async {
+                final prefs = await SharedPreferences.getInstance();
+                prefs.setString('city', selectedCity!);
+                prefs.setString('society', selectedSociety!);
+                Navigator.pushNamed(context, "/");
               },
-              child: Text(
+              child: const Text(
                 'OKAY!',
                 style: TextStyle(
                   color: Colors.white,

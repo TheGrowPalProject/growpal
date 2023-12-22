@@ -10,8 +10,8 @@ class SellerIntroScreen extends StatelessWidget {
         backgroundColor: Colors.black, // Set the background color of Scaffold to black
         body: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
+            const Padding(
+              padding: EdgeInsets.all(10.0),
               child: Text(
                 "How it Works",
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white), // Set text color to white
@@ -68,18 +68,18 @@ class SellerIntroScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Handle the action when the button is pressed
+                  Navigator.pushNamed(context, "SelectSocietyPage");
                 },
-                child: Text("SELL!"),
                 style: ElevatedButton.styleFrom(
-                  minimumSize: Size(190, 40),
-                  backgroundColor: Color.fromARGB(255,60,60,60), // Change button background color to white
+                  minimumSize: const Size(190, 40),
+                  backgroundColor: const Color.fromARGB(255,60,60,60), // Change button background color to white
                   foregroundColor: Colors.white,
-                  textStyle: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)
+                  textStyle: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold)
                 ),
+                child: const Text("SELL!"),
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
           ],
         ),
       ),

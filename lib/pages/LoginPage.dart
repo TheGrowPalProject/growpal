@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:growpal_hackathon/pages/HomePage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:growpal_hackathon/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -23,17 +22,17 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Future<void> login() async {
       try {
-        final GoogleSignInAccount? g_acc = await GoogleSignIn().signIn();
-        final GoogleSignInAuthentication? auth_details =
-            await g_acc?.authentication;
+        final GoogleSignInAccount? gAcc = await GoogleSignIn().signIn();
+        final GoogleSignInAuthentication? authDetails =
+            await gAcc?.authentication;
         final credential = GoogleAuthProvider.credential(
-          accessToken: auth_details?.accessToken,
-          idToken: auth_details?.idToken,
+          accessToken: authDetails?.accessToken,
+          idToken: authDetails?.idToken,
         );
         await FirebaseAuth.instance.signInWithCredential(credential);
         await Future.delayed(const Duration(seconds: 1));
         flag = 1;
-      } on FirebaseAuthException catch (e) {
+      } on FirebaseAuthException catch (e){
         print('Failed with error code: ${e.code}');
         print(e.message);
         ScaffoldMessenger.of(context).showSnackBar(
@@ -76,8 +75,15 @@ class LoginPage extends StatelessWidget {
         );
 
         ScaffoldMessenger.of(context).showSnackBar(success);
-        await Future.delayed(const Duration(seconds: 2));
-        Navigator.pushNamed(context, 'HomePage');
+
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        var society = prefs.getString('society');
+        if (society == null) {
+          print("trying to go to select intro screen");
+          Navigator.pushNamed(context, 'SelectIntroScreen');
+        } else {
+          Navigator.pushNamed(context, 'HomePage');
+        }
       }
     }
 

@@ -9,6 +9,8 @@ class Item {
 }
 
 class YourItemsPage extends StatefulWidget {
+  const YourItemsPage({super.key});
+
   @override
   _YourItemsPageState createState() => _YourItemsPageState();
 }
@@ -36,7 +38,7 @@ class _YourItemsPageState extends State<YourItemsPage> {
           // Add actions or navigation based on index here
           _handleNavigation(index);
         },
-        backgroundColor: Color.fromRGBO(32, 31, 38, 1.0),
+        backgroundColor: const Color.fromRGBO(32, 31, 38, 1.0),
         selectedItemColor: Colors.white.withOpacity(0.6),
         unselectedItemColor: Colors.white.withOpacity(0.6),
         items: const <BottomNavigationBarItem>[
@@ -59,8 +61,8 @@ class _YourItemsPageState extends State<YourItemsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 40),
-            Text(
+            const SizedBox(height: 40),
+            const Text(
               'GrowPal',
               style: TextStyle(
                 color: Colors.white,
@@ -68,15 +70,15 @@ class _YourItemsPageState extends State<YourItemsPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 onPressed: () {
                   // Button action
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.grey, fixedSize: Size(300, 30)),
-                child: Text(
+                    backgroundColor: Colors.grey, fixedSize: const Size(300, 30)),
+                child: const Text(
                   'Your Items',
                   style: TextStyle(
                     color: Colors.white,
@@ -93,11 +95,11 @@ class _YourItemsPageState extends State<YourItemsPage> {
                   return Container(
                     height: 200,
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(32, 31, 38, 1.0),
+                      color: const Color.fromRGBO(32, 31, 38, 1.0),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -113,8 +115,8 @@ class _YourItemsPageState extends State<YourItemsPage> {
                             ),
                           ),
                         ),
-                        SizedBox(width: 35),
-                        Container(
+                        const SizedBox(width: 35),
+                        SizedBox(
                           height: 180,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -122,7 +124,7 @@ class _YourItemsPageState extends State<YourItemsPage> {
                             children: [
                               Text(
                                 items[index].name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 27,
                                   fontWeight: FontWeight.bold,
@@ -133,42 +135,42 @@ class _YourItemsPageState extends State<YourItemsPage> {
                                   // Edit action
                                 },
                                 style: ElevatedButton.styleFrom(
-                                    minimumSize: Size(10, 10),
+                                    minimumSize: const Size(10, 10),
                                     backgroundColor: Colors.transparent,
                                     elevation: 0.0),
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.edit,
                                   size: 15,
                                 ),
-                                label: Text('Edit'),
+                                label: const Text('Edit'),
                               ),
                               ElevatedButton.icon(
                                 onPressed: () {
                                   // Manage action
                                 },
                                 style: ElevatedButton.styleFrom(
-                                    minimumSize: Size(10, 10),
+                                    minimumSize: const Size(10, 10),
                                     backgroundColor: Colors.transparent,
                                     elevation: 0.0),
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.manage_accounts,
                                   size: 15,
                                 ),
-                                label: Text('Manage'),
+                                label: const Text('Manage'),
                               ),
                               ElevatedButton.icon(
                                 onPressed: () {
                                   // Delete action
                                 },
                                 style: ElevatedButton.styleFrom(
-                                    minimumSize: Size(10, 10),
+                                    minimumSize: const Size(10, 10),
                                     backgroundColor: Colors.transparent,
                                     elevation: 0.0),
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.delete,
                                   size: 15,
                                 ),
-                                label: Text('Delete'),
+                                label: const Text('Delete'),
                               ),
                             ],
                           ),
@@ -191,7 +193,7 @@ class _YourItemsPageState extends State<YourItemsPage> {
       case 0:
         // Handle navigation or actions for Home Page
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return HomePage();
+          return const HomePage();
         }));
         break;
       case 1:

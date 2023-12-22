@@ -43,7 +43,7 @@ class BuyerIntroScreen extends StatelessWidget {
                               alignment: Alignment.bottomCenter,
                               child: Center(
                                 child: Padding(
-                                  padding:EdgeInsets.all(5.0),
+                                  padding:const EdgeInsets.all(5.0),
                                   child:
                                     Text(
                                       "2. Some items are only available to order during a certain time.  Some items might have subscriptions. This is mainly for food products and other consumables.\n\n3. When you order, it is up to the seller and you, the buyer to negotiate the mode of delivery. We do not handle deliveries yet.",
@@ -67,18 +67,18 @@ class BuyerIntroScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Handle the action when the button is pressed
+                  Navigator.pushNamed(context, "SelectSocietyPage");
                 },
-                child: Text("OKAY"),
                 style: ElevatedButton.styleFrom(
-                  minimumSize: Size(190, 40),
-                  backgroundColor: Color.fromARGB(255,60,60,60), // Change button background color to white
+                  minimumSize: const Size(190, 40),
+                  backgroundColor: const Color.fromARGB(255,60,60,60), // Change button background color to white
                   foregroundColor: Colors.white,
-                  textStyle: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)
+                  textStyle: const TextStyle(fontSize: 25,fontWeight: FontWeight.bold)
                 ),
+                child: const Text("OKAY"),
               ),
             ),
-            SizedBox(height: 6),
+            const SizedBox(height: 6),
           ],
         ),
       ),

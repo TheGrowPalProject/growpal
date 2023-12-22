@@ -24,9 +24,9 @@ class _ProdPageState extends State<ProdPage> {
       backgroundColor: Colors.black,
       body: ListView(
         children: [
-          ProdAppBar(),
+          const ProdAppBar(),
           Container(
-            margin: EdgeInsets.all(15),
+            margin: const EdgeInsets.all(15),
             width: double.infinity,
             height: 700,
             decoration: const BoxDecoration(
@@ -39,9 +39,9 @@ class _ProdPageState extends State<ProdPage> {
               ),
             ),
             child: Container(
-              margin: EdgeInsets.all(15),
+              margin: const EdgeInsets.all(15),
               decoration: const BoxDecoration(
-                color: Color(0xFFF201F26),
+                color: Color(0xfff201f26),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(35),
                   topRight: Radius.circular(35),
@@ -50,7 +50,7 @@ class _ProdPageState extends State<ProdPage> {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -63,25 +63,25 @@ class _ProdPageState extends State<ProdPage> {
                         fit: BoxFit.cover,
                       )
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Padding(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+                          const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             widget.itemData["Product_name"],
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 28,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(width: 15),
+                          const SizedBox(width: 15),
                           Text(
                             "₹ ${widget.itemData["Price"]}",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 20,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -91,7 +91,7 @@ class _ProdPageState extends State<ProdPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                         top: 5,
                         bottom: 10,
                         right: 5,
@@ -105,8 +105,8 @@ class _ProdPageState extends State<ProdPage> {
                             direction: Axis.horizontal,
                             itemCount: 5,
                             itemSize: 20,
-                            itemPadding: EdgeInsets.symmetric(horizontal: 4),
-                            itemBuilder: (context, _) => Icon(
+                            itemPadding: const EdgeInsets.symmetric(horizontal: 4),
+                            itemBuilder: (context, _) => const Icon(
                               Icons.star, // Replaced with star icon
                               color: Colors.white,
                             ),
@@ -116,30 +116,31 @@ class _ProdPageState extends State<ProdPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
                             widget.itemData["Description"],
                             textAlign: TextAlign.left,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 17,
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(height: 25),
+                          const SizedBox(height: 25),
                           Row(
                             children: [
                               SizedBox(width: 25),
                               CircleAvatar(
                                 radius: 25,
-                                backgroundImage:
-                                    AssetImage("images/avatar.jpeg"),
+                                backgroundImage: NetworkImage(
+                                  widget.itemData["UserPhotoURL"],
+                                ),
                               ),
                               SizedBox(width: 10),
                               Text(
-                                "Alex Wright",
+                                widget.itemData["DisplayName"],
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.white,
@@ -148,11 +149,11 @@ class _ProdPageState extends State<ProdPage> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Align(
                             alignment: Alignment.center,
                             child: Text(
-                              "Sunny Vale Apartments, Blr",
+                              widget.itemData["Society"],
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.white,
@@ -170,7 +171,7 @@ class _ProdPageState extends State<ProdPage> {
           )
         ],
       ),
-      bottomNavigationBar: ProdBottomNaviBar(),
+      bottomNavigationBar: ProdBottomNaviBar(itemData: widget.itemData),
     );
   }
 }

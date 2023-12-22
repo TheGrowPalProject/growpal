@@ -7,7 +7,7 @@ class ProdAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black,
-      padding: EdgeInsets.all(25),
+      padding: const EdgeInsets.all(25),
       child: Row(
         children: [
           InkWell(
@@ -17,10 +17,10 @@ class ProdAppBar extends StatelessWidget {
             child: const Icon(
               Icons.arrow_back,
               size: 30,
-              color: const Color.fromARGB(255, 107, 91, 91),
+              color: Color.fromARGB(255, 107, 91, 91),
             ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 20),
             child: Text(
               "Product",

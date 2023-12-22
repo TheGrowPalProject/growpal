@@ -22,10 +22,10 @@ class CategoriesWidget extends StatelessWidget {
         children: [
           for (int i = 1; i < 9; i++)
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               decoration: BoxDecoration(
-                color: Color(0xFFF201F26),
+                color: const Color(0xfff201f26),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Row(
@@ -39,10 +39,10 @@ class CategoriesWidget extends StatelessWidget {
                       height: 40,
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Text(
-                    "${arr[i - 1]}",
-                    style: TextStyle(
+                    arr[i - 1],
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 17,
                       color: Colors.white,

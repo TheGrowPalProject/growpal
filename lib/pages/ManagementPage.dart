@@ -27,6 +27,8 @@ class Item {
 }
 
 class Management extends StatefulWidget {
+  const Management({super.key});
+
   @override
   _ManagementState createState() => _ManagementState();
 }
@@ -68,7 +70,7 @@ class _ManagementState extends State<Management> {
           });
           _handleNavigation(index);
         },
-        backgroundColor: Color.fromRGBO(32, 31, 38, 1.0),
+        backgroundColor: const Color.fromRGBO(32, 31, 38, 1.0),
         selectedItemColor: Colors.white.withOpacity(0.6),
         unselectedItemColor: Colors.white.withOpacity(0.6),
         items: const <BottomNavigationBarItem>[
@@ -91,8 +93,8 @@ class _ManagementState extends State<Management> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 40),
-            Text(
+            const SizedBox(height: 40),
+            const Text(
               'GrowPal',
               style: TextStyle(
                 color: Colors.white,
@@ -100,17 +102,17 @@ class _ManagementState extends State<Management> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
                 onPressed: () {
                   // Button action
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.grey,
-                  fixedSize: Size(300, 30),
+                  backgroundColor: Colors.grey,
+                  fixedSize: const Size(300, 30),
                 ),
-                child: Text(
+                child: const Text(
                   'Manage',
                   style: TextStyle(
                     color: Colors.white,
@@ -125,18 +127,18 @@ class _ManagementState extends State<Management> {
                   removeBottom: true,
                   context: context,
                   child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: items1.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         height: 150,
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(32, 31, 38, 1.0),
+                          color: const Color.fromRGBO(32, 31, 38, 1.0),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        padding: EdgeInsets.all(7),
-                        margin: EdgeInsets.symmetric(vertical: 10),
+                        padding: const EdgeInsets.all(7),
+                        margin: const EdgeInsets.symmetric(vertical: 10),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -152,8 +154,8 @@ class _ManagementState extends State<Management> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 35),
-                            Container(
+                            const SizedBox(width: 35),
+                            SizedBox(
                               height: 100,
                               child: Column(
                                 //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -161,13 +163,13 @@ class _ManagementState extends State<Management> {
                                 children: [
                                   Text(
                                     items1[index].name,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 27,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   ElevatedButton.icon(
@@ -175,15 +177,15 @@ class _ManagementState extends State<Management> {
                                       // Edit action
                                     },
                                     style: ElevatedButton.styleFrom(
-                                        minimumSize: Size(10, 10),
+                                        minimumSize: const Size(10, 10),
                                         backgroundColor:
-                                            Color.fromRGBO(32, 31, 38, 1.0),
+                                            const Color.fromRGBO(32, 31, 38, 1.0),
                                         elevation: 0.0),
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.edit,
                                       size: 15,
                                     ),
-                                    label: Text('Edit'),
+                                    label: const Text('Edit'),
                                   ),
                                 ],
                               ),
@@ -196,8 +198,8 @@ class _ManagementState extends State<Management> {
                 );
               }
             ),
-            SizedBox(height: 10,),
-            Center(
+            const SizedBox(height: 10,),
+            const Center(
                 child: Text("Active orders",
                     style: TextStyle(
                         color: Colors.white,
@@ -210,11 +212,11 @@ class _ManagementState extends State<Management> {
                   return Container(
                     height: 200,
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(32, 31, 38, 1.0),
+                      color: const Color.fromRGBO(32, 31, 38, 1.0),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: EdgeInsets.all(7),
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    padding: const EdgeInsets.all(7),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -230,8 +232,8 @@ class _ManagementState extends State<Management> {
                             ),
                           ),
                         ),
-                        SizedBox(width: 5),
-                        Container(
+                        const SizedBox(width: 5),
+                        SizedBox(
                           height: 200,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -239,7 +241,7 @@ class _ManagementState extends State<Management> {
                             children: [
                               Text(
                                 items[index].name,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 21,
                                   fontWeight: FontWeight.bold,
@@ -247,21 +249,21 @@ class _ManagementState extends State<Management> {
                               ),
                               Text(
                                 'Address: ${items[index].address}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                 ),
                               ),
                               Text(
                                 'Quantity: ${items[index].quantity}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                 ),
                               ),
                               Text(
                                 'Note: ${items[index].note}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                 ),
@@ -273,16 +275,16 @@ class _ManagementState extends State<Management> {
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
-                                    primary: Colors.transparent,
+                                    backgroundColor: Colors.transparent,
                                     elevation: 0.0),
                                 icon: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Colors
                                         .yellow, // Set the background color of the icon
                                   ),
                                   //padding: EdgeInsets.all(5), // Adjust padding if needed
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.check_circle,
                                     color: Colors
                                         .white, // Default color of the tick mark
@@ -305,23 +307,23 @@ class _ManagementState extends State<Management> {
                                   // Mark as Done action
                                 },
                                 style: ElevatedButton.styleFrom(
-                                    primary: Colors.transparent,
+                                    backgroundColor: Colors.transparent,
                                     elevation: 0.0),
                                 icon: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Colors
                                         .green, // Set the background color of the icon
                                   ),
                                   //padding: EdgeInsets.all(5), // Adjust padding if needed
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.check_circle,
                                     color: Colors
                                         .white, // Default color of the tick mark
                                     size: 20,
                                   ),
                                 ),
-                                label: Text(
+                                label: const Text(
                                   'Mark as Done',
                                   style: TextStyle(
                                     color: Colors.white,
@@ -347,7 +349,7 @@ class _ManagementState extends State<Management> {
     switch (index) {
       case 0:
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return HomePage();
+          return const HomePage();
         }));
         break;
       case 1:

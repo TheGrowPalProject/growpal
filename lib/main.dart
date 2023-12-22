@@ -14,19 +14,25 @@ import 'package:growpal_hackathon/pages/SellerIntro.dart';
 import 'package:growpal_hackathon/pages/SelectIntro.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:growpal_hackathon/firebase_options.dart';
-import 'package:growpal_hackathon/pages/YourItemsPage.dart';
-import 'package:growpal_hackathon/pages/ManagementPage.dart';
 import 'package:growpal_hackathon/pages/SelectSocietyPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+
+  User? user = FirebaseAuth.instance.currentUser;
+  runApp(MyApp(
+    initialRoute: user==null ? "LoginPage" : "/",
+  ));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final String? initialRoute;
+  const MyApp({Key? key, required this.initialRoute}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -41,12 +47,14 @@ class _MyAppState extends State<MyApp> {
         scaffoldBackgroundColor: Colors.black,
         brightness: Brightness.dark,
       ),
+      initialRoute: widget.initialRoute,
       routes: {
-        "/": (context) => const LoginPage(),
+        "/": (context) => const HomePage(),
         "LoginPage": (context) => const LoginPage(),
         "SelectIntroScreen": (context) => const SelectIntroScreen(),
         "SellerIntroScreen": (context) => const SellerIntroScreen(),
         "BuyerIntroScreen": (context) => const BuyerIntroScreen(),
+        "SelectSocietyPage": (context) => const SelectSociety(),
         "HomePage": (context) => const HomePage(),
         "cartPage": (context) => const CartPage(),
         "prodPage": (context) => const ProdPage(),

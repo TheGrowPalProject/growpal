@@ -63,7 +63,7 @@ class _Home_PageState extends State<Home_Page> {
                       ),
                     ),
                     // ItemsWidget
-                    ItemsWidget(),
+                    const ItemsWidget(),
                   ],
                 ),
               ),
@@ -74,10 +74,10 @@ class _Home_PageState extends State<Home_Page> {
             left: 20,
             right: 20,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               height: 55,
               decoration: BoxDecoration(
-                color: Color(0xFFF605E5E),
+                color: const Color(0xfff605e5e),
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Row(

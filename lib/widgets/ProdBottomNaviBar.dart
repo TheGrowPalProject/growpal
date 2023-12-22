@@ -4,7 +4,8 @@ import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProdBottomNaviBar extends StatefulWidget {
-  const ProdBottomNaviBar({Key? key}) : super(key: key);
+  final itemData;
+  const ProdBottomNaviBar({Key? key, this.itemData = const {}}) : super(key: key);
 
   @override
   State<ProdBottomNaviBar> createState() => _ProdBottomNaviBarState();
@@ -13,39 +14,38 @@ class ProdBottomNaviBar extends StatefulWidget {
 class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
   var addToCartText = "Add To Cart";
   var buyNowText = "Buy Now";
-  var buttonIcon = Icon(CupertinoIcons.cart_badge_plus);
-  var newIcon = Icon(CupertinoIcons.money_dollar);
+  var buttonIcon = const Icon(CupertinoIcons.cart_badge_plus);
+  var newIcon = const Icon(CupertinoIcons.money_dollar);
 
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
       child: Container(
         height: 70,
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(color: Colors.black),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        decoration: const BoxDecoration(color: Colors.black),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ElevatedButton.icon(
               onPressed: () {
                 setState(() {
-                  buttonIcon = Icon(Icons.done);
+                  buttonIcon = const Icon(Icons.done);
                   addToCartText = "Added";
                 });
               },
               icon: buttonIcon,
               label: Text(
                 addToCartText,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               style: ElevatedButton.styleFrom(
                 side:
-                    BorderSide(color: Colors.white, width: 2), // Add this line
-                primary: Color(0xFFF10100F),
-                padding: EdgeInsets.symmetric(vertical: 13, horizontal: 15),
+                    const BorderSide(color: Colors.white, width: 2), backgroundColor: const Color(0xfff10100f),
+                padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -53,9 +53,13 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
             ),
             ElevatedButton.icon(
               onPressed: () async {
-                var uri = "upi://pay?pa=raoanu2004@okicici&pn=Anurag&am=1&tn=Test payment&cu=INR";
-                var _url = Uri.parse(uri);
-                var result = await launchUrl(_url);
+                var upiId = widget.itemData["UpiId"];
+                var amount = widget.itemData["Price"];
+                var productName = widget.itemData["Product_name"];
+                var userName = widget.itemData["DisplayName"];
+                var uri = "upi://pay?pa=$upiId&pn=$userName&am=$amount&tn=$productName&cu=INR";
+                var url = Uri.parse(uri);
+                var result = await launchUrl(url);
                  print(result);
                  if (result ==true) {
                    print("done, UPI app opened");
@@ -69,16 +73,15 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
               icon: newIcon,
               label: Text(
                 buyNowText,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               style: ElevatedButton.styleFrom(
                 side:
-                    BorderSide(color: Colors.white, width: 2), // Add this line
-                primary: Color(0xFFF10100F),
-                padding: EdgeInsets.symmetric(vertical: 13, horizontal: 15),
+                    const BorderSide(color: Colors.white, width: 2), backgroundColor: const Color(0xfff10100f),
+                padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
