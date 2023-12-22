@@ -5,8 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ProdBottomNaviBar extends StatefulWidget {
   final itemData;
-  const ProdBottomNaviBar({Key? key, this.itemData = const {}})
-      : super(key: key);
+  const ProdBottomNaviBar({Key? key, this.itemData = const {}}) : super(key: key);
 
   @override
   State<ProdBottomNaviBar> createState() => _ProdBottomNaviBarState();
@@ -44,10 +43,9 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                side: const BorderSide(color: Colors.white, width: 2),
-                backgroundColor: const Color(0xfff10100f),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 13, horizontal: 15),
+                side:
+                    const BorderSide(color: Colors.white, width: 2), backgroundColor: const Color(0xfff10100f),
+                padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -59,16 +57,15 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
                 var amount = widget.itemData["Price"];
                 var productName = widget.itemData["Product_name"];
                 var userName = widget.itemData["DisplayName"];
-                var uri =
-                    "upi://pay?pa=$upiId&pn=$userName&am=$amount&tn=$productName&cu=INR";
+                var uri = "upi://pay?pa=$upiId&pn=$userName&am=$amount&tn=$productName&cu=INR";
                 var url = Uri.parse(uri);
                 var result = await launchUrl(url);
-                print(result);
-                if (result == true) {
-                  print("done, UPI app opened");
-                } else if (result == false) {
-                  print("fail to open UPI app");
-                }
+                 print(result);
+                 if (result ==true) {
+                   print("done, UPI app opened");
+                 } else if (result ==false){
+                   print("fail to open UPI app");
+                 }
                 setState(() {
                   buyNowText = "Bought";
                 });
@@ -82,10 +79,9 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                side: const BorderSide(color: Colors.white, width: 2),
-                backgroundColor: const Color(0xfff10100f),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 13, horizontal: 15),
+                side:
+                    const BorderSide(color: Colors.white, width: 2), backgroundColor: const Color(0xfff10100f),
+                padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),

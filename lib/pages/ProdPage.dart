@@ -18,7 +18,7 @@ class _ProdPageState extends State<ProdPage> {
   @override
   Widget build(BuildContext context) {
     print(widget.itemData);
-
+    
     return Scaffold(
       backgroundColor: Colors.black,
       body: ListView(
@@ -54,17 +54,18 @@ class _ProdPageState extends State<ProdPage> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.network(
-                          widget.itemData["Image"],
-                          height: 300,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        )),
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.network(
+                        widget.itemData["Image"],
+                        height: 300,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      )
+                    ),
                     const SizedBox(height: 20),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 0, vertical: 10),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -103,8 +104,7 @@ class _ProdPageState extends State<ProdPage> {
                             direction: Axis.horizontal,
                             itemCount: 5,
                             itemSize: 20,
-                            itemPadding:
-                                const EdgeInsets.symmetric(horizontal: 4),
+                            itemPadding: const EdgeInsets.symmetric(horizontal: 4),
                             itemBuilder: (context, _) => const Icon(
                               Icons.star, // Replaced with star icon
                               color: Colors.white,

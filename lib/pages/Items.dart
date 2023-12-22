@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'ManagementPage.dart';
 
+
 class Items extends StatefulWidget {
   const Items({Key? key}) : super(key: key);
 
@@ -14,10 +15,11 @@ class _ItemsState extends State<Items> {
   List<Map<String, dynamic>>? docs;
 
   @override
-  void initState() {
+  void initState(){
     super.initState();
     _fetchItems();
   }
+
 
   Future<void> _fetchItems() async {
     final User? user = FirebaseAuth.instance.currentUser;
@@ -29,6 +31,7 @@ class _ItemsState extends State<Items> {
       docs = querySnapshot.docs.map((doc) => doc.data()).toList();
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,30 +59,33 @@ class _ItemsState extends State<Items> {
       backgroundColor: Colors.black,
       body: ListView(
         children: [
-          SizedBox(height: 29),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 28.0),
-            child: Container(
-              height: 61,
-              width: 293,
-              decoration: BoxDecoration(
-                color: Color(0xFFF1D1D1D),
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Center(
-                child: Text(
-                  'Your Items',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+            SizedBox(height: 29),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 28.0),
+              child: Container(
+                height: 61,
+                width: 293,
+                decoration: BoxDecoration(
+                  color: Color(0xFFF1D1D1D),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Center(
+                  child: Text(
+                    'Your Items',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          for (int i = 0; i < (docs?.length ?? 0); i++) ...[
+
+
+
+          for(int i = 0; i < (docs?.length ?? 0); i++) ...[
             Container(
               margin: EdgeInsets.only(left: 10, right: 10),
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
@@ -112,19 +118,11 @@ class _ItemsState extends State<Items> {
                       ),
                       SizedBox(height: 5),
                       buildButtonWithIcon("Edit", Icons.edit, () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    Management(itemData: docs?[i] ?? {})));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Management(itemData: docs?[i] ?? {})));
                       }),
                       SizedBox(height: 0),
                       buildButtonWithIcon("Manage", Icons.settings, () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    Management(itemData: docs?[i] ?? {})));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Management(itemData: docs?[i] ?? {})));
                       }),
                       SizedBox(height: 0),
                       buildButtonWithIcon("Delete", Icons.delete, () {

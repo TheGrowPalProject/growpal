@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -33,7 +32,7 @@ class LoginPage extends StatelessWidget {
         await FirebaseAuth.instance.signInWithCredential(credential);
         await Future.delayed(const Duration(seconds: 1));
         flag = 1;
-      } on FirebaseAuthException catch (e) {
+      } on FirebaseAuthException catch (e){
         print('Failed with error code: ${e.code}');
         print(e.message);
         ScaffoldMessenger.of(context).showSnackBar(

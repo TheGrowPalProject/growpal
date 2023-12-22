@@ -9,199 +9,201 @@ class CartItems extends StatefulWidget {
 }
 
 class _CartItemsState extends State<CartItems> {
-  var quantities = [1, 1, 1, 1, 1, 1, 1];
-  var titles = [
-    "Hand Bag",
-    "Earring",
-    "Tupperware Box",
-    "Cable Protectors",
-    "Bottle",
-    "Phone Case",
-    "Stickers"
-  ];
+  var quantities = [1,1,1,1,1,1,1];
+  var titles = ["Hand Bag", "Earring", "Tupperware Box", "Cable Protectors", "Bottle", "Phone Case", "Stickers"];
   var prices = [999, 199, 499, 99, 599, 299, 49];
   var price = 2743;
   var skipIndexes = [];
 
+
+
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
-        for (int i = 1; i < 8; i++)
-          if (!skipIndexes.contains(i - 1))
-            Container(
-                height: 110,
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  children: [
-                    Radio(
-                      value: "",
-                      groupValue: "",
-                      activeColor: const Color(0xFF4C53A5),
-                      onChanged: (index) {},
+        for(int i = 1; i < 8; i++)
+          if (!skipIndexes.contains(i-1))
+          Container(
+              height: 110,
+              margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                children: [
+                  Radio(
+                    value: "",
+                    groupValue: "",
+                    activeColor: const Color(0xFF4C53A5),
+                    onChanged: (index) {},
+                  ),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    margin: const EdgeInsets.only(right: 15),
+                    child: Image.asset("images/image$i.png"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          titles[i - 1],
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Color(0xFF4C53A5),
+                          ),
+                        ),
+                        Text(
+                          "₹${prices[i - 1] * quantities[i - 1]}",
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF4C53A5),
+                          ),
+                        ),
+
+                      ],
                     ),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      margin: const EdgeInsets.only(right: 15),
-                      child: Image.asset("images/image$i.png"),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
+                  ),
+                  const Spacer(),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            titles[i - 1],
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              color: Color(0xFF4C53A5),
+                          InkWell(
+                            child: const Icon(
+                              Icons.delete,
+                              color: Colors.red,
                             ),
+                            onTap: () {
+                              setState(() {
+                                skipIndexes.add(i-1);
+                                quantities[i-1] = 0;
+                                prices[i-1] = 0;
+                                price =  quantities[0]*prices[0] +
+                                    quantities[1]*prices[1] +
+                                    quantities[2]+prices[2] +
+                                    quantities[3]*prices[3] +
+                                    quantities[4]*prices[4] +
+                                    quantities[5]*prices[5] +
+                                    quantities[6]*prices[6];
+                                if (price == 0){
+                                  globalVariables().checkoutPermit = false;
+                                }
+                              });
+                            }
                           ),
-                          Text(
-                            "₹${prices[i - 1] * quantities[i - 1]}",
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF4C53A5),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Spacer(),
-                    Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            InkWell(
-                                child: const Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
+                          Row(
+                            children: [
+                              InkWell(
+
+                                child: Container(
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20),
+                                      boxShadow: [BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 1,
+                                        blurRadius: 10,
+                                      ),
+                                      ]
+                                  ),
+                                  child: const Icon(
+                                    CupertinoIcons.minus,
+                                    size: 18,
+                                  ),
+
                                 ),
                                 onTap: () {
                                   setState(() {
-                                    skipIndexes.add(i - 1);
-                                    quantities[i - 1] = 0;
-                                    prices[i - 1] = 0;
-                                    price = quantities[0] * prices[0] +
-                                        quantities[1] * prices[1] +
-                                        quantities[2] +
-                                        prices[2] +
-                                        quantities[3] * prices[3] +
-                                        quantities[4] * prices[4] +
-                                        quantities[5] * prices[5] +
-                                        quantities[6] * prices[6];
-                                    if (price == 0) {
+                                    if (quantities[i - 1] > 1) {
+                                      quantities[i - 1] -= 1;
+                                      price =  quantities[0]*prices[0] +
+                                          quantities[1]*prices[1] +
+                                          quantities[2]+prices[2] +
+                                          quantities[3]*prices[3] +
+                                          quantities[4]*prices[4] +
+                                          quantities[5]*prices[5] +
+                                          quantities[6]*prices[6];
+                                      if (price == 0){
+                                        globalVariables().checkoutPermit = false;
+                                      }
+
+                                    }
+                                  }
+                                  );
+                                },
+                              ),
+                              Container(
+                                margin: const EdgeInsets.symmetric(horizontal: 10),
+                                child: Text(
+                                  "${quantities[i - 1]}",
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF4C53A5),
+                                  ),
+
+                                ),
+                              ),
+                              InkWell(
+                                child: Container(
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20),
+                                      boxShadow: [BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 1,
+                                        blurRadius: 10,
+                                      ),
+                                      ]
+                                  ),
+                                  child: const Icon(
+                                    CupertinoIcons.plus,
+                                    size: 18,
+                                  ),
+
+
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    quantities[i - 1] += 1;
+                                    price =  quantities[0]*prices[0] +
+                                        quantities[1]*prices[1] +
+                                        quantities[2]+prices[2] +
+                                        quantities[3]*prices[3] +
+                                        quantities[4]*prices[4] +
+                                        quantities[5]*prices[5] +
+                                        quantities[6]*prices[6];
+                                    if (price == 0){
                                       globalVariables().checkoutPermit = false;
                                     }
+                                    //setPrice(price);
+
                                   });
-                                }),
-                            Row(
-                              children: [
-                                InkWell(
-                                  child: Container(
-                                    padding: const EdgeInsets.all(4),
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(20),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            spreadRadius: 1,
-                                            blurRadius: 10,
-                                          ),
-                                        ]),
-                                    child: const Icon(
-                                      CupertinoIcons.minus,
-                                      size: 18,
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    setState(() {
-                                      if (quantities[i - 1] > 1) {
-                                        quantities[i - 1] -= 1;
-                                        price = quantities[0] * prices[0] +
-                                            quantities[1] * prices[1] +
-                                            quantities[2] +
-                                            prices[2] +
-                                            quantities[3] * prices[3] +
-                                            quantities[4] * prices[4] +
-                                            quantities[5] * prices[5] +
-                                            quantities[6] * prices[6];
-                                        if (price == 0) {
-                                          globalVariables().checkoutPermit =
-                                              false;
-                                        }
-                                      }
-                                    });
-                                  },
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: Text(
-                                    "${quantities[i - 1]}",
-                                    style: const TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFF4C53A5),
-                                    ),
-                                  ),
-                                ),
-                                InkWell(
-                                  child: Container(
-                                    padding: const EdgeInsets.all(4),
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(20),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.withOpacity(0.5),
-                                            spreadRadius: 1,
-                                            blurRadius: 10,
-                                          ),
-                                        ]),
-                                    child: const Icon(
-                                      CupertinoIcons.plus,
-                                      size: 18,
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    setState(() {
-                                      quantities[i - 1] += 1;
-                                      price = quantities[0] * prices[0] +
-                                          quantities[1] * prices[1] +
-                                          quantities[2] +
-                                          prices[2] +
-                                          quantities[3] * prices[3] +
-                                          quantities[4] * prices[4] +
-                                          quantities[5] * prices[5] +
-                                          quantities[6] * prices[6];
-                                      if (price == 0) {
-                                        globalVariables().checkoutPermit =
-                                            false;
-                                      }
-                                      //setPrice(price);
-                                    });
-                                  },
-                                ),
-                              ],
-                            ),
-                          ],
-                        )),
-                  ],
-                )),
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                  ),
+                ],
+              )
+          ),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -224,12 +226,22 @@ class _CartItemsState extends State<CartItems> {
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF4C53A5),
+
+
                 ),
+
               ),
             ),
           ],
         ),
+
       ],
+
+
+
     );
   }
+
+
+
 }

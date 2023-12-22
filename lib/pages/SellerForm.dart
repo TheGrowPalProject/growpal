@@ -21,6 +21,8 @@ class _SellerFormState extends State<SellerForm> {
   final price = TextEditingController();
   final upi = TextEditingController();
 
+  
+
   String _productName = '';
   var imgup = 0;
   XFile? file;
@@ -36,6 +38,7 @@ class _SellerFormState extends State<SellerForm> {
   DateTime _chosenDate = DateTime.now(); // Initialize chosen date
   bool? _isSubscription = false;
   String society = '';
+
 
   void _onSubmit() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -76,7 +79,7 @@ class _SellerFormState extends State<SellerForm> {
 
         _displayName = FirebaseAuth.instance.currentUser!.displayName!;
         _photoURL = FirebaseAuth.instance.currentUser!.photoURL!;
-
+        
         var db = FirebaseFirestore.instance;
 
         Reference refroot = FirebaseStorage.instance.ref();
@@ -319,6 +322,7 @@ class _SellerFormState extends State<SellerForm> {
                   ),
 
                   const SizedBox(height: 16.0),
+
 
                   const Text(
                     'UPI ID',

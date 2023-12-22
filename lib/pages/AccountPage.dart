@@ -41,18 +41,20 @@ class _AccountPageState extends State<AccountPage> {
           ),
           actions: [
             Padding(
-              padding: const EdgeInsets.only(right: 20),
+                padding: const EdgeInsets.only(right: 20),
+
               child: CircleAvatar(
-                backgroundImage: AssetImage("images/avatar.jpeg"),
-                backgroundColor: Colors.white,
-              ),
-            ),
+                    backgroundImage: AssetImage("images/avatar.jpeg"),
+                    backgroundColor: Colors.white,
+                  ),
+                ),
           ],
         ),
       ),
       backgroundColor: Colors.black,
       body: ListView(
         children: [
+          
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 28),
             child: InkWell(
@@ -202,6 +204,7 @@ class _AccountPageState extends State<AccountPage> {
               ),
             ),
           ),
+
         ],
       ),
     );

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -70,11 +71,7 @@ class _ItemsWidgetState extends State<ItemsWidget> {
                   InkWell(
                     onTap: () {
                       // _navigateToCategoryPage(context, i);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  ProdPage(itemData: docs?[i] ?? {})));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProdPage(itemData: docs?[i] ?? {})));
                     },
                     child: Row(
                       children: [
@@ -172,6 +169,12 @@ class _ItemsWidgetState extends State<ItemsWidget> {
     );
   }
 }
+
+
+
+
+
+
 
 void _navigateToCategoryPage(BuildContext context, int categoryIndex) {
   switch (categoryIndex) {

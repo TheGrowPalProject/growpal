@@ -67,10 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '648350481554',
     projectId: 'growpaltech',
     storageBucket: 'growpaltech.appspot.com',
-    androidClientId:
-        '648350481554-no8lc3ihan5869ek9odej43reuhhasv9.apps.googleusercontent.com',
-    iosClientId:
-        '648350481554-cpp36r43c6sa3mio9cnobjrtof5k7ctg.apps.googleusercontent.com',
+    androidClientId: '648350481554-no8lc3ihan5869ek9odej43reuhhasv9.apps.googleusercontent.com',
+    iosClientId: '648350481554-cpp36r43c6sa3mio9cnobjrtof5k7ctg.apps.googleusercontent.com',
     iosBundleId: 'com.example.growpalHackathon',
   );
 
@@ -80,10 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '648350481554',
     projectId: 'growpaltech',
     storageBucket: 'growpaltech.appspot.com',
-    androidClientId:
-        '648350481554-no8lc3ihan5869ek9odej43reuhhasv9.apps.googleusercontent.com',
-    iosClientId:
-        '648350481554-cpp36r43c6sa3mio9cnobjrtof5k7ctg.apps.googleusercontent.com',
+    androidClientId: '648350481554-no8lc3ihan5869ek9odej43reuhhasv9.apps.googleusercontent.com',
+    iosClientId: '648350481554-cpp36r43c6sa3mio9cnobjrtof5k7ctg.apps.googleusercontent.com',
     iosBundleId: 'com.example.growpalHackathon',
   );
 }

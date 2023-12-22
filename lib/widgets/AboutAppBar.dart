@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class AboutAppBar extends StatelessWidget {
   const AboutAppBar({Key? key}) : super(key: key);
 
@@ -19,6 +20,7 @@ class AboutAppBar extends StatelessWidget {
               size: 30,
               color: Color(0xFF4C53A5),
             ),
+
           ),
           const Padding(
             padding: EdgeInsets.only(left: 20),
