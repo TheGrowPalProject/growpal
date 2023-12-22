@@ -7,6 +7,7 @@ import '../widgets/CartBottomNaviBar.dart';
 import '../widgets/CartItems.dart';
 import 'AboutPage.dart';
 import 'Items.dart';
+import 'LoginPage.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+  bool isLogoutVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,18 +38,48 @@ class _AccountPageState extends State<AccountPage> {
           ),
           actions: [
             Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: CircleAvatar(
-                backgroundImage: AssetImage("images/avatar.jpeg"),
-                backgroundColor: Colors.white,
-              ),
-            ),
+                padding: const EdgeInsets.only(right: 20),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isLogoutVisible = !isLogoutVisible;
+                    });
+                  },
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage("images/avatar.jpeg"),
+                    backgroundColor: Colors.white,
+                  ),
+                )),
           ],
         ),
       ),
       backgroundColor: Colors.black,
       body: ListView(
         children: [
+          Visibility(
+            visible: isLogoutVisible,
+            child: Container(
+              margin: EdgeInsets.only(left: 200, right: 60),
+              decoration: BoxDecoration(
+                color: Color(0xFFF1D1D1D),
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: TextButton(
+                child: Text(
+                  'Logout',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                },
+              ),
+            ),
+          ),
           SizedBox(height: 29),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 28),
