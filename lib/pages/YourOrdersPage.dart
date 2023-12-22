@@ -7,13 +7,16 @@ class Item {
   String orderdate;
   bool preparing;
   bool delivered;
+  int rating;
 
-  Item(
-      {required this.name,
-      required this.image,
-      required this.orderdate,
-      this.preparing = false,
-      this.delivered = false});
+  Item({
+    required this.name,
+    required this.image,
+    required this.orderdate,
+    this.preparing = false,
+    this.delivered = false,
+    this.rating = 0,
+  });
 }
 
 class AccountPage extends StatefulWidget {
@@ -34,7 +37,8 @@ class _AccountPageState extends State<AccountPage> {
         name: 'Item 2',
         image: 'images/image5.png',
         orderdate: 'Ordered on 9/11/23',
-        preparing: false),
+        preparing: false,
+        rating: 4),
     // Add more items as needed from database
   ];
 
@@ -208,16 +212,21 @@ class _AccountPageState extends State<AccountPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  if (!items[index]
-                                      .preparing) // Showing stars only when preparing is false
+                                  if (!items[index].preparing)
                                     Row(
                                       children: [
-                                        Icon(Icons.star, color: Colors.white),
-                                        Icon(Icons.star, color: Colors.white),
-                                        Icon(Icons.star, color: Colors.white),
-                                        Icon(Icons.star, color: Colors.white),
-                                        Icon(Icons.star_outline,
-                                            color: Colors.white), // Empty star
+                                        // Filled stars based on the rating
+                                        ...List.generate(
+                                          items[index].rating,
+                                          (index) => Icon(Icons.star,
+                                              color: Colors.yellow),
+                                        ),
+                                        // Empty stars for the remaining
+                                        ...List.generate(
+                                          5 - items[index].rating,
+                                          (index) => Icon(Icons.star_border,
+                                              color: Colors.yellow),
+                                        ),
                                       ],
                                     ),
                                 ],
