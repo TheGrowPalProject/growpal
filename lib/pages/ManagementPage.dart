@@ -27,7 +27,9 @@ class Item {
 }
 
 class Management extends StatefulWidget {
-  const Management({super.key});
+  
+  final Map<String, dynamic> itemData;
+  const Management({super.key, this.itemData = const {}});
 
   @override
   _ManagementState createState() => _ManagementState();
