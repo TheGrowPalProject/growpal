@@ -84,6 +84,7 @@ class _ItemsState extends State<Items> {
             ),
           ),
           for (int i = 0; i < (docs?.length ?? 0); i++) ...[
+            SizedBox(height: 20),
             Container(
               margin: EdgeInsets.only(left: 10, right: 10),
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),

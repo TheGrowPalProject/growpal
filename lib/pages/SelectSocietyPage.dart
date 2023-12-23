@@ -15,20 +15,77 @@ class _SelectSocietyState extends State<SelectSociety> {
   String? selectedSociety;
   String? selectedHouseNumber;
   final List<String> cities = [
-    'City 1',
-    'City 2',
-    'City 3'
+    'Bangalore',
+    'Hyderabad',
+    'Delhi',
+    'Mumbai',
+    'Chennai',
+    'Kolkata',
+    'Pune',
+    'Ahmedabad',
+    'Jaipur',
+    'Lucknow',
+    'Kanpur',
+    'Nagpur',
+    'Indore',
+    'Thane',
+    'Bhopal',
+    'Visakhapatnam',
+    'Patna',
+    'Vadodara',
+    'Ghaziabad',
   ]; // Replace with city data
   final List<String> societies = [
-    'Society A',
-    'Society B',
-    'Society C'
+    'Rennaisance Naturewalk',
+    'Shriram Smriti',
+    'Keerthi Flora',
+    'Prestige Lakeside Habitat',
+    'Sowparnika Swastika',
+    'Adarsh Palm Retreat',
+    'Celebrity Square',
   ]; // Replace with society data
   final List<String> houseNumber = [
-    'House 1',
-    'House 2',
-    'House 3'
-  ]; // Replace with society data
+    'A-101',
+    'A-102',
+    'A-103',
+    'A-104',
+    'A-105',
+    'A-106',
+    'A-107',
+    'A-108',
+    'A-109',
+    'A-110',
+    'B-101',
+    'B-102',
+    'B-103',
+    'B-104',
+    'B-105',
+    'B-106',
+    'B-107',
+    'B-108',
+    'B-109',
+    'B-110',
+    'C-101',
+    'C-102',
+    'C-103',
+    'C-104',
+    'C-105',
+    'C-106',
+    'C-107',
+    'C-108',
+    'C-109',
+    'C-110',
+    'D-101',
+    'D-102',
+    'D-103',
+    'D-104',
+    'D-105',
+    'D-106',
+    'D-107',
+    'D-108',
+    'D-109',
+    'D-110',
+  ]; 
 
   @override
   Widget build(BuildContext context) {
@@ -242,7 +299,7 @@ class _SelectSocietyState extends State<SelectSociety> {
                               color: Colors.white,
                             ),
                           ),
-                          items: societies.map((String houseNumber) {
+                          items: houseNumber.map((String houseNumber) {
                             return DropdownMenuItem<String>(
                               value: houseNumber,
                               child: Text(
