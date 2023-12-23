@@ -91,6 +91,7 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
                 final orderDeets = {
                   "Timestamp": DateTime.now().millisecondsSinceEpoch.toString(),
                   "SellerUserId": widget.itemData["Userid"],
+                  "SellerPhoneNumber": widget.itemData["phNumber"],
                   "ProductName": widget.itemData["Product_name"],
                   "ProductImageUrl": widget.itemData["Image"],
                   "BuyerUserId": loggedInUserId,

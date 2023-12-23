@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:growpal/pages/HomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:io' show Platform;
+import 'package:permission_handler/permission_handler.dart';
 
 class Item {
   final String name;
   final String image;
   final String sellerUserId;
+  final String sellerPhoneNumber;
   String orderdate;
   bool preparing;
   bool delivered;
@@ -19,6 +21,7 @@ class Item {
     required this.name,
     required this.image,
     required this.sellerUserId,
+    required this.sellerPhoneNumber,
     required this.orderdate,
     required this.preparing,
     required this.delivered,
@@ -56,6 +59,7 @@ class _YourOrdersPageState extends State<YourOrdersPage> {
           name: e['ProductName'],
           image: e['ProductImageUrl'],
           sellerUserId: e['SellerUserId'],
+          sellerPhoneNumber: e["SellerPhoneNumber"],
           orderdate: formattedDate,
           preparing: e['Status'] == "Preparing",
           delivered: e['Status'] == "Delivered",
@@ -63,6 +67,12 @@ class _YourOrdersPageState extends State<YourOrdersPage> {
       }).toList();
     });
   }
+
+  void _makePhoneCall(String phoneNumber) async {
+
+  final url = Uri.parse('tel:$phoneNumber');
+  await launchUrl(url);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -245,6 +255,8 @@ class _YourOrdersPageState extends State<YourOrdersPage> {
                                         .doc()
                                         .set(orderDeets);
                                     _fetchItems();
+                                  } else {
+                                    _makePhoneCall(items[index].sellerPhoneNumber);
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -307,24 +319,4 @@ class _YourOrdersPageState extends State<YourOrdersPage> {
     );
   }
 
-  void _handleNavigation(int index) {
-    // Perform navigation or any specific actions based on the index
-    switch (index) {
-      case 0:
-        // Handle navigation or actions for Home Page
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return HomePage();
-        }));
-        break;
-      case 1:
-        // Handle navigation or actions for Account Page
-
-        break;
-      case 2:
-        // Handle navigation or actions for Sell Page
-        break;
-      default:
-        break;
-    }
-  }
 }
