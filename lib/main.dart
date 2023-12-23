@@ -1,20 +1,19 @@
 /*
 Welcome to my spaghetti code :)
  */
-import 'package:growpal_hackathon/pages/Home_Page.dart';
 import 'package:flutter/material.dart';
-import 'package:growpal_hackathon/pages/CartPage.dart';
-import 'package:growpal_hackathon/pages/Chekout.dart';
-import 'package:growpal_hackathon/pages/ConfirmationPage.dart';
-import 'package:growpal_hackathon/pages/HomePage.dart';
-import 'package:growpal_hackathon/pages/ProdPage.dart';
-import 'package:growpal_hackathon/pages/LoginPage.dart';
-import 'package:growpal_hackathon/pages/BuyerIntro.dart';
-import 'package:growpal_hackathon/pages/SellerIntro.dart';
-import 'package:growpal_hackathon/pages/SelectIntro.dart';
+import 'package:growpal/pages/CartPage.dart';
+import 'package:growpal/pages/Chekout.dart';
+import 'package:growpal/pages/ConfirmationPage.dart';
+import 'package:growpal/pages/HomePage.dart';
+import 'package:growpal/pages/ProdPage.dart';
+import 'package:growpal/pages/LoginPage.dart';
+import 'package:growpal/pages/BuyerIntro.dart';
+import 'package:growpal/pages/SellerIntro.dart';
+import 'package:growpal/pages/SelectIntro.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:growpal_hackathon/firebase_options.dart';
-import 'package:growpal_hackathon/pages/SelectSocietyPage.dart';
+import 'package:growpal/firebase_options.dart';
+import 'package:growpal/pages/SelectSocietyPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:growpal_hackathon/pages/YourOrdersPage.dart';

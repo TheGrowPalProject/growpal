@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:growpal_hackathon/pages/Items.dart';
+import 'package:growpal/pages/Items.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../globalVariables.dart';
-import '../widgets/CartAppbar.dart';
-import '../widgets/CartBottomNaviBar.dart';
-import '../widgets/CartItems.dart';
 import 'AboutPage.dart';
-import 'Items.dart';
 import 'LoginPage.dart';
 
 class AccountPage extends StatefulWidget {
@@ -18,7 +13,6 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
-  bool isLogoutVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +39,7 @@ class _AccountPageState extends State<AccountPage> {
                 padding: const EdgeInsets.only(right: 20),
 
               child: CircleAvatar(
-                    backgroundImage: AssetImage("images/avatar.jpeg"),
+                    backgroundImage: NetworkImage(FirebaseAuth.instance.currentUser?.photoURL ?? ""),
                     backgroundColor: Colors.white,
                   ),
                 ),
