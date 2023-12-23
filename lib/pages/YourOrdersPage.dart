@@ -19,12 +19,12 @@ class Item {
   });
 }
 
-class AccountPage extends StatefulWidget {
+class YourOrdersPage extends StatefulWidget {
   @override
-  _AccountPageState createState() => _AccountPageState();
+  _YourOrdersPageState createState() => _YourOrdersPageState();
 }
 
-class _AccountPageState extends State<AccountPage> {
+class _YourOrdersPageState extends State<YourOrdersPage> {
   int _currentIndex = 1;
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   final List<Item> items = [
