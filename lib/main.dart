@@ -16,8 +16,7 @@ import 'package:growpal/firebase_options.dart';
 import 'package:growpal/pages/SelectSocietyPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:growpal_hackathon/pages/YourOrdersPage.dart';
-
+import 'package:growpal/pages/YourOrdersPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +26,7 @@ void main() async {
 
   User? user = FirebaseAuth.instance.currentUser;
   runApp(MyApp(
-    initialRoute: user==null ? "LoginPage" : "/",
+    initialRoute: user == null ? "LoginPage" : "/",
   ));
 }
 
@@ -42,12 +41,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-
-
-      SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown,
-      ]);
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

@@ -30,8 +30,6 @@ class _SelectSocietyState extends State<SelectSociety> {
     'House 3'
   ]; // Replace with society data
 
-
-
   @override
   Widget build(BuildContext context) {
     var flag = 0;
@@ -46,7 +44,7 @@ class _SelectSocietyState extends State<SelectSociety> {
         );
         await FirebaseAuth.instance.signInWithCredential(credential);
         flag = 1;
-      } on FirebaseAuthException catch (e){
+      } on FirebaseAuthException catch (e) {
         print('Failed with error code: ${e.code}');
         print(e.message);
         ScaffoldMessenger.of(context).showSnackBar(
@@ -101,7 +99,7 @@ class _SelectSocietyState extends State<SelectSociety> {
         }
       }
     }
-    
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(

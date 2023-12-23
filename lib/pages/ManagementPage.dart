@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:growpal/pages/SellerFormEdit.dart';
+
 class Item {
   final String name;
   final String image;
@@ -14,7 +16,7 @@ class Item {
     required this.houseNumber,
     required this.userId,
     required this.timeStamp,
-    this.preparing = false,
+    required this.preparing,
   });
 }
 
@@ -34,15 +36,18 @@ class _ManagementState extends State<Management> {
     _fetchItems();
   }
 
-
   Future<void> _fetchItems() async {
     final UserId = widget.itemData['Userid'];
     final ProductName = widget.itemData['Product_name'];
     final db = FirebaseFirestore.instance;
     final p = db.collection("orders");
-    final querySnapshot = await p.where('SellerUserId', isEqualTo: UserId).where("ProductName", isEqualTo: ProductName).get();
+    final querySnapshot = await p
+        .where('SellerUserId', isEqualTo: UserId)
+        .where("ProductName", isEqualTo: ProductName)
+        .where("Status", isNotEqualTo: "Delivered")
+        .orderBy("Timestamp", descending: true)
+        .get();
     setState(() {
-      
       items = querySnapshot.docs.map((e) {
         return Item(
           name: e['BuyerName'],
@@ -50,18 +55,15 @@ class _ManagementState extends State<Management> {
           houseNumber: e['BuyerHouseNumber'],
           userId: e['BuyerUserId'],
           timeStamp: e['Timestamp'],
+          preparing: e['Status'] == "Preparing",
         );
       }).toList();
     });
   }
 
-
-
-
-
   @override
   Widget build(BuildContext context) {
-    if(items == []){
+    if (items == []) {
       return const Center(
         child: CircularProgressIndicator(),
       );
@@ -85,27 +87,27 @@ class _ManagementState extends State<Management> {
             const SizedBox(height: 20),
             Center(
               child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 28.0),
-              child: Container(
-                height: 61,
-                width: 293,
-                decoration: BoxDecoration(
-                  color: Color(0xFFF1D1D1D),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Center(
-                  child: Text(
-                    'Manage',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                padding: const EdgeInsets.symmetric(
+                    vertical: 20.0, horizontal: 28.0),
+                child: Container(
+                  height: 61,
+                  width: 293,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFF1D1D1D),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Manage',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
             ),
             Builder(builder: (context) {
               return MediaQuery.removePadding(
@@ -154,7 +156,11 @@ class _ManagementState extends State<Management> {
                             ),
                             ElevatedButton.icon(
                               onPressed: () {
-                                // Edit action
+                              Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    SellerFormEdit(product: widget.itemData)));
                               },
                               style: ElevatedButton.styleFrom(
                                   minimumSize: const Size(10, 10),
@@ -185,9 +191,8 @@ class _ManagementState extends State<Management> {
                         fontSize: 25,
                         fontWeight: FontWeight.bold))),
             Expanded(
-              child: ListView(
-                  children: [ 
-                  for(int index = 0; index < items.length; index++) ...[
+              child: ListView(children: [
+                for (int index = 0; index < items.length; index++) ...[
                   Container(
                     height: 200,
                     decoration: BoxDecoration(
@@ -235,24 +240,29 @@ class _ManagementState extends State<Management> {
                               ),
                               ElevatedButton.icon(
                                 onPressed: () {
-
                                   setState(() {
                                     items[index].preparing = true;
                                   });
-
                                   final db = FirebaseFirestore.instance;
                                   final p = db.collection("orders");
-                                  p.where('BuyerUserId', isEqualTo: items[index].userId)
-                                  .where("ProductName", isEqualTo: widget.itemData["Product_name"])
-                                  .where("Timestamp", isEqualTo: items[index].timeStamp)
-                                  .get().then((value) {
+                                  p
+                                      .where('BuyerUserId',
+                                          isEqualTo: items[index].userId)
+                                      .where("ProductName",
+                                          isEqualTo:
+                                              widget.itemData["Product_name"])
+                                      .where("Timestamp",
+                                          isEqualTo: items[index].timeStamp)
+                                      .get()
+                                      .then((value) {
                                     value.docs.forEach((element) {
                                       print("hello");
                                       print(element);
-                                      element.reference.set({"Status": "Preparing"}, SetOptions(merge: true));
+                                      element.reference.set(
+                                          {"Status": "Preparing"},
+                                          SetOptions(merge: true));
                                     });
                                   });
-
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.transparent,
@@ -286,15 +296,22 @@ class _ManagementState extends State<Management> {
                                 onPressed: () {
                                   final db = FirebaseFirestore.instance;
                                   final p = db.collection("orders");
-                                  p.where('BuyerUserId', isEqualTo: items[index].userId)
-                                  .where("ProductName", isEqualTo: widget.itemData["Product_name"])
-                                  .where("Timestamp", isEqualTo: items[index].timeStamp)
-                                  .get().then((value) {
+                                  p
+                                      .where('BuyerUserId',
+                                          isEqualTo: items[index].userId)
+                                      .where("ProductName",
+                                          isEqualTo:
+                                              widget.itemData["Product_name"])
+                                      .where("Timestamp",
+                                          isEqualTo: items[index].timeStamp)
+                                      .get()
+                                      .then((value) {
                                     value.docs.forEach((element) {
-                                      element.reference.delete();
+                                      element.reference.set(
+                                          {"Status": "Delivered"},
+                                          SetOptions(merge: true));
                                     });
                                   });
-
 
                                   setState(() {
                                     print(index);
@@ -331,9 +348,8 @@ class _ManagementState extends State<Management> {
                       ],
                     ),
                   ),
-                  ]
                 ]
-              ),
+              ]),
             ),
           ],
         ),

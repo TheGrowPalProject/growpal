@@ -15,7 +15,7 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   var price = 0;
 
-  void handlePrice(priceGiven){
+  void handlePrice(priceGiven) {
     setState(() {
       price = globalVariables().price;
     });
@@ -27,22 +27,20 @@ class _CartPageState extends State<CartPage> {
       body: ListView(
         children: [
           const CartAppBar(),
-
           Container(
             padding: const EdgeInsets.only(top: 15),
             decoration: const BoxDecoration(
               color: Color(0xFFEDECF2),
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(35),
-                  topRight: Radius.circular(35),
+                topLeft: Radius.circular(35),
+                topRight: Radius.circular(35),
               ),
-
             ),
-            child: Column(
-              children: [
-                const CartItems(),
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+            child: Column(children: [
+              const CartItems(),
+              Container(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
                   padding: const EdgeInsets.all(10),
                   child: Row(
                     children: [
@@ -57,21 +55,16 @@ class _CartPageState extends State<CartPage> {
                         ),
                       ),
                       const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Text(
-                          "Add Coupon Code",
-                          style: TextStyle(
-                            color: Color(0xFF4C53A5),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          )
-                        )
-                      ),
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text("Add Coupon Code",
+                              style: TextStyle(
+                                color: Color(0xFF4C53A5),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ))),
                     ],
-                  )
-                ),
-            ]
-            ),
+                  )),
+            ]),
           ),
         ],
       ),

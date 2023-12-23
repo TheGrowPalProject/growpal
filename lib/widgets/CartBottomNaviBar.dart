@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:growpal/globalVariables.dart';
-
 
 class CartBottomNaviBar extends StatefulWidget {
   const CartBottomNaviBar({Key? key}) : super(key: key);
@@ -18,9 +16,9 @@ class CartBottomNaviBarState extends State<CartBottomNaviBar> {
     super.initState();
     price = globalVariables().price;
   }
+
   @override
   Widget build(BuildContext context) {
-
     return BottomAppBar(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -28,47 +26,39 @@ class CartBottomNaviBarState extends State<CartBottomNaviBar> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
-             SizedBox(
+            SizedBox(
               width: 280.0,
               height: 50.0,
               child: ElevatedButton(
-                     onPressed:(){
-                       if(globalVariables().checkoutPermit)
-                         {_showAlertDialog(context);}
-                       },
-
-                style: ButtonStyle(
-                  backgroundColor:   MaterialStateProperty.all<Color>(const Color(0xFF4C53A5)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                        )
-                    )
-                ),
-                child: const Text(
-                         "Check Out",
-                         style: TextStyle(
-                           fontSize: 26,
-                           fontWeight: FontWeight.bold,
-                           color: Colors.white,
-                         ),
-                       )
-                   ),
-              ),
-
-
+                  onPressed: () {
+                    if (globalVariables().checkoutPermit) {
+                      _showAlertDialog(context);
+                    }
+                  },
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          const Color(0xFF4C53A5)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ))),
+                  child: const Text(
+                    "Check Out",
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  )),
+            ),
           ],
         ),
       ),
     );
-
   }
-
-
 }
 
-Future<void> _showAlertDialog(BuildContext  context) async {
+Future<void> _showAlertDialog(BuildContext context) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: false,
@@ -88,7 +78,6 @@ Future<void> _showAlertDialog(BuildContext  context) async {
               Navigator.of(context).pop();
               Navigator.pushNamed(context, "checkout");
               HapticFeedback.heavyImpact();
-
             },
           ),
         ],

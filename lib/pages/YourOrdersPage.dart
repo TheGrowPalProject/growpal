@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:growpal_hackathon/pages/HomePage.dart';
+import 'package:growpal/pages/HomePage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Item {
   final String name;
   final String image;
+  final String sellerUserId;
   String orderdate;
   bool preparing;
   bool delivered;
@@ -12,9 +18,10 @@ class Item {
   Item({
     required this.name,
     required this.image,
+    required this.sellerUserId,
     required this.orderdate,
-    this.preparing = false,
-    this.delivered = false,
+    required this.preparing,
+    required this.delivered,
     this.rating = 0,
   });
 }
@@ -25,54 +32,42 @@ class YourOrdersPage extends StatefulWidget {
 }
 
 class _YourOrdersPageState extends State<YourOrdersPage> {
-  int _currentIndex = 1;
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-  final List<Item> items = [
-    Item(
-        name: 'Item 1',
-        image: 'images/image1.png',
-        orderdate: 'Ordered on 9/11/23',
-        preparing: true),
-    Item(
-        name: 'Item 2',
-        image: 'images/image5.png',
-        orderdate: 'Ordered on 9/11/23',
-        preparing: false,
-        rating: 4),
-    // Add more items as needed from database
-  ];
+  List<Item> items = [];
+  @override
+  void initState() {
+    super.initState();
+    _fetchItems();
+  }
+
+  Future<void> _fetchItems() async {
+    final UserId = FirebaseAuth.instance.currentUser?.uid ?? "";
+    final db = FirebaseFirestore.instance;
+    final p = db.collection("orders");
+    final querySnapshot = await p
+        .where("BuyerUserId", isEqualTo: UserId)
+        .orderBy("Timestamp", descending: true)
+        .get();
+    setState(() {
+      items = querySnapshot.docs.map((e) {
+        int epochMilliseconds = int.parse(e['Timestamp']);
+        var date = DateTime.fromMillisecondsSinceEpoch(epochMilliseconds);
+        var formattedDate = DateFormat('dd-MM-yyyy hh:mm a').format(date);
+        return Item(
+          name: e['ProductName'],
+          image: e['ProductImageUrl'],
+          sellerUserId: e['SellerUserId'],
+          orderdate: formattedDate,
+          preparing: e['Status'] == "Preparing",
+          delivered: e['Status'] == "Delivered",
+        );
+      }).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (int index) {
-          setState(() {
-            _currentIndex = index;
-          });
-          // Add actions or navigation based on index here
-          _handleNavigation(index);
-        },
-        backgroundColor: Color.fromRGBO(32, 31, 38, 1.0),
-        selectedItemColor: Colors.white.withOpacity(0.6),
-        unselectedItemColor: Colors.white.withOpacity(0.6),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Account',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.currency_exchange),
-            label: 'Sell',
-          ),
-        ],
-      ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -89,17 +84,25 @@ class _YourOrdersPageState extends State<YourOrdersPage> {
             ),
             SizedBox(height: 20),
             Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // Button action
-                },
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.grey, fixedSize: Size(300, 30)),
-                child: Text(
-                  'Your Orders',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 20.0, horizontal: 28.0),
+                child: Container(
+                  height: 61,
+                  width: 293,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFF1D1D1D),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Orders',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -128,7 +131,7 @@ class _YourOrdersPageState extends State<YourOrdersPage> {
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               alignment: Alignment.bottomCenter,
-                              image: AssetImage(items[index].image),
+                              image: NetworkImage(items[index].image),
                             ),
                           ),
                         ),
@@ -153,18 +156,14 @@ class _YourOrdersPageState extends State<YourOrdersPage> {
                                     color: Colors.white, fontSize: 20),
                               ),
                               ElevatedButton.icon(
-                                onPressed: () {
-                                  setState(() {
-                                    items[index].preparing = true;
-                                  });
-                                },
+                                onPressed: () {},
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.transparent,
                                     elevation: 0.0),
                                 icon: Container(
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: items[index].preparing
+                                      color: !items[index].delivered
                                           ? Colors.yellow
                                           : Colors.green),
                                   child: Icon(
@@ -174,8 +173,10 @@ class _YourOrdersPageState extends State<YourOrdersPage> {
                                   ),
                                 ),
                                 label: Text(
-                                  items[index].preparing
-                                      ? 'Preparing...'
+                                  !items[index].delivered
+                                      ? items[index].preparing
+                                          ? 'Preparing'
+                                          : 'Placed'
                                       : 'Delivered',
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 18),
@@ -185,7 +186,67 @@ class _YourOrdersPageState extends State<YourOrdersPage> {
                                 height: 8,
                               ),
                               ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () async {
+                                  if (items[index].delivered) {
+                                    var db = FirebaseFirestore.instance;
+                                    DocumentSnapshot productDeetsSnapshot =
+                                        await db
+                                            .collection("products")
+                                            .doc(items[index].sellerUserId +
+                                                "_" +
+                                                items[index].name)
+                                            .get();
+                                    Map<String, dynamic> productDeets =
+                                        productDeetsSnapshot.exists
+                                            ? productDeetsSnapshot.data()
+                                                as Map<String, dynamic>
+                                            : {};
+                                    var upiId = productDeets["UpiId"];
+                                    var amount = productDeets["Price"];
+                                    var productName =
+                                        productDeets["Product_name"];
+                                    var userName = productDeets["DisplayName"];
+                                    var uri =
+                                        "upi://pay?pa=$upiId&pn=$userName&am=$amount&tn=$productName&cu=INR";
+                                    var url = Uri.parse(uri);
+                                    var result = await launchUrl(url);
+                                    print(result);
+                                    if (result == true) {
+                                      print("done, UPI app opened");
+                                    } else if (result == false) {
+                                      print("fail to open UPI app");
+                                    }
+
+                                    final User? user =
+                                        FirebaseAuth.instance.currentUser;
+                                    final loggedInUserId = user?.uid;
+                                    final loggedInUserName = user?.displayName;
+                                    final loggedInUserPhotoUrl = user?.photoURL;
+                                    SharedPreferences pref =
+                                        await SharedPreferences.getInstance();
+                                    final buyerHouseNumber =
+                                        pref.getString("houseNumber");
+                                    final orderDeets = {
+                                      "Timestamp": DateTime.now()
+                                          .millisecondsSinceEpoch
+                                          .toString(),
+                                      "SellerUserId": productDeets["Userid"],
+                                      "ProductName":
+                                          productDeets["Product_name"],
+                                      "ProductImageUrl": productDeets["Image"],
+                                      "BuyerUserId": loggedInUserId,
+                                      "BuyerName": loggedInUserName,
+                                      "BuyerPhotoUrl": loggedInUserPhotoUrl,
+                                      "BuyerHouseNumber": buyerHouseNumber,
+                                      "Status": "Placed",
+                                    };
+                                    await db
+                                        .collection("orders")
+                                        .doc()
+                                        .set(orderDeets);
+                                    _fetchItems();
+                                  }
+                                },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.black,
                                     side: BorderSide(color: Colors.white),
@@ -194,7 +255,7 @@ class _YourOrdersPageState extends State<YourOrdersPage> {
                                             BorderRadius.circular(15)),
                                     padding: EdgeInsets.symmetric(
                                         vertical: 18, horizontal: 25)),
-                                child: items[index].preparing
+                                child: !items[index].delivered
                                     ? Text(
                                         "Contact Seller",
                                         style: TextStyle(

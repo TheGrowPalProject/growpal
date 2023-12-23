@@ -7,7 +7,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class ProdBottomNaviBar extends StatefulWidget {
   final itemData;
-  const ProdBottomNaviBar({Key? key, this.itemData = const {}}) : super(key: key);
+  const ProdBottomNaviBar({Key? key, this.itemData = const {}})
+      : super(key: key);
 
   @override
   State<ProdBottomNaviBar> createState() => _ProdBottomNaviBarState();
@@ -18,6 +19,11 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
   var buyNowText = "Buy Now";
   var buttonIcon = const Icon(CupertinoIcons.cart_badge_plus);
   var newIcon = const Icon(CupertinoIcons.money_dollar);
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +51,10 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                side:
-                    const BorderSide(color: Colors.white, width: 2), backgroundColor: const Color(0xfff10100f),
-                padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 15),
+                side: const BorderSide(color: Colors.white, width: 2),
+                backgroundColor: const Color(0xfff10100f),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 13, horizontal: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -59,32 +66,33 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
                 var amount = widget.itemData["Price"];
                 var productName = widget.itemData["Product_name"];
                 var userName = widget.itemData["DisplayName"];
-                var uri = "upi://pay?pa=$upiId&pn=$userName&am=$amount&tn=$productName&cu=INR";
+                var uri =
+                    "upi://pay?pa=$upiId&pn=$userName&am=$amount&tn=$productName&cu=INR";
                 var url = Uri.parse(uri);
                 var result = await launchUrl(url);
-                 print(result);
-                 if (result ==true) {
-                   print("done, UPI app opened");
-                 } else if (result ==false){
-                   print("fail to open UPI app");
-                 }
+                print(result);
+                if (result == true) {
+                  print("done, UPI app opened");
+                } else if (result == false) {
+                  print("fail to open UPI app");
+                }
                 setState(() {
                   buyNowText = "Bought";
                 });
 
-
                 var db = FirebaseFirestore.instance;
-                
+
                 final User? user = FirebaseAuth.instance.currentUser;
                 final loggedInUserId = user?.uid;
                 final loggedInUserName = user?.displayName;
                 final loggedInUserPhotoUrl = user?.photoURL;
-                SharedPreferences pref = await SharedPreferences.getInstance(); 
+                SharedPreferences pref = await SharedPreferences.getInstance();
                 final buyerHouseNumber = pref.getString("houseNumber");
                 final orderDeets = {
                   "Timestamp": DateTime.now().millisecondsSinceEpoch.toString(),
                   "SellerUserId": widget.itemData["Userid"],
                   "ProductName": widget.itemData["Product_name"],
+                  "ProductImageUrl": widget.itemData["Image"],
                   "BuyerUserId": loggedInUserId,
                   "BuyerName": loggedInUserName,
                   "BuyerPhotoUrl": loggedInUserPhotoUrl,
@@ -92,7 +100,6 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
                   "Status": "Placed",
                 };
                 db.collection("orders").doc().set(orderDeets);
-
               },
               icon: newIcon,
               label: Text(
@@ -103,9 +110,10 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                side:
-                    const BorderSide(color: Colors.white, width: 2), backgroundColor: const Color(0xfff10100f),
-                padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 15),
+                side: const BorderSide(color: Colors.white, width: 2),
+                backgroundColor: const Color(0xfff10100f),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 13, horizontal: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),

@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'AboutPage.dart';
 import 'LoginPage.dart';
+import 'YourOrdersPage.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -36,26 +37,25 @@ class _AccountPageState extends State<AccountPage> {
           ),
           actions: [
             Padding(
-                padding: const EdgeInsets.only(right: 20),
-
+              padding: const EdgeInsets.only(right: 20),
               child: CircleAvatar(
-                    backgroundImage: NetworkImage(FirebaseAuth.instance.currentUser?.photoURL ?? ""),
-                    backgroundColor: Colors.white,
-                  ),
-                ),
+                backgroundImage: NetworkImage(
+                    FirebaseAuth.instance.currentUser?.photoURL ?? ""),
+                backgroundColor: Colors.white,
+              ),
+            ),
           ],
         ),
       ),
       backgroundColor: Colors.black,
       body: ListView(
         children: [
-          
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 28),
             child: InkWell(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AboutPage()));
+                    MaterialPageRoute(builder: (context) => YourOrdersPage()));
               },
               child: Container(
                 height: 61,
@@ -200,7 +200,6 @@ class _AccountPageState extends State<AccountPage> {
               ),
             ),
           ),
-
         ],
       ),
     );

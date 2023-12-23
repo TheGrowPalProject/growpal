@@ -8,17 +8,34 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/services.dart';
 
-class SellerForm extends StatefulWidget {
-  const SellerForm({super.key});
+class SellerFormEdit extends StatefulWidget {
+  final Map<String, dynamic>? product;
+  const SellerFormEdit({super.key, required this.product});
 
   @override
-  _SellerFormState createState() => _SellerFormState();
+  _SellerFormEditState createState() => _SellerFormEditState();
 }
 
-class _SellerFormState extends State<SellerForm> {
+class _SellerFormEditState extends State<SellerFormEdit> {
   @override
   void initState() {
     super.initState();
+    _description = widget.product!['Description'];
+    _price = widget.product!['Price'];
+    _upiId = widget.product!['UpiId'];
+    _phNumber = widget.product!['phNumber'];
+    _isSubscription = widget.product!['Subscription'];
+    _chosenDate = DateTime.parse(widget.product!['Date']);
+    _productName = widget.product!['Product_name'];
+    imgurl = widget.product!['Image'];
+    _isSubscription = widget.product!['Subscription'];
+    ts = DateTime.now().millisecondsSinceEpoch.toString();
+
+    pname.text = widget.product!['Product_name'];
+    desc.text = widget.product!['Description'];
+    price.text = widget.product!['Price'];
+    upi.text = widget.product!['UpiId'];
+    phnumber.text = widget.product!['phNumber'];
   }
 
   final _formKey = GlobalKey<FormState>();
@@ -59,8 +76,7 @@ class _SellerFormState extends State<SellerForm> {
       var date = _chosenDate.toString();
       if (_productName == '' ||
           _description == '' ||
-          _price == '' ||
-          imgup != 1) {
+          _price == '') {
         const err = SnackBar(
           behavior: SnackBarBehavior.floating,
           shape: RoundedRectangleBorder(
@@ -87,17 +103,20 @@ class _SellerFormState extends State<SellerForm> {
         _photoURL = FirebaseAuth.instance.currentUser!.photoURL!;
 
         var db = FirebaseFirestore.instance;
+        
+        if(imgup == 1){
+          Reference refroot = FirebaseStorage.instance.ref();
+          debugPrint('Form File Path: ${File(file!.path).toString()} \n');
+          Reference pimg = refroot.child('products');
+          Reference imgup = pimg.child('$ts.jpg');
 
-        Reference refroot = FirebaseStorage.instance.ref();
-        debugPrint('Form File Path: ${File(file!.path).toString()} \n');
-        Reference pimg = refroot.child('products');
-        Reference imgup = pimg.child('$ts.jpg');
 
-        try {
-          await imgup.putFile(File(file!.path));
-          imgurl = await imgup.getDownloadURL();
-        } catch (e) {
-          debugPrint('Error: $e');
+          try {
+            await imgup.putFile(File(file!.path));
+            imgurl = await imgup.getDownloadURL();
+          } catch (e) {
+            debugPrint('Error: $e');
+          }
         }
 
         final product = <String, dynamic>{
@@ -111,7 +130,7 @@ class _SellerFormState extends State<SellerForm> {
           'DisplayName': _displayName,
           'UserPhotoURL': _photoURL,
           'Society': society,
-          'Image': imgurl,
+          'Image': imgup == 1 ? imgurl : widget.product!['Image'],
           'Date': date
         };
 
@@ -119,7 +138,7 @@ class _SellerFormState extends State<SellerForm> {
           db
               .collection('products')
               .doc('${_userid}_$_productName')
-              .set(product);
+              .update(product);
           debugPrint('Added ID: $_userid\n');
           print(product);
           const sucUp = SnackBar(
@@ -139,7 +158,7 @@ class _SellerFormState extends State<SellerForm> {
             duration: Duration(seconds: 1, milliseconds: 500),
           );
           ScaffoldMessenger.of(context).showSnackBar(sucUp);
-          Navigator.pushReplacementNamed(context, "/");
+          Navigator.pop(context);
         } catch (e) {
           debugPrint("Error: $e");
         }
@@ -291,17 +310,16 @@ class _SellerFormState extends State<SellerForm> {
                               width: 150,
                               fit: BoxFit.cover,
                             ),
-                          ): Container( // Placeholder for when no image is selected
-        width: 150,
-        height: 150,
-        decoration: BoxDecoration(
-          color: Color(0xff1D1D1D), 
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Center(
-          child: Text('No Image Selected'), // Or a placeholder icon
-        ),
-      ),
+                          )
+                      : ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.network(
+                              widget.product!["Image"],
+                              height: 150,
+                              width: 150,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                     ],
                   ),
 
