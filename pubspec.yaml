@@ -57,6 +57,7 @@ dependencies:
   url_launcher: ^6.2.2
   flutter_launcher_icons: ^0.13.1
   permission_handler: ^11.0.1
+  confetti: ^0.7.0
 
 dev_dependencies:
 

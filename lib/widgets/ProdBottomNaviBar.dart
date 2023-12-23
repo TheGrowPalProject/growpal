@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:confetti/confetti.dart';
 
 class ProdBottomNaviBar extends StatefulWidget {
   final itemData;
@@ -15,6 +16,7 @@ class ProdBottomNaviBar extends StatefulWidget {
 }
 
 class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
+  late ConfettiController _confettiController;
   var addToCartText = "Add To Cart";
   var buyNowText = "Buy Now";
   var buttonIcon = const Icon(CupertinoIcons.cart_badge_plus);
@@ -23,6 +25,13 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
   @override
   void initState() {
     super.initState();
+    _confettiController = ConfettiController(duration: const Duration(seconds: 10));
+  }
+
+  @override
+  void dispose() {
+    _confettiController.dispose();
+    super.dispose();
   }
 
   @override
@@ -59,6 +68,19 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
+            ),
+
+            ConfettiWidget(
+              confettiController: _confettiController,
+              blastDirectionality: BlastDirectionality.explosive,
+              shouldLoop: true,
+              colors: const [
+                Colors.green,
+                Colors.blue,
+                Colors.pink,
+                Colors.orange,
+                Colors.purple
+              ],
             ),
             ElevatedButton.icon(
               onPressed: () async {
@@ -101,6 +123,7 @@ class _ProdBottomNaviBarState extends State<ProdBottomNaviBar> {
                   "Status": "Placed",
                 };
                 db.collection("orders").doc().set(orderDeets);
+                _confettiController.play();
               },
               icon: newIcon,
               label: Text(
