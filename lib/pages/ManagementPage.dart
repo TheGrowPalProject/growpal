@@ -45,7 +45,6 @@ class _ManagementState extends State<Management> {
         .where('SellerUserId', isEqualTo: UserId)
         .where("ProductName", isEqualTo: ProductName)
         .where("Status", isNotEqualTo: "Delivered")
-        .orderBy("Timestamp", descending: true)
         .get();
     setState(() {
       items = querySnapshot.docs.map((e) {
